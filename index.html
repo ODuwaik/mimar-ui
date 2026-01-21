@@ -1,0 +1,1874 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معمار - منصة المقاولين الموثوقين</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Homepage Specific Styles */
+
+        /* Transparent Header */
+        .header {
+            position: relative;
+            background-color: transparent;
+            box-shadow: none;
+            height: auto;
+            padding: var(--space-4) 0;
+        }
+        .logo img {
+            height: 88px;
+        }
+        .nav-link {
+            color: var(--dark-charcoal);
+        }
+        .nav-link:hover {
+            color: var(--primary-orange);
+        }
+
+        /* Mobile Navigation */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 280px;
+            height: 100vh;
+            background: var(--white);
+            box-shadow: var(--shadow-xl);
+            z-index: 1001;
+            padding: var(--space-6);
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        .mobile-nav.open {
+            transform: translateX(0);
+        }
+        .mobile-nav-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .mobile-nav-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-8);
+            padding-bottom: var(--space-4);
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .mobile-nav-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray-600);
+        }
+        .mobile-nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+        }
+        .mobile-nav-links a {
+            display: block;
+            padding: var(--space-3) var(--space-4);
+            color: var(--dark-charcoal);
+            text-decoration: none;
+            border-radius: var(--radius-lg);
+            transition: background 0.2s;
+        }
+        .mobile-nav-links a:hover {
+            background: var(--light-beige);
+            color: var(--primary-orange);
+        }
+        .mobile-nav-actions {
+            margin-top: var(--space-8);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+        }
+        @media (max-width: 991px) {
+            .mobile-nav,
+            .mobile-nav-overlay {
+                display: block;
+            }
+            .menu-toggle {
+                display: flex !important;
+                flex-direction: column;
+                gap: 5px;
+                padding: var(--space-2);
+                cursor: pointer;
+                z-index: 1001;
+                background: none;
+                border: none;
+            }
+            .menu-toggle span {
+                width: 24px;
+                height: 3px;
+                background-color: var(--dark-charcoal);
+                border-radius: 2px;
+                display: block;
+                transition: none;
+            }
+            .menu-toggle.active span {
+                transform: none !important;
+                opacity: 1 !important;
+            }
+            .nav-links,
+            .nav-actions {
+                display: none !important;
+            }
+        }
+
+        .hero-section {
+            padding: var(--space-12) 0 80px;
+            background: linear-gradient(135deg, var(--light-beige) 0%, #fff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-12);
+            align-items: center;
+        }
+        .hero-content h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: var(--space-6);
+            color: var(--dark-charcoal);
+        }
+        .hero-content h1 .highlight {
+            color: var(--primary-orange);
+        }
+
+        /* Typing Animation */
+        .typing-cursor {
+            border-left: 3px solid var(--primary-orange);
+            padding-left: 4px;
+            animation: blink-caret 0.5s step-end infinite;
+        }
+        .typing-cursor.done {
+            border-color: transparent;
+            animation: none;
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--primary-orange); }
+        }
+        .highlight {
+            color: var(--primary-orange);
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--gray-600);
+            margin-bottom: var(--space-8);
+            line-height: 1.8;
+        }
+        .hero-stats {
+            display: flex;
+            gap: var(--space-8);
+            margin-top: var(--space-10);
+            padding-top: var(--space-8);
+            border-top: 1px solid var(--gray-200);
+        }
+        .hero-stat {
+            text-align: center;
+        }
+        .hero-stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-orange);
+        }
+        .hero-stat-label {
+            font-size: 0.95rem;
+            color: var(--gray-500);
+        }
+        .hero-image {
+            position: relative;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+        }
+        .hero-image img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+        }
+        .hero-image-badge {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: var(--white);
+            padding: var(--space-4);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+        }
+        .hero-image-badge .badge-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--success);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+        }
+
+        /* Featured Contractors Section */
+        .featured-contractors {
+            padding: var(--space-16) 0;
+            background: var(--white);
+        }
+        .contractors-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-6);
+        }
+        .contractor-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .contractor-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-orange);
+        }
+        .contractor-card-image {
+            height: 160px;
+            background: var(--light-beige);
+            position: relative;
+            overflow: hidden;
+        }
+        .contractor-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .contractor-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--success);
+            color: var(--white);
+            padding: 4px 10px;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .contractor-card-body {
+            padding: var(--space-5);
+        }
+        .contractor-logo {
+            width: 56px;
+            height: 56px;
+            background: var(--white);
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: -40px;
+            position: relative;
+            font-weight: 700;
+            color: var(--primary-orange);
+            font-size: 1.25rem;
+        }
+        .contractor-name {
+            font-size: 1rem;
+            font-weight: 700;
+            margin: var(--space-3) 0 var(--space-1);
+            color: var(--dark-charcoal);
+        }
+        .contractor-category {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+            margin-bottom: var(--space-3);
+        }
+        .contractor-rating {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            margin-bottom: var(--space-3);
+        }
+        .contractor-rating-stars {
+            display: flex;
+            color: var(--secondary-gold);
+        }
+        .contractor-rating-value {
+            font-weight: 600;
+            color: var(--dark-charcoal);
+        }
+        .contractor-rating-count {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+        }
+        .contractor-meta {
+            display: flex;
+            justify-content: space-between;
+            padding-top: var(--space-3);
+            border-top: 1px solid var(--gray-100);
+            font-size: 0.8rem;
+            color: var(--gray-500);
+        }
+        .contractor-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: var(--space-16) 0;
+            background: var(--light-beige);
+        }
+        .scroller {
+            max-width: 100%;
+            direction: ltr; /* Force LTR for animation to work correctly */
+        }
+        .scroller__inner {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        .scroller__inner .testimonial-card {
+            direction: rtl; /* Keep card content RTL */
+        }
+        .scroller[data-animated="true"] {
+            overflow: hidden;
+        }
+        .scroller[data-animated="true"]:hover .scroller__inner {
+            animation-play-state: paused;
+        }
+        .scroller[data-animated="true"] .scroller__inner {
+            width: max-content;
+            flex-wrap: nowrap;
+            animation: scroll 40s linear infinite;
+        }
+        @keyframes scroll {
+            to {
+                transform: translate(calc(-50% - 0.75rem));
+            }
+        }
+        .testimonial-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            padding: var(--space-6);
+            position: relative;
+            box-shadow: var(--shadow-sm);
+            width: 350px;
+            flex-shrink: 0;
+        }
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 16px;
+            left: 20px;
+            right: auto;
+            font-size: 4rem;
+            color: var(--primary-orange);
+            opacity: 0.1;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        .testimonial-rating {
+            display: flex;
+            gap: 2px;
+            margin-bottom: var(--space-3);
+            color: var(--secondary-gold);
+        }
+        .testimonial-text {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: var(--gray-600);
+            margin-bottom: var(--space-5);
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+        }
+        .testimonial-avatar-placeholder {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-full);
+            background: var(--primary-orange);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        .testimonial-name {
+            font-weight: 700;
+            color: var(--dark-charcoal);
+            font-size: 0.9rem;
+        }
+        .testimonial-role {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+        }
+
+        /* How It Works Section */
+        .how-it-works-section {
+            padding: var(--space-12) 0;
+            background: var(--white);
+        }
+        .how-toggle-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: var(--space-8);
+        }
+        .how-toggle {
+            display: inline-flex;
+            background: var(--gray-200);
+            border-radius: var(--radius-full);
+            padding: 5px;
+            gap: 4px;
+        }
+        .how-toggle-btn {
+            padding: 12px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: transparent;
+            border: none;
+            color: var(--gray-600);
+            border-radius: var(--radius-full);
+            min-width: 150px;
+        }
+        .how-toggle-btn:hover:not(.active) {
+            background: rgba(0,0,0,0.05);
+        }
+        .how-toggle-btn.active.consumer-btn {
+            background: var(--primary-orange);
+            color: var(--white);
+            box-shadow: 0 2px 8px rgba(199, 91, 42, 0.3);
+        }
+        .how-toggle-btn.active.provider-btn {
+            background: var(--secondary-gold);
+            color: var(--white);
+            box-shadow: 0 2px 8px rgba(212, 168, 83, 0.3);
+        }
+        .how-content {
+            display: none;
+        }
+        .how-content.active {
+            display: block;
+        }
+        .how-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-6);
+            position: relative;
+        }
+        .how-steps::before {
+            content: '';
+            position: absolute;
+            top: 24px;
+            left: 60px;
+            right: 60px;
+            height: 3px;
+            background: var(--gray-200);
+            z-index: 0;
+        }
+        .how-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .how-step-number {
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            background: var(--primary-orange);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: var(--space-4);
+            box-shadow: 0 4px 12px rgba(199, 91, 42, 0.25);
+        }
+        .how-step-number.gold {
+            background: var(--secondary-gold);
+            box-shadow: 0 4px 12px rgba(212, 168, 83, 0.25);
+        }
+        .how-step-content h4 {
+            font-size: 1rem;
+            margin-bottom: var(--space-2);
+            color: var(--dark-charcoal);
+        }
+        .how-step-content p {
+            color: var(--gray-500);
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+        .how-steps.provider-steps::before {
+            background: var(--gray-200);
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: var(--space-16) 0;
+            background: linear-gradient(180deg, var(--light-beige) 0%, #fff 100%);
+        }
+        .services-bento {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 200px;
+            gap: var(--space-4);
+        }
+        .service-item {
+            position: relative;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .service-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .service-item:hover img {
+            transform: scale(1.1);
+        }
+        .service-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.8) 100%);
+            z-index: 1;
+            transition: background 0.3s ease;
+        }
+        .service-item:hover::before {
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.95) 100%);
+        }
+        .service-item-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: var(--space-5);
+            z-index: 2;
+        }
+        .service-item-badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: var(--white);
+            padding: 8px 14px;
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 3;
+        }
+        .service-item-badge svg {
+            color: var(--primary-orange);
+        }
+        .service-item-badge span {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--dark-charcoal);
+        }
+        .service-item-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: var(--space-1);
+            color: var(--white);
+        }
+        .service-item-text {
+            font-size: 0.85rem;
+            color: var(--white);
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+        /* Bento layout - different sizes */
+        .service-item.large {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        /* Why Choose Section */
+        .why-section {
+            padding: var(--space-12) 0;
+            background: var(--white);
+        }
+        .why-header {
+            text-align: center;
+            margin-bottom: var(--space-8);
+        }
+        .why-header p {
+            color: var(--gray-600);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        .why-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-6);
+        }
+        .why-card {
+            background: var(--light-beige);
+            border-radius: var(--radius-xl);
+            padding: var(--space-8);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .why-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        .why-card-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-orange);
+            margin: 0 auto var(--space-5);
+            box-shadow: var(--shadow-sm);
+        }
+        .why-card-icon svg {
+            width: 28px;
+            height: 28px;
+        }
+        .why-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: var(--space-3);
+            color: var(--dark-charcoal);
+        }
+        .why-card p {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: var(--space-16) 0;
+            background: linear-gradient(135deg, var(--primary-orange) 0%, #a84a22 100%);
+            color: var(--white);
+            text-align: center;
+        }
+        .cta-section h2 {
+            color: var(--white);
+            margin-bottom: var(--space-4);
+        }
+        .cta-section p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto var(--space-8);
+        }
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-4);
+        }
+        .btn-white {
+            background: var(--white);
+            color: var(--primary-orange);
+        }
+        .btn-white:hover {
+            background: var(--light-beige);
+        }
+        .btn-outline-white {
+            border: 2px solid var(--white);
+            color: var(--white);
+            background: transparent;
+        }
+        .btn-outline-white:hover {
+            background: var(--white);
+            color: var(--primary-orange);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .contractors-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 991px) {
+            .logo img {
+                height: 70px;
+            }
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .hero-content p {
+                max-width: 600px;
+            }
+            .hero-content .flex {
+                justify-content: center;
+            }
+            .hero-stats {
+                justify-content: center;
+            }
+            .hero-stat-value {
+                font-size: 2rem;
+            }
+            .hero-image {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            .how-steps {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--space-8);
+            }
+            .how-steps::before {
+                display: none;
+            }
+            .services-bento {
+                grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: 180px;
+            }
+            .service-item.large {
+                grid-column: span 2;
+                grid-row: span 1;
+                height: auto;
+            }
+            .why-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 767px) {
+            .logo img {
+                height: 56px;
+            }
+            .why-cards {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--space-3);
+            }
+            .why-card {
+                padding: var(--space-4);
+            }
+            .why-card-icon {
+                width: 48px;
+                height: 48px;
+            }
+            .why-card h4 {
+                font-size: 0.9rem;
+            }
+            .why-card p {
+                font-size: 0.75rem;
+            }
+            .hero-content h1 {
+                font-size: 1.75rem;
+            }
+            .hero-content p {
+                font-size: 1rem;
+            }
+            .hero-stats {
+                flex-wrap: nowrap;
+                gap: var(--space-4);
+                width: 100%;
+                justify-content: space-between;
+            }
+            .hero-stat {
+                flex: 1;
+            }
+            .hero-stat-value {
+                font-size: 1.25rem;
+            }
+            .hero-stat-label {
+                font-size: 0.7rem;
+            }
+            .contractors-grid {
+                grid-template-columns: 1fr;
+            }
+            .how-toggle-btn {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+                min-width: 120px;
+            }
+            .how-steps {
+                grid-template-columns: 1fr;
+                gap: var(--space-5);
+                background: var(--white);
+                padding: var(--space-6);
+                border-radius: var(--radius-xl);
+                box-shadow: var(--shadow-md);
+                border: 1px solid var(--primary-orange);
+            }
+            .how-steps.provider-steps {
+                border-color: var(--secondary-gold);
+            }
+            .how-step {
+                flex-direction: row;
+                text-align: right;
+                gap: var(--space-4);
+            }
+            .how-step-number {
+                margin-bottom: 0;
+                width: 40px;
+                height: 40px;
+                min-width: 40px;
+                font-size: 1rem;
+            }
+            .services-bento {
+                grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: 150px;
+            }
+            .service-item.large,
+            .service-item.wide {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+            .service-item-badge {
+                padding: 6px 10px;
+                top: 10px;
+                left: 10px;
+            }
+            .service-item-badge span {
+                font-size: 0.7rem;
+            }
+            .service-item-content {
+                padding: var(--space-3);
+            }
+            .service-item-title {
+                font-size: 0.85rem;
+            }
+            .service-item-text {
+                font-size: 0.75rem;
+            }
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 80px 0;
+            background: var(--white);
+        }
+        .pricing-section .section-title {
+            text-align: center;
+            margin-bottom: var(--space-4);
+        }
+        .pricing-section .section-subtitle {
+            text-align: center;
+            color: var(--gray-600);
+            max-width: 600px;
+            margin: 0 auto var(--space-12);
+        }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-6);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        @media (min-width: 992px) {
+            .pricing-grid {
+                grid-template-columns: repeat(3, 1fr);
+                max-width: 1100px;
+            }
+        }
+        .pricing-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+        .pricing-card.featured {
+            border: 2px solid var(--secondary-gold);
+        }
+        @media (min-width: 992px) {
+            .pricing-card.featured {
+                transform: scale(1.05);
+            }
+            .pricing-card.featured:hover {
+                transform: scale(1.05) translateY(-4px);
+            }
+        }
+        .pricing-card-header {
+            padding: var(--space-6);
+            text-align: center;
+        }
+        .pricing-card-header.basic {
+            background: var(--light-beige);
+        }
+        .pricing-card-header.premium {
+            background: linear-gradient(135deg, var(--secondary-gold), var(--primary-orange));
+        }
+        .pricing-card-header.enterprise {
+            background: var(--dark-charcoal);
+        }
+        .pricing-card-header h3 {
+            margin: 0 0 var(--space-2);
+            font-size: 1.25rem;
+        }
+        .pricing-card-header.premium h3,
+        .pricing-card-header.enterprise h3 {
+            color: var(--white);
+        }
+        .pricing-card-header .featured-badge {
+            display: inline-block;
+            background: var(--white);
+            color: var(--dark-charcoal);
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: var(--space-2);
+        }
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark-charcoal);
+        }
+        .pricing-card-header.premium .pricing-price,
+        .pricing-card-header.enterprise .pricing-price {
+            color: var(--white);
+        }
+        .pricing-price span {
+            font-size: 1rem;
+            font-weight: 400;
+            opacity: 0.7;
+        }
+        .pricing-card-body {
+            padding: var(--space-6);
+        }
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .pricing-features li {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            margin-bottom: var(--space-3);
+            font-size: 0.9rem;
+        }
+        .pricing-features li.disabled {
+            color: var(--gray-400);
+        }
+        .pricing-features li svg {
+            flex-shrink: 0;
+        }
+        .pricing-card-footer {
+            padding: 0 var(--space-6) var(--space-6);
+        }
+        .pricing-card-footer .btn {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo.png" alt="معمار">
+            </a>
+            <nav class="nav">
+                <ul class="nav-links">
+                    <li><a href="#contractors" class="nav-link">المقاولون</a></li>
+                    <li><a href="#how-it-works" class="nav-link">كيف يعمل</a></li>
+                    <li><a href="#services" class="nav-link">الخدمات</a></li>
+                    <li><a href="#contact" class="nav-link">تواصل معنا</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="login.html" class="btn btn-ghost">تسجيل الدخول</a>
+                    <a href="register.html" class="btn btn-primary">إنشاء حساب</a>
+                </div>
+                <button class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1><span id="typingText"></span><span class="typing-cursor" id="typingCursor"></span></h1>
+                    <p>
+                        منصة رقمية سعودية تربط أصحاب المشاريع بمقاولين معتمدين ومصنفين رسمياً. نوفر لك تقييمات حقيقية من عملاء سابقين، ومقارنات شفافة، وعروض أسعار تنافسية لمساعدتك في اتخاذ القرار الصحيح.
+                    </p>
+                    <div class="flex gap-4" style="flex-wrap: wrap;">
+                        <a href="register.html?type=consumer" class="btn btn-primary btn-lg">أبحث عن مقاول</a>
+                        <a href="register.html?type=provider" class="btn btn-outline btn-lg">انضم كمقاول</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">+500</div>
+                            <div class="hero-stat-label">مقاول معتمد</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">+2,000</div>
+                            <div class="hero-stat-label">مشروع مكتمل</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">+10,000</div>
+                            <div class="hero-stat-label">عميل راضٍ</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">4.8</div>
+                            <div class="hero-stat-label">تقييم المنصة</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&h=450&fit=crop" alt="مشروع بناء">
+                    <div class="hero-image-badge">
+                        <div class="badge-icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                                <path d="M9 12l2 2 4-4"></path>
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <div style="font-weight: 700; color: var(--dark-charcoal);">مقاولون موثوقون</div>
+                            <div style="font-size: 0.8rem; color: var(--gray-500);">تحقق ومصادقة كاملة</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Contractors Section -->
+    <section id="contractors" class="featured-contractors">
+        <div class="container">
+            <h2 class="section-title">مقاولون مميزون</h2>
+            <p class="section-subtitle">أفضل المقاولين المعتمدين بناءً على تقييمات العملاء وجودة الأعمال</p>
+
+            <div class="contractors-grid">
+                <!-- Contractor 1 -->
+                <div class="contractor-card">
+                    <div class="contractor-card-image">
+                        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=400&h=200&fit=crop" alt="مشاريع البناء المتقدم">
+                        <span class="contractor-badge">تصنيف أول</span>
+                    </div>
+                    <div class="contractor-card-body">
+                        <div class="contractor-logo">ب.م</div>
+                        <h3 class="contractor-name">شركة البناء المتقدم</h3>
+                        <p class="contractor-category">بناء وتشطيبات عامة</p>
+                        <div class="contractor-rating">
+                            <div class="contractor-rating-stars">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            </div>
+                            <span class="contractor-rating-value">4.8</span>
+                            <span class="contractor-rating-count">(156 تقييم)</span>
+                        </div>
+                        <div class="contractor-meta">
+                            <span class="contractor-meta-item">
+                                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                الرياض
+                            </span>
+                            <span class="contractor-meta-item">
+                                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                85 مشروع
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contractor 2 -->
+                <div class="contractor-card">
+                    <div class="contractor-card-image">
+                        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=400&h=200&fit=crop" alt="مشاريع الإتقان">
+                        <span class="contractor-badge" style="background: var(--secondary-gold);">تصنيف ثاني</span>
+                    </div>
+                    <div class="contractor-card-body">
+                        <div class="contractor-logo" style="color: var(--secondary-gold);">إ.م</div>
+                        <h3 class="contractor-name">مؤسسة الإتقان للمقاولات</h3>
+                        <p class="contractor-category">تجديد وترميم</p>
+                        <div class="contractor-rating">
+                            <div class="contractor-rating-stars">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            </div>
+                            <span class="contractor-rating-value">4.5</span>
+                            <span class="contractor-rating-count">(98 تقييم)</span>
+                        </div>
+                        <div class="contractor-meta">
+                            <span class="contractor-meta-item">
+                                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                جدة
+                            </span>
+                            <span class="contractor-meta-item">
+                                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                62 مشروع
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contractor 3 -->
+                <div class="contractor-card">
+                    <div class="contractor-card-image">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=200&fit=crop" alt="مشاريع الأساس الراسخ">
+                        <span class="contractor-badge">تصنيف أول</span>
+                    </div>
+                    <div class="contractor-card-body">
+                        <div class="contractor-logo">أ.ر</div>
+                        <h3 class="contractor-name">شركة الأساس الراسخ</h3>
+                        <p class="contractor-category">بناء تجاري وسكني</p>
+                        <div class="contractor-rating">
+                            <div class="contractor-rating-stars">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            </div>
+                            <span class="contractor-rating-value">4.9</span>
+                            <span class="contractor-rating-count">(203 تقييم)</span>
+                        </div>
+                        <div class="contractor-meta">
+                            <span class="contractor-meta-item">
+                                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                الدمام
+                            </span>
+                            <span class="contractor-meta-item">
+                                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                124 مشروع
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contractor 4 -->
+                <div class="contractor-card">
+                    <div class="contractor-card-image">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=200&fit=crop" alt="مشاريع الجودة للتشطيبات">
+                        <span class="contractor-badge" style="background: var(--dark-charcoal);">تصنيف ثالث</span>
+                    </div>
+                    <div class="contractor-card-body">
+                        <div class="contractor-logo" style="color: var(--dark-charcoal);">ج.ت</div>
+                        <h3 class="contractor-name">مؤسسة الجودة للتشطيبات</h3>
+                        <p class="contractor-category">تشطيبات داخلية</p>
+                        <div class="contractor-rating">
+                            <div class="contractor-rating-stars">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            </div>
+                            <span class="contractor-rating-value">4.3</span>
+                            <span class="contractor-rating-count">(74 تقييم)</span>
+                        </div>
+                        <div class="contractor-meta">
+                            <span class="contractor-meta-item">
+                                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                مكة المكرمة
+                            </span>
+                            <span class="contractor-meta-item">
+                                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                48 مشروع
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: var(--space-10);">
+                <a href="consumer/search.html" class="btn btn-outline btn-lg">عرض جميع المقاولين</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title">ماذا يقول عملاؤنا</h2>
+            <p class="section-subtitle">تجارب حقيقية من عملاء ومقاولين استخدموا منصة معمار</p>
+        </div>
+        <div class="scroller">
+            <div class="scroller__inner">
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">★★★★★</div>
+                        <p class="testimonial-text">"وفرت علينا معمار الكثير من الوقت والجهد في البحث عن مقاول موثوق. التقييمات الحقيقية ساعدتنا في اتخاذ القرار الصحيح."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar-placeholder">م.س</div>
+                            <div>
+                                <div class="testimonial-name">م. سارة الأحمد</div>
+                                <div class="testimonial-role">مكتب تصميم داخلي - الرياض</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">★★★★★</div>
+                        <p class="testimonial-text">"كمقاول، ساعدتني المنصة في الوصول لعملاء جدد وزيادة مشاريعي بنسبة 40%. النظام سهل وواضح."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar-placeholder" style="background: var(--secondary-gold);">أ.ع</div>
+                            <div>
+                                <div class="testimonial-name">أ. عبدالله العمري</div>
+                                <div class="testimonial-role">مقاول تشطيبات - جدة</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">★★★★☆</div>
+                        <p class="testimonial-text">"جددت فيلتي بالكامل عن طريق معمار. الشفافية في الأسعار والتواصل المباشر مع المقاول كانت ممتازة."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar-placeholder" style="background: var(--success);">خ.م</div>
+                            <div>
+                                <div class="testimonial-name">خالد المنصور</div>
+                                <div class="testimonial-role">صاحب منزل - الدمام</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">★★★★★</div>
+                        <p class="testimonial-text">"منصة رائعة سهلت علينا إيجاد مقاولين موثوقين لمشروع توسعة مصنعنا. الدعم الفني ممتاز."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar-placeholder" style="background: #6366f1;">ف.ن</div>
+                            <div>
+                                <div class="testimonial-name">فهد الناصر</div>
+                                <div class="testimonial-role">مدير مصنع - الجبيل</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">★★★★★</div>
+                        <p class="testimonial-text">"أفضل قرار اتخذته هو التسجيل في معمار. حصلت على 3 عروض أسعار خلال يومين فقط!"</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar-placeholder" style="background: #ec4899;">ن.ق</div>
+                            <div>
+                                <div class="testimonial-name">نورة القحطاني</div>
+                                <div class="testimonial-role">صاحبة منزل - الرياض</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">★★★★★</div>
+                        <p class="testimonial-text">"زادت أرباحي بشكل ملحوظ منذ انضمامي للمنصة. العملاء يثقون بالتقييمات والمراجعات."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar-placeholder" style="background: #14b8a6;">م.ش</div>
+                            <div>
+                                <div class="testimonial-name">محمد الشمري</div>
+                                <div class="testimonial-role">مقاول كهرباء - الخبر</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">★★★★☆</div>
+                        <p class="testimonial-text">"تجربة ممتازة في البحث عن مقاول لتجديد مكتبنا. المقارنة بين العروض كانت سهلة جداً."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar-placeholder" style="background: #f59e0b;">ر.ع</div>
+                            <div>
+                                <div class="testimonial-name">رانيا العتيبي</div>
+                                <div class="testimonial-role">مديرة شركة - جدة</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">★★★★★</div>
+                        <p class="testimonial-text">"المنصة غيرت طريقة عملي كمقاول. أصبح لدي حضور رقمي قوي وعملاء من مختلف المناطق."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar-placeholder" style="background: #8b5cf6;">ع.د</div>
+                            <div>
+                                <div class="testimonial-name">عبدالرحمن الدوسري</div>
+                                <div class="testimonial-role">مقاول بناء - مكة</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">★★★★★</div>
+                        <p class="testimonial-text">"سرعة الاستجابة من المقاولين مذهلة. حصلت على عرض سعر مفصل خلال ساعات قليلة."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar-placeholder" style="background: #06b6d4;">أ.س</div>
+                            <div>
+                                <div class="testimonial-name">أحمد السالم</div>
+                                <div class="testimonial-role">مستثمر عقاري - الرياض</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">★★★★★</div>
+                        <p class="testimonial-text">"أنصح كل من يبحث عن مقاول موثوق باستخدام معمار. توفر الوقت والجهد وتضمن الجودة."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar-placeholder" style="background: #84cc16;">ه.ب</div>
+                            <div>
+                                <div class="testimonial-name">هند البلوي</div>
+                                <div class="testimonial-role">مهندسة معمارية - المدينة</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works-section">
+        <div class="container">
+            <h2 class="section-title">كيف يعمل معمار؟</h2>
+            <p class="section-subtitle">خطوات بسيطة للبدء سواء كنت عميلاً أو مقاولاً</p>
+
+            <div class="how-toggle-container">
+                <div class="how-toggle">
+                    <button class="how-toggle-btn provider-btn" id="providerBtn" onclick="switchHowTab('provider')">لمزودي الخدمات</button>
+                    <button class="how-toggle-btn consumer-btn active" id="consumerBtn" onclick="switchHowTab('consumer')">للعملاء</button>
+                </div>
+            </div>
+
+            <!-- Consumer Content -->
+            <div id="consumer-content" class="how-content active">
+                <div class="how-steps">
+                    <div class="how-step">
+                        <div class="how-step-number">1</div>
+                        <div class="how-step-content">
+                            <h4>سجّل حسابك مجاناً</h4>
+                            <p>أنشئ حساباً وحدد نوع مشروعك والمنطقة</p>
+                        </div>
+                    </div>
+                    <div class="how-step">
+                        <div class="how-step-number">2</div>
+                        <div class="how-step-content">
+                            <h4>ابحث وقارن</h4>
+                            <p>تصفح المقاولين واطلع على تقييماتهم</p>
+                        </div>
+                    </div>
+                    <div class="how-step">
+                        <div class="how-step-number">3</div>
+                        <div class="how-step-content">
+                            <h4>اطلب عروض الأسعار</h4>
+                            <p>أرسل تفاصيل مشروعك واحصل على عروض</p>
+                        </div>
+                    </div>
+                    <div class="how-step">
+                        <div class="how-step-number">4</div>
+                        <div class="how-step-content">
+                            <h4>ابدأ مشروعك</h4>
+                            <p>اختر العرض الأنسب وتابع التنفيذ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Provider Content -->
+            <div id="provider-content" class="how-content">
+                <div class="how-steps provider-steps">
+                    <div class="how-step">
+                        <div class="how-step-number gold">1</div>
+                        <div class="how-step-content">
+                            <h4>أنشئ ملف شركتك</h4>
+                            <p>سجّل بياناتك وأضف خدماتك ومعرض أعمالك</p>
+                        </div>
+                    </div>
+                    <div class="how-step">
+                        <div class="how-step-number gold">2</div>
+                        <div class="how-step-content">
+                            <h4>استقبل الطلبات</h4>
+                            <p>احصل على طلبات عروض من عملاء منطقتك</p>
+                        </div>
+                    </div>
+                    <div class="how-step">
+                        <div class="how-step-number gold">3</div>
+                        <div class="how-step-content">
+                            <h4>قدّم عروضك</h4>
+                            <p>أرسل عروض أسعار تنافسية للعملاء</p>
+                        </div>
+                    </div>
+                    <div class="how-step">
+                        <div class="how-step-number gold">4</div>
+                        <div class="how-step-content">
+                            <h4>نفّذ واحصل على تقييمات</h4>
+                            <p>نفّذ بجودة واحصل على تقييمات إيجابية</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <h2 class="section-title">خدمات متنوعة تلبي احتياجاتك</h2>
+            <p class="section-subtitle">مقاولون متخصصون في جميع مجالات البناء والتشطيب</p>
+
+            <div class="services-bento">
+                <!-- Large card - spans 2 columns and 2 rows -->
+                <div class="service-item large">
+                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=600&fit=crop" alt="بناء جديد">
+                    <div class="service-item-badge">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M3 21h18M5 21V7l8-4v18M13 21V3l6 3v15"></path>
+                        </svg>
+                        <span>بناء جديد</span>
+                    </div>
+                    <div class="service-item-content">
+                        <h3 class="service-item-title">بناء جديد</h3>
+                        <p class="service-item-text">بناء الفلل والمنازل والمباني التجارية من الأساسات حتى التسليم الكامل بأعلى معايير الجودة</p>
+                    </div>
+                </div>
+
+                <!-- Regular cards -->
+                <div class="service-item">
+                    <img src="https://images.unsplash.com/photo-1574359411659-15573a27fd0c?w=400&h=300&fit=crop" alt="تجديد وترميم">
+                    <div class="service-item-badge">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                        </svg>
+                        <span>تجديد وترميم</span>
+                    </div>
+                    <div class="service-item-content">
+                        <h3 class="service-item-title">تجديد وترميم</h3>
+                        <p class="service-item-text">تحديث المباني القديمة</p>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <img src="https://images.unsplash.com/photo-1615873968403-89e068629265?w=400&h=300&fit=crop" alt="تشطيبات داخلية">
+                    <div class="service-item-badge">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                        </svg>
+                        <span>تشطيبات داخلية</span>
+                    </div>
+                    <div class="service-item-content">
+                        <h3 class="service-item-title">تشطيبات داخلية</h3>
+                        <p class="service-item-text">دهانات وديكور وأرضيات</p>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=400&h=300&fit=crop" alt="أعمال كهربائية">
+                    <div class="service-item-badge">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                        </svg>
+                        <span>أعمال كهربائية</span>
+                    </div>
+                    <div class="service-item-content">
+                        <h3 class="service-item-title">أعمال كهربائية</h3>
+                        <p class="service-item-text">تمديدات وإضاءة ذكية</p>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <img src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=400&h=300&fit=crop" alt="أعمال سباكة">
+                    <div class="service-item-badge">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M12 2v6m0 0a4 4 0 0 1 4 4c0 1.5-.8 3-2 4l-2 2-2-2c-1.2-1-2-2.5-2-4a4 4 0 0 1 4-4z"></path>
+                        </svg>
+                        <span>أعمال سباكة</span>
+                    </div>
+                    <div class="service-item-content">
+                        <h3 class="service-item-title">أعمال سباكة</h3>
+                        <p class="service-item-text">تمديدات صحية وصيانة</p>
+                    </div>
+                </div>
+
+                <div class="service-item wide">
+                    <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=400&h=300&fit=crop" alt="تكييف وتبريد">
+                    <div class="service-item-badge">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6l2.1 2.1M5.6 18.4l2.1-2.1m8.6-8.6l2.1-2.1"></path>
+                        </svg>
+                        <span>تكييف وتبريد</span>
+                    </div>
+                    <div class="service-item-content">
+                        <h3 class="service-item-title">تكييف وتبريد</h3>
+                        <p class="service-item-text">تركيب وصيانة أنظمة التكييف</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="why-section">
+        <div class="container">
+            <div class="why-header">
+                <h2 class="section-title">لماذا تختار معمار؟</h2>
+                <p>نسعى لتكون معمار المنصة الأولى والأكثر موثوقية في المملكة العربية السعودية لربط أصحاب المشاريع بالمقاولين المؤهلين.</p>
+            </div>
+            <div class="why-cards">
+                <div class="why-card">
+                    <div class="why-card-icon">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg>
+                    </div>
+                    <h4>مقاولون معتمدون ومصنفون</h4>
+                    <p>جميع المقاولين تم التحقق من تصنيفهم ورخصهم الرسمية</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-card-icon">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    </div>
+                    <h4>تقييمات حقيقية وشفافة</h4>
+                    <p>تقييمات من عملاء حقيقيين تساعدك في اتخاذ القرار الصحيح</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-card-icon">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                    </div>
+                    <h4>تواصل مباشر وآمن</h4>
+                    <p>تواصل مع المقاولين مباشرة عبر المنصة مع حفظ جميع المحادثات</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <h2 class="section-title">باقات المقاولين</h2>
+            <p class="section-subtitle">اختر الباقة المناسبة لحجم أعمالك وابدأ في استقبال المشاريع والعملاء الجدد</p>
+
+            <div class="pricing-grid">
+                <!-- Basic Plan -->
+                <div class="pricing-card">
+                    <div class="pricing-card-header basic">
+                        <h3>الباقة الأساسية</h3>
+                        <div class="pricing-price">مجاني</div>
+                    </div>
+                    <div class="pricing-card-body">
+                        <ul class="pricing-features">
+                            <li>
+                                <svg width="16" height="16" fill="none" stroke="var(--success)" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span>10 طلبات شهرياً</span>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" fill="none" stroke="var(--success)" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span>15 عرض سعر شهرياً</span>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" fill="none" stroke="var(--success)" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span>10 مشاريع في المعرض</span>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" fill="none" stroke="var(--success)" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span>دعم فني عبر البريد</span>
+                            </li>
+                            <li class="disabled">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                <span>بدون تقارير تحليلية</span>
+                            </li>
+                            <li class="disabled">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                <span>بدون أولوية في الظهور</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pricing-card-footer">
+                        <a href="register.html?type=provider" class="btn btn-outline">انضم كمقاول</a>
+                    </div>
+                </div>
+
+                <!-- Premium Plan (Featured) -->
+                <div class="pricing-card featured">
+                    <div class="pricing-card-header premium">
+                        <span class="featured-badge">الأكثر شعبية</span>
+                        <h3>الباقة المميزة</h3>
+                        <div class="pricing-price">499 ر.س<span>/شهر</span></div>
+                    </div>
+                    <div class="pricing-card-body">
+                        <ul class="pricing-features">
+                            <li>
+                                <svg width="16" height="16" fill="none" stroke="var(--success)" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span>طلبات غير محدودة</span>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" fill="none" stroke="var(--success)" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span>عروض أسعار غير محدودة</span>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" fill="none" stroke="var(--success)" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span>50 مشروع في المعرض</span>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" fill="none" stroke="var(--success)" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span>دعم فني على مدار الساعة</span>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" fill="none" stroke="var(--success)" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span>تقارير تحليلية متقدمة</span>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" fill="none" stroke="var(--success)" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span>أولوية في نتائج البحث</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pricing-card-footer">
+                        <a href="register.html?type=provider" class="btn btn-primary">انضم كمقاول</a>
+                    </div>
+                </div>
+
+                <!-- Enterprise Plan -->
+                <div class="pricing-card">
+                    <div class="pricing-card-header enterprise">
+                        <h3>باقة المؤسسات</h3>
+                        <div class="pricing-price">999 ر.س<span>/شهر</span></div>
+                    </div>
+                    <div class="pricing-card-body">
+                        <ul class="pricing-features">
+                            <li>
+                                <svg width="16" height="16" fill="none" stroke="var(--success)" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span>جميع مميزات الباقة المميزة</span>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" fill="none" stroke="var(--success)" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span>معرض أعمال غير محدود</span>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" fill="none" stroke="var(--success)" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span>حسابات متعددة للفريق</span>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" fill="none" stroke="var(--success)" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span>مدير حساب مخصص</span>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" fill="none" stroke="var(--success)" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span>شارة التحقق المميزة</span>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" fill="none" stroke="var(--success)" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span>API للتكامل</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pricing-card-footer">
+                        <a href="register.html?type=provider" class="btn btn-outline">انضم كمقاول</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>جاهز للبدء في مشروعك؟</h2>
+            <p>انضم إلى آلاف العملاء والمقاولين الذين يستخدمون معمار لإنجاز مشاريعهم بثقة واحترافية</p>
+            <div class="cta-buttons">
+                <a href="register.html?type=consumer" class="btn btn-lg btn-white">أبحث عن مقاول</a>
+                <a href="register.html?type=provider" class="btn btn-lg btn-outline-white">انضم كمقاول</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="assets/images/logo.png" alt="معمار">
+                    <p>
+                        منصة رقمية سعودية تربط العملاء بمقاولين موثوقين ومعتمدين، لتسهيل اتخاذ قرارات البناء والتجديد بثقة وشفافية.
+                    </p>
+                    <div style="display: flex; gap: var(--space-3); margin-top: var(--space-4);">
+                        <a href="#" style="width: 40px; height: 40px; background: var(--gray-200); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; color: var(--gray-600);">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                        </a>
+                        <a href="#" style="width: 40px; height: 40px; background: var(--gray-200); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; color: var(--gray-600);">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                        <a href="#" style="width: 40px; height: 40px; background: var(--gray-200); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; color: var(--gray-600);">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-title">روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="#contractors">المقاولون المميزون</a></li>
+                        <li><a href="#how-it-works">كيف يعمل</a></li>
+                        <li><a href="#services">الخدمات</a></li>
+                        <li><a href="login.html">تسجيل الدخول</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">للعملاء</h4>
+                    <ul class="footer-links">
+                        <li><a href="consumer/search.html">ابحث عن مقاول</a></li>
+                        <li><a href="#">أسئلة شائعة</a></li>
+                        <li><a href="#">الدعم الفني</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">للمقاولين</h4>
+                    <ul class="footer-links">
+                        <li><a href="register.html?type=provider">انضم كمقاول</a></li>
+                        <li><a href="provider/subscription.html">باقات الاشتراك</a></li>
+                        <li><a href="#">دليل النجاح</a></li>
+                        <li><a href="#">تواصل معنا</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p style="color: var(--dark-charcoal);">© 2026 معمار. جميع الحقوق محفوظة.</p>
+                <div class="flex gap-4">
+                    <a href="#" style="color: var(--dark-charcoal);">سياسة الخصوصية</a>
+                    <a href="#" style="color: var(--dark-charcoal);">الشروط والأحكام</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <img src="assets/images/logo.png" alt="معمار" style="height: 40px;">
+            <button class="mobile-nav-close" id="mobileNavClose">&times;</button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="#contractors">المقاولون</a></li>
+            <li><a href="#how-it-works">كيف يعمل</a></li>
+            <li><a href="#services">الخدمات</a></li>
+            <li><a href="#contact">تواصل معنا</a></li>
+        </ul>
+        <div class="mobile-nav-actions">
+            <a href="login.html" class="btn btn-outline" style="width: 100%; text-align: center;">تسجيل الدخول</a>
+            <a href="register.html" class="btn btn-primary" style="width: 100%; text-align: center;">إنشاء حساب</a>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Testimonial Carousel - Kevin Powell's infinite scroll approach
+        const scrollers = document.querySelectorAll(".scroller");
+        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            scrollers.forEach((scroller) => {
+                scroller.setAttribute("data-animated", true);
+                const scrollerInner = scroller.querySelector(".scroller__inner");
+                const scrollerContent = Array.from(scrollerInner.children);
+                scrollerContent.forEach((item) => {
+                    const duplicatedItem = item.cloneNode(true);
+                    duplicatedItem.setAttribute("aria-hidden", true);
+                    scrollerInner.appendChild(duplicatedItem);
+                });
+            });
+        }
+
+        // Mobile Navigation
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mobileNav = document.getElementById('mobileNav');
+        const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+        const mobileNavClose = document.getElementById('mobileNavClose');
+
+        function openMobileNav() {
+            mobileNav.classList.add('open');
+            mobileNavOverlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileNav() {
+            mobileNav.classList.remove('open');
+            mobileNavOverlay.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        menuToggle?.addEventListener('click', openMobileNav);
+        mobileNavClose?.addEventListener('click', closeMobileNav);
+        mobileNavOverlay?.addEventListener('click', closeMobileNav);
+
+        // Close on link click
+        document.querySelectorAll('.mobile-nav-links a').forEach(link => {
+            link.addEventListener('click', closeMobileNav);
+        });
+
+        // Typing Animation
+        const fullText = 'اختر مقاولك بثقة واطمئنان';
+        const typingEl = document.getElementById('typingText');
+        const cursorEl = document.getElementById('typingCursor');
+        let i = 0;
+
+        function typeChar() {
+            if (i <= fullText.length) {
+                let display = fullText.substring(0, i);
+                // Wrap مقاولك in highlight
+                display = display.replace('مقاولك', '<span class="highlight">مقاولك</span>');
+                typingEl.innerHTML = display;
+                i++;
+                setTimeout(typeChar, 50);
+            } else {
+                cursorEl.classList.add('done');
+            }
+        }
+
+        setTimeout(typeChar, 200);
+
+        function switchHowTab(tab) {
+            // Update toggle buttons
+            const consumerBtn = document.getElementById('consumerBtn');
+            const providerBtn = document.getElementById('providerBtn');
+
+            consumerBtn.classList.remove('active');
+            providerBtn.classList.remove('active');
+
+            if (tab === 'consumer') {
+                consumerBtn.classList.add('active');
+            } else {
+                providerBtn.classList.add('active');
+            }
+
+            // Update content sections
+            document.querySelectorAll('.how-content').forEach(c => c.classList.remove('active'));
+            document.getElementById(tab + '-content').classList.add('active');
+        }
+    </script>
+</body>
+</html>

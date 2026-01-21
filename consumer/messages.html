@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الرسائل - معمار</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+        <button class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <!-- User Profile Card -->
+                <div class="sidebar-user">
+                    <div class="avatar">م.س</div>
+                    <div class="sidebar-user-info">
+                        <div class="sidebar-user-name">م. سارة الأحمد</div>
+                        <div class="sidebar-user-role">مكتب تصميم</div>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="sidebar-links">
+                    <a href="dashboard.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                        لوحة التحكم
+                    </a>
+                    <a href="search.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        البحث عن مقاولين
+                    </a>
+                    <a href="quotes.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                        عروض الأسعار
+                    </a>
+                    <a href="projects.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        </svg>
+                        مشاريعي
+                    </a>
+                    <a href="messages.html" class="sidebar-link active">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        الرسائل
+                    </a>
+                    <a href="profile.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        الملف الشخصي
+                    </a>
+                    <a href="../login.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                        تسجيل الخروج
+                    </a>
+                </div>
+            </nav>
+            <!-- Logo at Bottom -->
+            <div class="sidebar-logo">
+                <a href="../index.html">
+                    <img src="../assets/images/logo.png" alt="معمار">
+                </a>
+            </div>
+        </aside>
+
+        <main class="main-content" style="padding: 0;">
+            <div class="chat-container">
+                <!-- Chat Sidebar -->
+                <div class="chat-sidebar">
+                    <div style="padding: var(--space-4); border-bottom: 1px solid var(--gray-200);">
+                        <h3 style="margin: 0;">المحادثات</h3>
+                    </div>
+                    <div class="chat-list-item active">
+                        <div class="avatar">ب.م</div>
+                        <div class="chat-list-item-content">
+                            <div class="chat-list-item-name">شركة البناء المتقدم</div>
+                            <div class="chat-list-item-preview">تم الاطلاع على المخططات...</div>
+                        </div>
+                        <div class="chat-list-item-time">10:30</div>
+                    </div>
+                    <div class="chat-list-item">
+                        <div class="avatar" style="background: var(--secondary-gold);">إ.م</div>
+                        <div class="chat-list-item-content">
+                            <div class="chat-list-item-name">مؤسسة الإتقان</div>
+                            <div class="chat-list-item-preview">سيتم البدء غداً إن شاء الله</div>
+                        </div>
+                        <div class="chat-list-item-time">أمس</div>
+                    </div>
+                    <div class="chat-list-item">
+                        <div class="avatar" style="background: var(--success);">أ.ر</div>
+                        <div class="chat-list-item-content">
+                            <div class="chat-list-item-name">شركة الأساس الراسخ</div>
+                            <div class="chat-list-item-preview">شكراً لتواصلكم</div>
+                        </div>
+                        <div class="chat-list-item-time">الأحد</div>
+                    </div>
+                </div>
+
+                <!-- Chat Main -->
+                <div class="chat-main">
+                    <div class="chat-header">
+                        <div class="avatar">ب.م</div>
+                        <div>
+                            <div class="font-semibold">شركة البناء المتقدم</div>
+                            <div class="text-xs text-success">متصل الآن</div>
+                        </div>
+                    </div>
+                    <div class="chat-messages">
+                        <div class="chat-message received">
+                            <p>السلام عليكم، تم استلام طلبكم وسنقوم بدراسته</p>
+                            <div class="chat-message-time">10:15</div>
+                        </div>
+                        <div class="chat-message sent">
+                            <p>وعليكم السلام، شكراً لكم. متى يمكنكم زيارة الموقع للمعاينة؟</p>
+                            <div class="chat-message-time">10:20</div>
+                        </div>
+                        <div class="chat-message received">
+                            <p>يمكننا الزيارة يوم الأحد القادم الساعة 10 صباحاً، هل يناسبكم ذلك؟</p>
+                            <div class="chat-message-time">10:25</div>
+                        </div>
+                        <div class="chat-message sent">
+                            <p>ممتاز، موعد مناسب. سأكون بانتظاركم</p>
+                            <div class="chat-message-time">10:28</div>
+                        </div>
+                        <div class="chat-message received">
+                            <p>تمام، تم الاطلاع على المخططات المرفقة وسنناقش التفاصيل عند الزيارة</p>
+                            <div class="chat-message-time">10:30</div>
+                        </div>
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" placeholder="اكتب رسالتك...">
+                        <button class="btn btn-primary">
+                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../js/main.js"></script>
+</body>
+</html>

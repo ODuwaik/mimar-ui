@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كتابة تقييم - معمار</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .star-rating {
+            display: flex;
+            gap: var(--space-2);
+            direction: ltr;
+        }
+        .star-rating button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            color: var(--gray-300);
+            transition: color var(--transition-fast);
+        }
+        .star-rating button.active,
+        .star-rating button:hover {
+            color: var(--secondary-gold);
+        }
+        .star-rating button:hover ~ button {
+            color: var(--gray-300);
+        }
+        .star-rating:hover button {
+            color: var(--secondary-gold);
+        }
+        .star-rating:hover button:hover ~ button {
+            color: var(--gray-300);
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+        <button class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <!-- User Profile Card -->
+                <div class="sidebar-user">
+                    <div class="avatar">م.س</div>
+                    <div class="sidebar-user-info">
+                        <div class="sidebar-user-name">م. سارة الأحمد</div>
+                        <div class="sidebar-user-role">مكتب تصميم</div>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="sidebar-links">
+                    <a href="dashboard.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                        لوحة التحكم
+                    </a>
+                    <a href="search.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        البحث عن مقاولين
+                    </a>
+                    <a href="quotes.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                        عروض الأسعار
+                    </a>
+                    <a href="projects.html" class="sidebar-link active">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        </svg>
+                        مشاريعي
+                    </a>
+                    <a href="messages.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        الرسائل
+                    </a>
+                    <a href="profile.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        الملف الشخصي
+                    </a>
+                    <a href="../login.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                        تسجيل الخروج
+                    </a>
+                </div>
+            </nav>
+            <!-- Logo at Bottom -->
+            <div class="sidebar-logo">
+                <a href="../index.html">
+                    <img src="../assets/images/logo.png" alt="معمار">
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Breadcrumb -->
+            <div class="flex items-center gap-2 text-sm mb-6">
+                <a href="projects.html" class="text-muted hover:text-primary">مشاريعي</a>
+                <span class="text-muted">/</span>
+                <a href="project-details.html" class="text-muted hover:text-primary">أعمال سباكة</a>
+                <span class="text-muted">/</span>
+                <span>كتابة تقييم</span>
+            </div>
+
+            <div class="mb-8">
+                <h1 style="font-size: var(--font-size-2xl); margin-bottom: var(--space-2);">كتابة تقييم</h1>
+                <p class="text-muted">شاركنا تجربتك مع المقاول لمساعدة الآخرين في اتخاذ قراراتهم</p>
+            </div>
+
+            <div style="max-width: 700px;">
+                <!-- Contractor Info -->
+                <div class="card mb-6">
+                    <div class="card-body">
+                        <div class="flex items-center gap-4">
+                            <div class="avatar" style="width: 60px; height: 60px; font-size: 1.25rem; background: var(--secondary-gold);">إ.م</div>
+                            <div>
+                                <h3 style="margin: 0 0 var(--space-1) 0;">مؤسسة الإتقان</h3>
+                                <p class="text-sm text-muted">مشروع: أعمال سباكة • اكتمل في 15 يناير 2025</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rating Form -->
+                <form id="reviewForm">
+                    <!-- Overall Rating -->
+                    <div class="card mb-6">
+                        <div class="card-body">
+                            <h3 class="mb-6">التقييم العام</h3>
+                            <div class="text-center">
+                                <div class="star-rating justify-center mb-4" style="display: flex; justify-content: center;">
+                                    <button type="button" onclick="setRating(1)" class="active">
+                                        <svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    </button>
+                                    <button type="button" onclick="setRating(2)" class="active">
+                                        <svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    </button>
+                                    <button type="button" onclick="setRating(3)" class="active">
+                                        <svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    </button>
+                                    <button type="button" onclick="setRating(4)" class="active">
+                                        <svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    </button>
+                                    <button type="button" onclick="setRating(5)" class="active">
+                                        <svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    </button>
+                                </div>
+                                <p class="text-muted" id="ratingText">ممتاز</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Detailed Ratings -->
+                    <div class="card mb-6">
+                        <div class="card-body">
+                            <h3 class="mb-6">تقييمات تفصيلية</h3>
+
+                            <div class="mb-6">
+                                <div class="flex justify-between items-center mb-2">
+                                    <label class="font-semibold">جودة العمل</label>
+                                    <div class="star-rating" id="qualityRating">
+                                        <button type="button" class="active"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></button>
+                                        <button type="button" class="active"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></button>
+                                        <button type="button" class="active"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></button>
+                                        <button type="button" class="active"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></button>
+                                        <button type="button" class="active"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-6">
+                                <div class="flex justify-between items-center mb-2">
+                                    <label class="font-semibold">الالتزام بالموعد</label>
+                                    <div class="star-rating" id="timeRating">
+                                        <button type="button" class="active"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></button>
+                                        <button type="button" class="active"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></button>
+                                        <button type="button" class="active"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></button>
+                                        <button type="button" class="active"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></button>
+                                        <button type="button"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-6">
+                                <div class="flex justify-between items-center mb-2">
+                                    <label class="font-semibold">التواصل</label>
+                                    <div class="star-rating" id="commRating">
+                                        <button type="button" class="active"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></button>
+                                        <button type="button" class="active"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></button>
+                                        <button type="button" class="active"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></button>
+                                        <button type="button" class="active"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></button>
+                                        <button type="button" class="active"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <label class="font-semibold">القيمة مقابل السعر</label>
+                                    <div class="star-rating" id="valueRating">
+                                        <button type="button" class="active"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></button>
+                                        <button type="button" class="active"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></button>
+                                        <button type="button" class="active"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></button>
+                                        <button type="button" class="active"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></button>
+                                        <button type="button"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Written Review -->
+                    <div class="card mb-6">
+                        <div class="card-body">
+                            <h3 class="mb-6">تقييمك المكتوب</h3>
+                            <div class="form-group">
+                                <label class="form-label">عنوان التقييم</label>
+                                <input type="text" class="form-input" placeholder="ملخص قصير لتجربتك" value="تجربة ممتازة">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">تفاصيل التقييم</label>
+                                <textarea class="form-textarea" rows="5" placeholder="شاركنا تفاصيل تجربتك مع المقاول...">تجربة ممتازة مع مؤسسة الإتقان. الفريق كان محترفاً ومتعاوناً جداً. تم إنجاز العمل بجودة عالية والتزام بالموعد المتفق عليه. أنصح بالتعامل معهم.</textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recommendation -->
+                    <div class="card mb-6">
+                        <div class="card-body">
+                            <h3 class="mb-4">هل توصي بهذا المقاول؟</h3>
+                            <div class="flex gap-4">
+                                <label class="form-radio p-4" style="flex: 1; border: 2px solid var(--success); border-radius: var(--radius-md); background: var(--success-light);">
+                                    <input type="radio" name="recommend" value="yes" checked>
+                                    <span class="font-semibold text-success">نعم، أوصي به</span>
+                                </label>
+                                <label class="form-radio p-4" style="flex: 1; border: 2px solid var(--gray-200); border-radius: var(--radius-md);">
+                                    <input type="radio" name="recommend" value="no">
+                                    <span class="font-semibold">لا أوصي به</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submit -->
+                    <div class="flex gap-4">
+                        <a href="projects.html" class="btn btn-ghost btn-lg">إلغاء</a>
+                        <button type="submit" class="btn btn-primary btn-lg" style="flex: 1;" onclick="submitReview(event)">
+                            نشر التقييم
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script>
+        const ratingTexts = ['', 'ضعيف', 'مقبول', 'جيد', 'جيد جداً', 'ممتاز'];
+
+        function setRating(rating) {
+            const stars = document.querySelectorAll('.star-rating.justify-center button');
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+            document.getElementById('ratingText').textContent = ratingTexts[rating];
+        }
+
+        function submitReview(e) {
+            e.preventDefault();
+            alert('تم نشر تقييمك بنجاح! شكراً لمشاركتك.');
+            window.location.href = 'projects.html';
+        }
+    </script>
+</body>
+</html>

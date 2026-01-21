@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إرسال عرض سعر - معمار</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .quote-page {
+            padding-top: calc(var(--header-height) + var(--space-8));
+            padding-bottom: var(--space-16);
+            background: var(--light-beige);
+            min-height: 100vh;
+        }
+        .quote-layout {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: var(--space-6);
+            align-items: flex-start;
+        }
+        .quote-sidebar {
+            position: sticky;
+            top: calc(var(--header-height) + var(--space-4));
+        }
+        .quote-item {
+            display: grid;
+            grid-template-columns: 2fr 80px 80px 100px 120px 40px;
+            gap: var(--space-3);
+            align-items: center;
+            padding: var(--space-3) 0;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .quote-item:last-child {
+            border-bottom: none;
+        }
+        .quote-item-header {
+            display: grid;
+            grid-template-columns: 2fr 80px 80px 100px 120px 40px;
+            gap: var(--space-3);
+            padding: var(--space-3) 0;
+            border-bottom: 2px solid var(--gray-300);
+            font-weight: 600;
+            font-size: var(--font-size-sm);
+            color: var(--gray-600);
+        }
+        .quote-item input {
+            width: 100%;
+        }
+        .quote-item-total {
+            font-weight: 600;
+            white-space: nowrap;
+            text-align: left;
+        }
+        .quote-item-delete {
+            color: var(--error);
+            cursor: pointer;
+            padding: var(--space-2);
+        }
+        .form-actions {
+            display: flex;
+            gap: var(--space-4);
+            flex-wrap: wrap;
+        }
+        .form-actions .btn-primary {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        /* Mobile Quote Item Card */
+        .quote-item-mobile {
+            display: none;
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+            padding: var(--space-4);
+            margin-bottom: var(--space-3);
+        }
+        .quote-item-mobile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: var(--space-3);
+        }
+        .quote-item-mobile-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-3);
+        }
+        .quote-item-mobile-field label {
+            display: block;
+            font-size: var(--font-size-xs);
+            color: var(--gray-500);
+            margin-bottom: var(--space-1);
+        }
+
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .quote-layout {
+                grid-template-columns: 1fr 320px;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .quote-layout {
+                grid-template-columns: 1fr;
+            }
+            .quote-sidebar {
+                position: static;
+                order: -1;
+            }
+            .quote-sidebar-cards {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--space-4);
+            }
+        }
+
+        @media (max-width: 767px) {
+            .quote-page {
+                padding-top: calc(var(--header-height) + var(--space-4));
+                padding-bottom: var(--space-8);
+            }
+            .quote-sidebar-cards {
+                grid-template-columns: 1fr;
+            }
+            /* Hide desktop table, show mobile cards */
+            .quote-items-desktop {
+                display: none;
+            }
+            .quote-item-mobile {
+                display: block;
+            }
+            .form-actions {
+                flex-direction: column;
+            }
+            .form-actions .btn {
+                width: 100%;
+            }
+            .form-actions .btn-primary {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 575px) {
+            .quote-item-mobile-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .card-body {
+                padding: var(--space-4);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+        <button class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <!-- User Profile Card -->
+                <div class="sidebar-user">
+                    <div class="avatar" style="background-color: var(--secondary-gold);">ب.م</div>
+                    <div class="sidebar-user-info">
+                        <div class="sidebar-user-name">شركة البناء المتقدم</div>
+                        <div class="sidebar-user-role">مزود خدمة</div>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="sidebar-links">
+                    <a href="dashboard.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                        لوحة التحكم
+                    </a>
+                    <a href="requests.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path>
+                            <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path>
+                        </svg>
+                        الطلبات الواردة
+                    </a>
+                    <a href="my-quotes.html" class="sidebar-link active">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                        عروض الأسعار
+                    </a>
+                    <a href="projects.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        </svg>
+                        مشاريعي
+                    </a>
+                    <a href="company-profile.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect width="16" height="20" x="4" y="2" rx="2" ry="2"></rect>
+                            <path d="M9 22v-4h6v4"></path>
+                        </svg>
+                        ملف الشركة
+                    </a>
+                    <a href="services.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                        </svg>
+                        الخدمات
+                    </a>
+                    <a href="portfolio.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                            <circle cx="9" cy="9" r="2"></circle>
+                            <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path>
+                        </svg>
+                        معرض الأعمال
+                    </a>
+                    <a href="reviews.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                        التقييمات
+                    </a>
+                    <a href="analytics.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <line x1="12" y1="20" x2="12" y2="10"></line>
+                            <line x1="18" y1="20" x2="18" y2="4"></line>
+                            <line x1="6" y1="20" x2="6" y2="16"></line>
+                        </svg>
+                        التحليلات
+                    </a>
+                    <a href="subscription.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect width="20" height="14" x="2" y="5" rx="2"></rect>
+                            <line x1="2" y1="10" x2="22" y2="10"></line>
+                        </svg>
+                        الاشتراك
+                    </a>
+                    <a href="messages.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        الرسائل
+                    </a>
+                    <a href="settings.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                        الإعدادات
+                    </a>
+                    <a href="../login.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                        تسجيل الخروج
+                    </a>
+                </div>
+            </nav>
+            <!-- Logo at Bottom -->
+            <div class="sidebar-logo">
+                <a href="../index.html">
+                    <img src="../assets/images/logo.png" alt="معمار">
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+    <div class="quote-page">
+        <div class="container" style="max-width: 1200px;">
+            <div class="mb-6">
+                <h1 style="font-size: var(--font-size-2xl); margin-bottom: var(--space-2);">إرسال عرض سعر</h1>
+                <p class="text-muted">تقديم عرض سعر لطلب: تجديد فيلا - حي النرجس</p>
+            </div>
+
+            <div class="quote-layout">
+                <!-- Main Form -->
+                <div class="quote-form">
+                    <form>
+                        <!-- Quote Items -->
+                        <div class="card mb-6">
+                            <div class="card-header flex justify-between items-center flex-wrap gap-3">
+                                <h3 style="margin: 0;">بنود العرض</h3>
+                                <button type="button" class="btn btn-outline btn-sm">
+                                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                                    إضافة بند
+                                </button>
+                            </div>
+                            <div class="card-body">
+                                <!-- Desktop Table View -->
+                                <div class="quote-items-desktop">
+                                    <div class="quote-item-header">
+                                        <div>البند</div>
+                                        <div>الوحدة</div>
+                                        <div>الكمية</div>
+                                        <div>سعر الوحدة</div>
+                                        <div>الإجمالي</div>
+                                        <div></div>
+                                    </div>
+                                    <div class="quote-item">
+                                        <input type="text" class="form-input" value="أعمال الهدم والإزالة">
+                                        <input type="text" class="form-input" value="م²">
+                                        <input type="number" class="form-input" value="350">
+                                        <input type="number" class="form-input" value="50">
+                                        <div class="quote-item-total">17,500 ر.س</div>
+                                        <button type="button" class="quote-item-delete">×</button>
+                                    </div>
+                                    <div class="quote-item">
+                                        <input type="text" class="form-input" value="أعمال البناء">
+                                        <input type="text" class="form-input" value="م²">
+                                        <input type="number" class="form-input" value="200">
+                                        <input type="number" class="form-input" value="350">
+                                        <div class="quote-item-total">70,000 ر.س</div>
+                                        <button type="button" class="quote-item-delete">×</button>
+                                    </div>
+                                    <div class="quote-item">
+                                        <input type="text" class="form-input" value="التشطيبات الداخلية">
+                                        <input type="text" class="form-input" value="م²">
+                                        <input type="number" class="form-input" value="350">
+                                        <input type="number" class="form-input" value="200">
+                                        <div class="quote-item-total">70,000 ر.س</div>
+                                        <button type="button" class="quote-item-delete">×</button>
+                                    </div>
+                                    <div class="quote-item">
+                                        <input type="text" class="form-input" value="أعمال الكهرباء">
+                                        <input type="text" class="form-input" value="مقطوعية">
+                                        <input type="number" class="form-input" value="1">
+                                        <input type="number" class="form-input" value="15000">
+                                        <div class="quote-item-total">15,000 ر.س</div>
+                                        <button type="button" class="quote-item-delete">×</button>
+                                    </div>
+                                </div>
+
+                                <!-- Mobile Card View -->
+                                <div class="quote-item-mobile">
+                                    <div class="quote-item-mobile-header">
+                                        <input type="text" class="form-input" value="أعمال الهدم والإزالة" style="flex: 1; margin-left: var(--space-3);">
+                                        <button type="button" class="btn btn-ghost btn-sm" style="color: var(--error);">×</button>
+                                    </div>
+                                    <div class="quote-item-mobile-grid">
+                                        <div class="quote-item-mobile-field">
+                                            <label>الوحدة</label>
+                                            <input type="text" class="form-input" value="م²">
+                                        </div>
+                                        <div class="quote-item-mobile-field">
+                                            <label>الكمية</label>
+                                            <input type="number" class="form-input" value="350">
+                                        </div>
+                                        <div class="quote-item-mobile-field">
+                                            <label>سعر الوحدة</label>
+                                            <input type="number" class="form-input" value="50">
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between items-center mt-3 pt-3" style="border-top: 1px solid var(--gray-200);">
+                                        <span class="text-sm text-muted">الإجمالي</span>
+                                        <span class="font-bold text-primary">17,500 ر.س</span>
+                                    </div>
+                                </div>
+                                <div class="quote-item-mobile">
+                                    <div class="quote-item-mobile-header">
+                                        <input type="text" class="form-input" value="أعمال البناء" style="flex: 1; margin-left: var(--space-3);">
+                                        <button type="button" class="btn btn-ghost btn-sm" style="color: var(--error);">×</button>
+                                    </div>
+                                    <div class="quote-item-mobile-grid">
+                                        <div class="quote-item-mobile-field">
+                                            <label>الوحدة</label>
+                                            <input type="text" class="form-input" value="م²">
+                                        </div>
+                                        <div class="quote-item-mobile-field">
+                                            <label>الكمية</label>
+                                            <input type="number" class="form-input" value="200">
+                                        </div>
+                                        <div class="quote-item-mobile-field">
+                                            <label>سعر الوحدة</label>
+                                            <input type="number" class="form-input" value="350">
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between items-center mt-3 pt-3" style="border-top: 1px solid var(--gray-200);">
+                                        <span class="text-sm text-muted">الإجمالي</span>
+                                        <span class="font-bold text-primary">70,000 ر.س</span>
+                                    </div>
+                                </div>
+                                <div class="quote-item-mobile">
+                                    <div class="quote-item-mobile-header">
+                                        <input type="text" class="form-input" value="التشطيبات الداخلية" style="flex: 1; margin-left: var(--space-3);">
+                                        <button type="button" class="btn btn-ghost btn-sm" style="color: var(--error);">×</button>
+                                    </div>
+                                    <div class="quote-item-mobile-grid">
+                                        <div class="quote-item-mobile-field">
+                                            <label>الوحدة</label>
+                                            <input type="text" class="form-input" value="م²">
+                                        </div>
+                                        <div class="quote-item-mobile-field">
+                                            <label>الكمية</label>
+                                            <input type="number" class="form-input" value="350">
+                                        </div>
+                                        <div class="quote-item-mobile-field">
+                                            <label>سعر الوحدة</label>
+                                            <input type="number" class="form-input" value="200">
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between items-center mt-3 pt-3" style="border-top: 1px solid var(--gray-200);">
+                                        <span class="text-sm text-muted">الإجمالي</span>
+                                        <span class="font-bold text-primary">70,000 ر.س</span>
+                                    </div>
+                                </div>
+                                <div class="quote-item-mobile">
+                                    <div class="quote-item-mobile-header">
+                                        <input type="text" class="form-input" value="أعمال الكهرباء" style="flex: 1; margin-left: var(--space-3);">
+                                        <button type="button" class="btn btn-ghost btn-sm" style="color: var(--error);">×</button>
+                                    </div>
+                                    <div class="quote-item-mobile-grid">
+                                        <div class="quote-item-mobile-field">
+                                            <label>الوحدة</label>
+                                            <input type="text" class="form-input" value="مقطوعية">
+                                        </div>
+                                        <div class="quote-item-mobile-field">
+                                            <label>الكمية</label>
+                                            <input type="number" class="form-input" value="1">
+                                        </div>
+                                        <div class="quote-item-mobile-field">
+                                            <label>سعر الوحدة</label>
+                                            <input type="number" class="form-input" value="15000">
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between items-center mt-3 pt-3" style="border-top: 1px solid var(--gray-200);">
+                                        <span class="text-sm text-muted">الإجمالي</span>
+                                        <span class="font-bold text-primary">15,000 ر.س</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Timeline -->
+                        <div class="card mb-6">
+                            <div class="card-header"><h3 style="margin: 0;">الجدول الزمني</h3></div>
+                            <div class="card-body">
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="form-group">
+                                        <label class="form-label">تاريخ البدء المتوقع</label>
+                                        <input type="date" class="form-input" value="2024-02-01">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">مدة التنفيذ</label>
+                                        <select class="form-select">
+                                            <option value="1month">شهر واحد</option>
+                                            <option value="2months">شهرين</option>
+                                            <option value="3months" selected>3 أشهر</option>
+                                            <option value="4months">4 أشهر</option>
+                                            <option value="6months">6 أشهر</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Terms -->
+                        <div class="card mb-6">
+                            <div class="card-header"><h3 style="margin: 0;">الشروط والملاحظات</h3></div>
+                            <div class="card-body">
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="form-group">
+                                        <label class="form-label">شروط الدفع</label>
+                                        <select class="form-select">
+                                            <option>30% مقدم - 40% أثناء التنفيذ - 30% عند التسليم</option>
+                                            <option>50% مقدم - 50% عند التسليم</option>
+                                            <option>دفعات شهرية حسب نسبة الإنجاز</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">صلاحية العرض</label>
+                                        <select class="form-select">
+                                            <option>15 يوم</option>
+                                            <option selected>30 يوم</option>
+                                            <option>45 يوم</option>
+                                            <option>60 يوم</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">ملاحظات إضافية</label>
+                                    <textarea class="form-textarea" rows="4" placeholder="أي ملاحظات أو شروط إضافية...">- يشمل العرض جميع المواد والعمالة
+- ضمان سنة على جميع الأعمال
+- لا يشمل العرض الأثاث والمفروشات</textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <a href="requests.html" class="btn btn-ghost btn-lg">إلغاء</a>
+                            <button type="button" class="btn btn-outline btn-lg">حفظ كمسودة</button>
+                            <button type="submit" class="btn btn-primary btn-lg" onclick="submitQuote(event)">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                                إرسال العرض
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="quote-sidebar">
+                    <div class="quote-sidebar-cards">
+                        <div class="card mb-4">
+                            <div class="card-header"><h3 style="margin: 0;">ملخص العرض</h3></div>
+                            <div class="card-body">
+                                <div class="flex justify-between mb-3">
+                                    <span class="text-muted">إجمالي البنود</span>
+                                    <span class="font-semibold">172,500 ر.س</span>
+                                </div>
+                                <div class="flex justify-between mb-3">
+                                    <span class="text-muted">ضريبة القيمة المضافة (15%)</span>
+                                    <span class="font-semibold">25,875 ر.س</span>
+                                </div>
+                                <hr style="margin: var(--space-4) 0;">
+                                <div class="flex justify-between">
+                                    <span class="font-bold">الإجمالي</span>
+                                    <span class="font-bold text-primary text-xl">198,375 ر.س</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header"><h3 style="margin: 0;">معلومات الطلب</h3></div>
+                            <div class="card-body">
+                                <div class="mb-4">
+                                    <div class="text-sm text-muted mb-1">العميل</div>
+                                    <div class="flex items-center gap-2">
+                                        <div class="avatar avatar-sm" style="background: var(--primary-orange);">ت.إ</div>
+                                        <span class="font-semibold">مكتب التصميم الإبداعي</span>
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <div class="text-sm text-muted mb-1">نوع المشروع</div>
+                                    <div class="font-semibold">تجديد فيلا</div>
+                                </div>
+                                <div class="mb-4">
+                                    <div class="text-sm text-muted mb-1">الموقع</div>
+                                    <div class="font-semibold">الرياض - حي النرجس</div>
+                                </div>
+                                <div class="mb-4">
+                                    <div class="text-sm text-muted mb-1">المساحة</div>
+                                    <div class="font-semibold">350 م²</div>
+                                </div>
+                                <div>
+                                    <div class="text-sm text-muted mb-1">الميزانية المتوقعة</div>
+                                    <div class="font-semibold">150,000 - 250,000 ر.س</div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <a href="request-details.html" class="btn btn-outline btn-block btn-sm">عرض تفاصيل الطلب</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script>
+        function submitQuote(e) {
+            e.preventDefault();
+            alert('تم إرسال عرض السعر بنجاح!');
+            window.location.href = 'my-quotes.html';
+        }
+    </script>
+</body>
+</html>

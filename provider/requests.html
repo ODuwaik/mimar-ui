@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الطلبات الواردة - معمار</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+        <button class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <!-- User Profile Card -->
+                <div class="sidebar-user">
+                    <div class="avatar" style="background-color: var(--secondary-gold);">ب.م</div>
+                    <div class="sidebar-user-info">
+                        <div class="sidebar-user-name">شركة البناء المتقدم</div>
+                        <div class="sidebar-user-role">مزود خدمة</div>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="sidebar-links">
+                    <a href="dashboard.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                        لوحة التحكم
+                    </a>
+                    <a href="requests.html" class="sidebar-link active">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path>
+                            <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path>
+                        </svg>
+                        الطلبات الواردة
+                    </a>
+                    <a href="my-quotes.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                        عروض الأسعار
+                    </a>
+                    <a href="projects.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        </svg>
+                        مشاريعي
+                    </a>
+                    <a href="company-profile.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect width="16" height="20" x="4" y="2" rx="2" ry="2"></rect>
+                            <path d="M9 22v-4h6v4"></path>
+                        </svg>
+                        ملف الشركة
+                    </a>
+                    <a href="services.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                        </svg>
+                        الخدمات
+                    </a>
+                    <a href="portfolio.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                            <circle cx="9" cy="9" r="2"></circle>
+                            <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path>
+                        </svg>
+                        معرض الأعمال
+                    </a>
+                    <a href="reviews.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                        التقييمات
+                    </a>
+                    <a href="analytics.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <line x1="12" y1="20" x2="12" y2="10"></line>
+                            <line x1="18" y1="20" x2="18" y2="4"></line>
+                            <line x1="6" y1="20" x2="6" y2="16"></line>
+                        </svg>
+                        التحليلات
+                    </a>
+                    <a href="subscription.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect width="20" height="14" x="2" y="5" rx="2"></rect>
+                            <line x1="2" y1="10" x2="22" y2="10"></line>
+                        </svg>
+                        الاشتراك
+                    </a>
+                    <a href="messages.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        الرسائل
+                    </a>
+                    <a href="settings.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                        الإعدادات
+                    </a>
+                    <a href="../login.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                        تسجيل الخروج
+                    </a>
+                </div>
+            </nav>
+            <!-- Logo at Bottom -->
+            <div class="sidebar-logo">
+                <a href="../index.html">
+                    <img src="../assets/images/logo.png" alt="معمار">
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="mb-8">
+                <h1 style="font-size: var(--font-size-2xl); margin-bottom: var(--space-2);">الطلبات الواردة</h1>
+                <p class="text-muted">طلبات عروض الأسعار الجديدة من العملاء</p>
+            </div>
+
+            <div class="tabs mb-6">
+                <button class="tab active">الجديدة (5)</button>
+                <button class="tab">تم الرد (12)</button>
+                <button class="tab">مرفوضة (3)</button>
+            </div>
+
+            <!-- Request 1 -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="flex items-center gap-3 mb-2">
+                                <h3 style="margin: 0;">تجديد فيلا - حي النرجس</h3>
+                                <span class="badge badge-warning">جديد</span>
+                            </div>
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="avatar avatar-sm">م.إ</div>
+                                <span class="text-muted">مكتب التصميم الإبداعي</span>
+                            </div>
+                        </div>
+                        <div class="text-left text-sm text-muted">
+                            منذ ساعة
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-4 gap-4 mb-4 p-4" style="background: var(--light-beige); border-radius: var(--radius-md);">
+                        <div>
+                            <div class="text-xs text-muted">نوع المشروع</div>
+                            <div class="font-semibold">تجديد وترميم</div>
+                        </div>
+                        <div>
+                            <div class="text-xs text-muted">المساحة</div>
+                            <div class="font-semibold">350 م²</div>
+                        </div>
+                        <div>
+                            <div class="text-xs text-muted">المدينة</div>
+                            <div class="font-semibold">الرياض</div>
+                        </div>
+                        <div>
+                            <div class="text-xs text-muted">الميزانية المتوقعة</div>
+                            <div class="font-semibold">150,000 - 200,000 ر.س</div>
+                        </div>
+                    </div>
+
+                    <p class="text-muted text-sm mb-4">تجديد شامل لفيلا قائمة شامل التشطيبات الداخلية والخارجية وأعمال الكهرباء والسباكة.</p>
+
+                    <div class="flex gap-3">
+                        <a href="send-quote.html" class="btn btn-primary">إرسال عرض سعر</a>
+                        <button class="btn btn-outline">عرض التفاصيل</button>
+                        <button class="btn btn-ghost">رفض</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Request 2 -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="flex items-center gap-3 mb-2">
+                                <h3 style="margin: 0;">تشطيب مكتب تجاري</h3>
+                                <span class="badge badge-warning">جديد</span>
+                            </div>
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="avatar avatar-sm" style="background: var(--success);">أ.ع</div>
+                                <span class="text-muted">أحمد العتيبي</span>
+                            </div>
+                        </div>
+                        <div class="text-left text-sm text-muted">
+                            منذ 3 ساعات
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-4 gap-4 mb-4 p-4" style="background: var(--light-beige); border-radius: var(--radius-md);">
+                        <div>
+                            <div class="text-xs text-muted">نوع المشروع</div>
+                            <div class="font-semibold">تشطيبات</div>
+                        </div>
+                        <div>
+                            <div class="text-xs text-muted">المساحة</div>
+                            <div class="font-semibold">150 م²</div>
+                        </div>
+                        <div>
+                            <div class="text-xs text-muted">المدينة</div>
+                            <div class="font-semibold">الرياض</div>
+                        </div>
+                        <div>
+                            <div class="text-xs text-muted">الميزانية المتوقعة</div>
+                            <div class="font-semibold">50,000 - 100,000 ر.س</div>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-3">
+                        <a href="send-quote.html" class="btn btn-primary">إرسال عرض سعر</a>
+                        <button class="btn btn-outline">عرض التفاصيل</button>
+                        <button class="btn btn-ghost">رفض</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Request 3 -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="flex items-center gap-3 mb-2">
+                                <h3 style="margin: 0;">أعمال كهربائية - عمارة سكنية</h3>
+                                <span class="badge badge-info">منذ يوم</span>
+                            </div>
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="avatar avatar-sm" style="background: var(--info);">ش.أ</div>
+                                <span class="text-muted">شركة ألفا للتطوير</span>
+                            </div>
+                        </div>
+                        <div class="text-left text-sm text-muted">
+                            منذ يوم
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-4 gap-4 mb-4 p-4" style="background: var(--light-beige); border-radius: var(--radius-md);">
+                        <div>
+                            <div class="text-xs text-muted">نوع المشروع</div>
+                            <div class="font-semibold">أعمال كهربائية</div>
+                        </div>
+                        <div>
+                            <div class="text-xs text-muted">التفاصيل</div>
+                            <div class="font-semibold">8 شقق</div>
+                        </div>
+                        <div>
+                            <div class="text-xs text-muted">المدينة</div>
+                            <div class="font-semibold">الرياض</div>
+                        </div>
+                        <div>
+                            <div class="text-xs text-muted">الميزانية المتوقعة</div>
+                            <div class="font-semibold">100,000 - 150,000 ر.س</div>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-3">
+                        <a href="send-quote.html" class="btn btn-primary">إرسال عرض سعر</a>
+                        <button class="btn btn-outline">عرض التفاصيل</button>
+                        <button class="btn btn-ghost">رفض</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../js/main.js"></script>
+</body>
+</html>

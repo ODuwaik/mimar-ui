@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - مزود الخدمة - معمار</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+        <button class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <!-- User Profile Card -->
+                <div class="sidebar-user">
+                    <div class="avatar" style="background-color: var(--secondary-gold);">ب.م</div>
+                    <div class="sidebar-user-info">
+                        <div class="sidebar-user-name">شركة البناء المتقدم</div>
+                        <div class="sidebar-user-role">مزود خدمة</div>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="sidebar-links">
+                    <a href="dashboard.html" class="sidebar-link active">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                        لوحة التحكم
+                    </a>
+                    <a href="requests.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path>
+                            <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path>
+                        </svg>
+                        الطلبات الواردة
+                    </a>
+                    <a href="my-quotes.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                        عروض الأسعار
+                    </a>
+                    <a href="projects.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        </svg>
+                        مشاريعي
+                    </a>
+                    <a href="company-profile.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect width="16" height="20" x="4" y="2" rx="2" ry="2"></rect>
+                            <path d="M9 22v-4h6v4"></path>
+                        </svg>
+                        ملف الشركة
+                    </a>
+                    <a href="services.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                        </svg>
+                        الخدمات
+                    </a>
+                    <a href="portfolio.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                            <circle cx="9" cy="9" r="2"></circle>
+                            <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path>
+                        </svg>
+                        معرض الأعمال
+                    </a>
+                    <a href="reviews.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                        التقييمات
+                    </a>
+                    <a href="analytics.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <line x1="12" y1="20" x2="12" y2="10"></line>
+                            <line x1="18" y1="20" x2="18" y2="4"></line>
+                            <line x1="6" y1="20" x2="6" y2="16"></line>
+                        </svg>
+                        التحليلات
+                    </a>
+                    <a href="subscription.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect width="20" height="14" x="2" y="5" rx="2"></rect>
+                            <line x1="2" y1="10" x2="22" y2="10"></line>
+                        </svg>
+                        الاشتراك
+                    </a>
+                    <a href="messages.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        الرسائل
+                    </a>
+                    <a href="settings.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                        الإعدادات
+                    </a>
+                    <a href="../login.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                        تسجيل الخروج
+                    </a>
+                </div>
+            </nav>
+            <!-- Logo at Bottom -->
+            <div class="sidebar-logo">
+                <a href="../index.html">
+                    <img src="../assets/images/logo.png" alt="معمار">
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Welcome Section -->
+            <div class="flex justify-between items-start mb-8">
+                <div>
+                    <h1 style="font-size: var(--font-size-2xl); margin-bottom: var(--space-2);">مرحباً، شركة البناء المتقدم 👋</h1>
+                    <p class="text-muted">إليك نظرة عامة على أداء شركتك في منصة معمار</p>
+                </div>
+                <div class="flex gap-3">
+                    <span class="badge badge-success" style="padding: var(--space-2) var(--space-4);">
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-left: 4px;">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                        ملف موثق
+                    </span>
+                    <span class="badge badge-primary" style="padding: var(--space-2) var(--space-4);">تصنيف أول</span>
+                </div>
+            </div>
+
+            <!-- Alert for New Requests -->
+            <div class="alert alert-info mb-8">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path>
+                    <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path>
+                </svg>
+                <div style="flex: 1;">
+                    <strong>لديك 5 طلبات جديدة</strong> في انتظار الرد. الرد السريع يزيد من فرص الفوز بالمشاريع.
+                </div>
+                <a href="requests.html" class="btn btn-sm" style="background: var(--info); color: var(--white);">عرض الطلبات</a>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid mb-8">
+                <div class="stat-card">
+                    <div class="stat-card-icon orange">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </div>
+                    <div class="stat-card-value">1,247</div>
+                    <div class="stat-card-label">مشاهدة للملف</div>
+                    <div class="stat-card-change positive">+12% من الشهر الماضي</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon gold">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                    </div>
+                    <div class="stat-card-value">5</div>
+                    <div class="stat-card-label">طلبات جديدة</div>
+                    <div class="stat-card-change positive">+3 هذا الأسبوع</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon green">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        </svg>
+                    </div>
+                    <div class="stat-card-value">12</div>
+                    <div class="stat-card-label">مشاريع نشطة</div>
+                    <div class="stat-card-change">85 مشروع مكتمل</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon blue">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                    </div>
+                    <div class="stat-card-value">4.8</div>
+                    <div class="stat-card-label">متوسط التقييم</div>
+                    <div class="stat-card-change">127 تقييم</div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-6">
+                <!-- New Requests -->
+                <div class="card">
+                    <div class="card-header flex justify-between items-center">
+                        <h3 style="margin: 0;">الطلبات الجديدة</h3>
+                        <a href="requests.html" class="text-sm">عرض الكل</a>
+                    </div>
+                    <div class="card-body p-0">
+                        <div style="border-bottom: 1px solid var(--gray-200); padding: var(--space-4) var(--space-6);">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-semibold">تجديد فيلا - حي النرجس</span>
+                                <span class="badge badge-warning">جديد</span>
+                            </div>
+                            <div class="text-sm text-muted mb-2">مكتب التصميم الإبداعي</div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm">المساحة: 350 م²</span>
+                                <span class="text-xs text-muted">منذ ساعة</span>
+                            </div>
+                            <div class="flex gap-2 mt-3">
+                                <a href="send-quote.html" class="btn btn-primary btn-sm">إرسال عرض</a>
+                                <button class="btn btn-ghost btn-sm">رفض</button>
+                            </div>
+                        </div>
+                        <div style="border-bottom: 1px solid var(--gray-200); padding: var(--space-4) var(--space-6);">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-semibold">تشطيب مكتب تجاري</span>
+                                <span class="badge badge-warning">جديد</span>
+                            </div>
+                            <div class="text-sm text-muted mb-2">أحمد العتيبي</div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm">المساحة: 150 م²</span>
+                                <span class="text-xs text-muted">منذ 3 ساعات</span>
+                            </div>
+                            <div class="flex gap-2 mt-3">
+                                <a href="send-quote.html" class="btn btn-primary btn-sm">إرسال عرض</a>
+                                <button class="btn btn-ghost btn-sm">رفض</button>
+                            </div>
+                        </div>
+                        <div style="padding: var(--space-4) var(--space-6);">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-semibold">أعمال كهربائية</span>
+                                <span class="badge badge-info">منذ يوم</span>
+                            </div>
+                            <div class="text-sm text-muted mb-2">شركة الفا للتطوير</div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm">عمارة سكنية - 8 شقق</span>
+                                <span class="text-xs text-muted">منذ يوم</span>
+                            </div>
+                            <div class="flex gap-2 mt-3">
+                                <a href="send-quote.html" class="btn btn-primary btn-sm">إرسال عرض</a>
+                                <button class="btn btn-ghost btn-sm">رفض</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Projects -->
+                <div class="card">
+                    <div class="card-header flex justify-between items-center">
+                        <h3 style="margin: 0;">المشاريع النشطة</h3>
+                        <a href="projects.html" class="text-sm">عرض الكل</a>
+                    </div>
+                    <div class="card-body p-0">
+                        <div style="border-bottom: 1px solid var(--gray-200); padding: var(--space-4) var(--space-6);">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-semibold">فيلا الملقا</span>
+                                <span class="badge badge-primary">قيد التنفيذ</span>
+                            </div>
+                            <div class="text-sm text-muted mb-3">م. سارة الأحمد</div>
+                            <div class="progress-bar">
+                                <div class="progress-bar-fill" style="width: 65%;"></div>
+                            </div>
+                            <div class="flex justify-between items-center mt-2">
+                                <span class="text-xs text-muted">65% مكتمل</span>
+                                <span class="text-xs text-muted">المرحلة التالية: التشطيبات</span>
+                            </div>
+                        </div>
+                        <div style="border-bottom: 1px solid var(--gray-200); padding: var(--space-4) var(--space-6);">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-semibold">مكتب النور</span>
+                                <span class="badge badge-warning">في انتظار المواد</span>
+                            </div>
+                            <div class="text-sm text-muted mb-3">شركة النور للاستشارات</div>
+                            <div class="progress-bar">
+                                <div class="progress-bar-fill gold" style="width: 40%;"></div>
+                            </div>
+                            <div class="flex justify-between items-center mt-2">
+                                <span class="text-xs text-muted">40% مكتمل</span>
+                                <span class="text-xs text-muted">متوقع: 15 يناير</span>
+                            </div>
+                        </div>
+                        <div style="padding: var(--space-4) var(--space-6);">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-semibold">عمارة الصفوة</span>
+                                <span class="badge badge-success">شارف على الانتهاء</span>
+                            </div>
+                            <div class="text-sm text-muted mb-3">محمد القحطاني</div>
+                            <div class="progress-bar">
+                                <div class="progress-bar-fill success" style="width: 92%;"></div>
+                            </div>
+                            <div class="flex justify-between items-center mt-2">
+                                <span class="text-xs text-muted">92% مكتمل</span>
+                                <span class="text-xs text-muted">التسليم: 20 يناير</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Performance Overview -->
+            <div class="card mt-8">
+                <div class="card-header">
+                    <h3 style="margin: 0;">نظرة على الأداء</h3>
+                </div>
+                <div class="card-body">
+                    <div class="grid grid-cols-4 gap-6">
+                        <div class="text-center p-4" style="background: var(--light-beige); border-radius: var(--radius-md);">
+                            <div class="text-3xl font-bold text-primary mb-2">68%</div>
+                            <div class="text-sm text-muted">معدل قبول العروض</div>
+                        </div>
+                        <div class="text-center p-4" style="background: var(--light-beige); border-radius: var(--radius-md);">
+                            <div class="text-3xl font-bold text-success mb-2">2.5</div>
+                            <div class="text-sm text-muted">ساعة متوسط الرد</div>
+                        </div>
+                        <div class="text-center p-4" style="background: var(--light-beige); border-radius: var(--radius-md);">
+                            <div class="text-3xl font-bold text-gold mb-2">98%</div>
+                            <div class="text-sm text-muted">معدل رضا العملاء</div>
+                        </div>
+                        <div class="text-center p-4" style="background: var(--light-beige); border-radius: var(--radius-md);">
+                            <div class="text-3xl font-bold" style="color: var(--info);">95%</div>
+                            <div class="text-sm text-muted">التسليم في الوقت</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Reviews -->
+            <div class="card mt-8">
+                <div class="card-header flex justify-between items-center">
+                    <h3 style="margin: 0;">أحدث التقييمات</h3>
+                    <a href="reviews.html" class="text-sm">عرض الكل</a>
+                </div>
+                <div class="card-body p-0">
+                    <div style="border-bottom: 1px solid var(--gray-200); padding: var(--space-4) var(--space-6);">
+                        <div class="flex justify-between items-start">
+                            <div class="flex items-center gap-3">
+                                <div class="avatar">خ.م</div>
+                                <div>
+                                    <div class="font-semibold">خالد المنصور</div>
+                                    <div class="text-xs text-muted">تجديد فيلا • قبل 3 أيام</div>
+                                </div>
+                            </div>
+                            <div class="rating-stars">
+                                <svg class="rating-star" width="16" height="16" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg class="rating-star" width="16" height="16" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg class="rating-star" width="16" height="16" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg class="rating-star" width="16" height="16" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg class="rating-star" width="16" height="16" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            </div>
+                        </div>
+                        <p class="text-muted text-sm mt-2">"تجربة ممتازة. التزام بالموعد والميزانية وجودة العمل أعلى من المتوقع."</p>
+                    </div>
+                    <div style="padding: var(--space-4) var(--space-6);">
+                        <div class="flex justify-between items-start">
+                            <div class="flex items-center gap-3">
+                                <div class="avatar" style="background-color: var(--secondary-gold);">م.أ</div>
+                                <div>
+                                    <div class="font-semibold">مكتب الإبداع</div>
+                                    <div class="text-xs text-muted">تشطيب مكتب • قبل أسبوع</div>
+                                </div>
+                            </div>
+                            <div class="rating-stars">
+                                <svg class="rating-star" width="16" height="16" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg class="rating-star" width="16" height="16" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg class="rating-star" width="16" height="16" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg class="rating-star" width="16" height="16" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg class="rating-star" width="16" height="16" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            </div>
+                        </div>
+                        <p class="text-muted text-sm mt-2">"فريق محترف ومتعاون. سرعة في التنفيذ ونتائج مرضية جداً."</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

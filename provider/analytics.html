@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التحليلات - معمار</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+        <button class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <!-- User Profile Card -->
+                <div class="sidebar-user">
+                    <div class="avatar" style="background-color: var(--secondary-gold);">ب.م</div>
+                    <div class="sidebar-user-info">
+                        <div class="sidebar-user-name">شركة البناء المتقدم</div>
+                        <div class="sidebar-user-role">مزود خدمة</div>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="sidebar-links">
+                    <a href="dashboard.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                        لوحة التحكم
+                    </a>
+                    <a href="requests.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path>
+                            <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path>
+                        </svg>
+                        الطلبات الواردة
+                    </a>
+                    <a href="my-quotes.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                        عروض الأسعار
+                    </a>
+                    <a href="projects.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        </svg>
+                        مشاريعي
+                    </a>
+                    <a href="company-profile.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect width="16" height="20" x="4" y="2" rx="2" ry="2"></rect>
+                            <path d="M9 22v-4h6v4"></path>
+                        </svg>
+                        ملف الشركة
+                    </a>
+                    <a href="services.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                        </svg>
+                        الخدمات
+                    </a>
+                    <a href="portfolio.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                            <circle cx="9" cy="9" r="2"></circle>
+                            <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path>
+                        </svg>
+                        معرض الأعمال
+                    </a>
+                    <a href="reviews.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                        التقييمات
+                    </a>
+                    <a href="analytics.html" class="sidebar-link active">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <line x1="12" y1="20" x2="12" y2="10"></line>
+                            <line x1="18" y1="20" x2="18" y2="4"></line>
+                            <line x1="6" y1="20" x2="6" y2="16"></line>
+                        </svg>
+                        التحليلات
+                    </a>
+                    <a href="subscription.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect width="20" height="14" x="2" y="5" rx="2"></rect>
+                            <line x1="2" y1="10" x2="22" y2="10"></line>
+                        </svg>
+                        الاشتراك
+                    </a>
+                    <a href="messages.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        الرسائل
+                    </a>
+                    <a href="settings.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                        الإعدادات
+                    </a>
+                    <a href="../login.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                        تسجيل الخروج
+                    </a>
+                </div>
+            </nav>
+            <!-- Logo at Bottom -->
+            <div class="sidebar-logo">
+                <a href="../index.html">
+                    <img src="../assets/images/logo.png" alt="معمار">
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="flex justify-between items-center mb-8">
+                <div>
+                    <h1>التحليلات والإحصائيات</h1>
+                    <p class="text-muted">نظرة شاملة على أداء حسابك</p>
+                </div>
+                <select class="form-select" style="width: auto;">
+                    <option>آخر 30 يوم</option>
+                    <option>آخر 90 يوم</option>
+                    <option>آخر 12 شهر</option>
+                    <option>كل الوقت</option>
+                </select>
+            </div>
+
+            <!-- Key Metrics -->
+            <div class="grid grid-cols-4 gap-6 mb-8">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="stat-icon" style="background: rgba(199, 91, 42, 0.1);">
+                                <svg width="24" height="24" fill="none" stroke="var(--primary-orange)" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                            </div>
+                            <div class="text-sm text-muted">مشاهدات الملف</div>
+                        </div>
+                        <div class="text-2xl font-bold">2,847</div>
+                        <div class="text-sm text-success">+18% من الشهر السابق</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="stat-icon" style="background: rgba(212, 168, 83, 0.1);">
+                                <svg width="24" height="24" fill="none" stroke="var(--secondary-gold)" stroke-width="2" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>
+                            </div>
+                            <div class="text-sm text-muted">الطلبات الواردة</div>
+                        </div>
+                        <div class="text-2xl font-bold">156</div>
+                        <div class="text-sm text-success">+23% من الشهر السابق</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="stat-icon" style="background: rgba(34, 197, 94, 0.1);">
+                                <svg width="24" height="24" fill="none" stroke="var(--success)" stroke-width="2" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                            </div>
+                            <div class="text-sm text-muted">العروض المقبولة</div>
+                        </div>
+                        <div class="text-2xl font-bold">47</div>
+                        <div class="text-sm text-muted">معدل القبول 30%</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="stat-icon" style="background: rgba(61, 61, 61, 0.1);">
+                                <svg width="24" height="24" fill="none" stroke="var(--dark-charcoal)" stroke-width="2" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                            </div>
+                            <div class="text-sm text-muted">إجمالي الإيرادات</div>
+                        </div>
+                        <div class="text-2xl font-bold">1.2M ر.س</div>
+                        <div class="text-sm text-success">+35% من الشهر السابق</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Row -->
+            <div class="grid grid-cols-2 gap-6 mb-8">
+                <div class="card">
+                    <div class="card-header"><h3 style="margin: 0;">الطلبات والعروض</h3></div>
+                    <div class="card-body">
+                        <div style="height: 250px; display: flex; align-items: flex-end; justify-content: space-around; padding: var(--space-4);">
+                            <div style="text-align: center;">
+                                <div style="background: var(--primary-orange); width: 40px; height: 180px; border-radius: var(--radius-sm); margin: 0 auto 8px;"></div>
+                                <span class="text-xs text-muted">يناير</span>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="background: var(--secondary-gold); width: 40px; height: 120px; border-radius: var(--radius-sm); margin: 0 auto 8px;"></div>
+                                <span class="text-xs text-muted">فبراير</span>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="background: var(--primary-orange); width: 40px; height: 200px; border-radius: var(--radius-sm); margin: 0 auto 8px;"></div>
+                                <span class="text-xs text-muted">مارس</span>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="background: var(--secondary-gold); width: 40px; height: 150px; border-radius: var(--radius-sm); margin: 0 auto 8px;"></div>
+                                <span class="text-xs text-muted">أبريل</span>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="background: var(--primary-orange); width: 40px; height: 220px; border-radius: var(--radius-sm); margin: 0 auto 8px;"></div>
+                                <span class="text-xs text-muted">مايو</span>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="background: var(--secondary-gold); width: 40px; height: 190px; border-radius: var(--radius-sm); margin: 0 auto 8px;"></div>
+                                <span class="text-xs text-muted">يونيو</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-center gap-6 mt-4">
+                            <div class="flex items-center gap-2">
+                                <div style="width: 12px; height: 12px; background: var(--primary-orange); border-radius: 2px;"></div>
+                                <span class="text-sm text-muted">الطلبات</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div style="width: 12px; height: 12px; background: var(--secondary-gold); border-radius: 2px;"></div>
+                                <span class="text-sm text-muted">العروض المقبولة</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><h3 style="margin: 0;">توزيع أنواع المشاريع</h3></div>
+                    <div class="card-body">
+                        <div style="display: flex; justify-content: center; align-items: center; height: 200px;">
+                            <div style="width: 180px; height: 180px; border-radius: 50%; background: conic-gradient(var(--primary-orange) 0% 40%, var(--secondary-gold) 40% 65%, var(--dark-charcoal) 65% 85%, var(--light-beige) 85% 100%); position: relative;">
+                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100px; height: 100px; background: white; border-radius: 50%;"></div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3 mt-4">
+                            <div class="flex items-center gap-2">
+                                <div style="width: 12px; height: 12px; background: var(--primary-orange); border-radius: 2px;"></div>
+                                <span class="text-sm">بناء جديد (40%)</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div style="width: 12px; height: 12px; background: var(--secondary-gold); border-radius: 2px;"></div>
+                                <span class="text-sm">تجديد (25%)</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div style="width: 12px; height: 12px; background: var(--dark-charcoal); border-radius: 2px;"></div>
+                                <span class="text-sm">تشطيب (20%)</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div style="width: 12px; height: 12px; background: var(--light-beige); border: 1px solid var(--border); border-radius: 2px;"></div>
+                                <span class="text-sm">صيانة (15%)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Performance Metrics -->
+            <div class="card">
+                <div class="card-header"><h3 style="margin: 0;">مؤشرات الأداء</h3></div>
+                <div class="card-body">
+                    <div class="grid grid-cols-3 gap-6">
+                        <div>
+                            <div class="text-sm text-muted mb-2">معدل الاستجابة</div>
+                            <div class="flex items-center gap-3">
+                                <div class="progress-bar" style="flex: 1;"><div class="progress-bar-fill success" style="width: 95%;"></div></div>
+                                <span class="font-semibold">95%</span>
+                            </div>
+                            <p class="text-xs text-muted mt-1">متوسط وقت الرد: 2 ساعة</p>
+                        </div>
+                        <div>
+                            <div class="text-sm text-muted mb-2">معدل إكمال المشاريع</div>
+                            <div class="flex items-center gap-3">
+                                <div class="progress-bar" style="flex: 1;"><div class="progress-bar-fill success" style="width: 98%;"></div></div>
+                                <span class="font-semibold">98%</span>
+                            </div>
+                            <p class="text-xs text-muted mt-1">47 مشروع مكتمل من 48</p>
+                        </div>
+                        <div>
+                            <div class="text-sm text-muted mb-2">رضا العملاء</div>
+                            <div class="flex items-center gap-3">
+                                <div class="progress-bar" style="flex: 1;"><div class="progress-bar-fill" style="width: 96%;"></div></div>
+                                <span class="font-semibold">4.8/5</span>
+                            </div>
+                            <p class="text-xs text-muted mt-1">بناءً على 47 تقييم</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../js/main.js"></script>
+</body>
+</html>

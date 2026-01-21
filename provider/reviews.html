@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التقييمات - معمار</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+        <button class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <!-- User Profile Card -->
+                <div class="sidebar-user">
+                    <div class="avatar" style="background-color: var(--secondary-gold);">ب.م</div>
+                    <div class="sidebar-user-info">
+                        <div class="sidebar-user-name">شركة البناء المتقدم</div>
+                        <div class="sidebar-user-role">مزود خدمة</div>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="sidebar-links">
+                    <a href="dashboard.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                        لوحة التحكم
+                    </a>
+                    <a href="requests.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path>
+                            <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path>
+                        </svg>
+                        الطلبات الواردة
+                    </a>
+                    <a href="my-quotes.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                        عروض الأسعار
+                    </a>
+                    <a href="projects.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        </svg>
+                        مشاريعي
+                    </a>
+                    <a href="company-profile.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect width="16" height="20" x="4" y="2" rx="2" ry="2"></rect>
+                            <path d="M9 22v-4h6v4"></path>
+                        </svg>
+                        ملف الشركة
+                    </a>
+                    <a href="services.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                        </svg>
+                        الخدمات
+                    </a>
+                    <a href="portfolio.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                            <circle cx="9" cy="9" r="2"></circle>
+                            <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path>
+                        </svg>
+                        معرض الأعمال
+                    </a>
+                    <a href="reviews.html" class="sidebar-link active">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                        التقييمات
+                    </a>
+                    <a href="analytics.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <line x1="12" y1="20" x2="12" y2="10"></line>
+                            <line x1="18" y1="20" x2="18" y2="4"></line>
+                            <line x1="6" y1="20" x2="6" y2="16"></line>
+                        </svg>
+                        التحليلات
+                    </a>
+                    <a href="subscription.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect width="20" height="14" x="2" y="5" rx="2"></rect>
+                            <line x1="2" y1="10" x2="22" y2="10"></line>
+                        </svg>
+                        الاشتراك
+                    </a>
+                    <a href="messages.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        الرسائل
+                    </a>
+                    <a href="settings.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                        الإعدادات
+                    </a>
+                    <a href="../login.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                        تسجيل الخروج
+                    </a>
+                </div>
+            </nav>
+            <!-- Logo at Bottom -->
+            <div class="sidebar-logo">
+                <a href="../index.html">
+                    <img src="../assets/images/logo.png" alt="معمار">
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="flex justify-between items-center mb-8">
+                <div>
+                    <h1>التقييمات والآراء</h1>
+                    <p class="text-muted">آراء العملاء حول خدماتك</p>
+                </div>
+            </div>
+
+            <!-- Rating Summary -->
+            <div class="grid grid-cols-4 gap-6 mb-8">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div class="text-4xl font-bold text-primary mb-2">4.8</div>
+                        <div class="flex justify-center gap-1 mb-2">
+                            <svg width="20" height="20" fill="#D4A853" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            <svg width="20" height="20" fill="#D4A853" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            <svg width="20" height="20" fill="#D4A853" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            <svg width="20" height="20" fill="#D4A853" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            <svg width="20" height="20" fill="#D4A853" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        </div>
+                        <p class="text-sm text-muted">التقييم العام</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div class="text-3xl font-bold mb-2">47</div>
+                        <p class="text-sm text-muted">إجمالي التقييمات</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div class="text-3xl font-bold text-success mb-2">42</div>
+                        <p class="text-sm text-muted">تقييمات إيجابية</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div class="text-3xl font-bold text-warning mb-2">5</div>
+                        <p class="text-sm text-muted">تقييمات محايدة</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rating Breakdown -->
+            <div class="card mb-8">
+                <div class="card-header"><h3 style="margin: 0;">توزيع التقييمات</h3></div>
+                <div class="card-body">
+                    <div class="flex items-center gap-4 mb-3">
+                        <span class="text-sm" style="width: 80px;">5 نجوم</span>
+                        <div class="progress-bar" style="flex: 1;"><div class="progress-bar-fill success" style="width: 72%;"></div></div>
+                        <span class="text-sm text-muted" style="width: 40px;">34</span>
+                    </div>
+                    <div class="flex items-center gap-4 mb-3">
+                        <span class="text-sm" style="width: 80px;">4 نجوم</span>
+                        <div class="progress-bar" style="flex: 1;"><div class="progress-bar-fill" style="width: 17%;"></div></div>
+                        <span class="text-sm text-muted" style="width: 40px;">8</span>
+                    </div>
+                    <div class="flex items-center gap-4 mb-3">
+                        <span class="text-sm" style="width: 80px;">3 نجوم</span>
+                        <div class="progress-bar" style="flex: 1;"><div class="progress-bar-fill warning" style="width: 8%;"></div></div>
+                        <span class="text-sm text-muted" style="width: 40px;">4</span>
+                    </div>
+                    <div class="flex items-center gap-4 mb-3">
+                        <span class="text-sm" style="width: 80px;">2 نجوم</span>
+                        <div class="progress-bar" style="flex: 1;"><div class="progress-bar-fill error" style="width: 2%;"></div></div>
+                        <span class="text-sm text-muted" style="width: 40px;">1</span>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span class="text-sm" style="width: 80px;">1 نجمة</span>
+                        <div class="progress-bar" style="flex: 1;"><div class="progress-bar-fill error" style="width: 0%;"></div></div>
+                        <span class="text-sm text-muted" style="width: 40px;">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reviews List -->
+            <div class="card">
+                <div class="card-header flex justify-between items-center">
+                    <h3 style="margin: 0;">آخر التقييمات</h3>
+                    <select class="form-select" style="width: auto;">
+                        <option>الأحدث أولاً</option>
+                        <option>الأعلى تقييماً</option>
+                        <option>الأقل تقييماً</option>
+                    </select>
+                </div>
+                <div class="card-body">
+                    <!-- Review 1 -->
+                    <div class="mb-6 pb-6" style="border-bottom: 1px solid var(--border);">
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="flex items-center gap-3">
+                                <div class="avatar" style="background: var(--primary-orange);">س.أ</div>
+                                <div>
+                                    <div class="font-semibold">م. سارة الأحمد</div>
+                                    <div class="text-sm text-muted">مشروع: فيلا الملقا</div>
+                                </div>
+                            </div>
+                            <div class="text-left">
+                                <div class="flex gap-1 mb-1">
+                                    <svg width="16" height="16" fill="#D4A853" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg width="16" height="16" fill="#D4A853" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg width="16" height="16" fill="#D4A853" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg width="16" height="16" fill="#D4A853" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg width="16" height="16" fill="#D4A853" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                </div>
+                                <div class="text-xs text-muted">منذ 3 أيام</div>
+                            </div>
+                        </div>
+                        <p class="text-sm">تجربة ممتازة مع شركة البناء المتقدم. التزموا بالجدول الزمني وكانت جودة العمل عالية جداً. أنصح بالتعامل معهم.</p>
+                    </div>
+
+                    <!-- Review 2 -->
+                    <div class="mb-6 pb-6" style="border-bottom: 1px solid var(--border);">
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="flex items-center gap-3">
+                                <div class="avatar" style="background: var(--secondary-gold);">م.ق</div>
+                                <div>
+                                    <div class="font-semibold">محمد القحطاني</div>
+                                    <div class="text-sm text-muted">مشروع: عمارة الصفوة</div>
+                                </div>
+                            </div>
+                            <div class="text-left">
+                                <div class="flex gap-1 mb-1">
+                                    <svg width="16" height="16" fill="#D4A853" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg width="16" height="16" fill="#D4A853" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg width="16" height="16" fill="#D4A853" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg width="16" height="16" fill="#D4A853" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg width="16" height="16" fill="#D4A853" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                </div>
+                                <div class="text-xs text-muted">منذ أسبوع</div>
+                            </div>
+                        </div>
+                        <p class="text-sm">فريق عمل محترف ومتعاون. المشروع تم تسليمه في الوقت المحدد مع جودة تشطيب ممتازة.</p>
+                    </div>
+
+                    <!-- Review 3 -->
+                    <div class="mb-6 pb-6" style="border-bottom: 1px solid var(--border);">
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="flex items-center gap-3">
+                                <div class="avatar" style="background: var(--dark-charcoal);">خ.م</div>
+                                <div>
+                                    <div class="font-semibold">خالد المنصور</div>
+                                    <div class="text-sm text-muted">مشروع: تشطيب شقة سكنية</div>
+                                </div>
+                            </div>
+                            <div class="text-left">
+                                <div class="flex gap-1 mb-1">
+                                    <svg width="16" height="16" fill="#D4A853" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg width="16" height="16" fill="#D4A853" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg width="16" height="16" fill="#D4A853" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg width="16" height="16" fill="#D4A853" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg width="16" height="16" fill="#e0e0e0" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                </div>
+                                <div class="text-xs text-muted">منذ أسبوعين</div>
+                            </div>
+                        </div>
+                        <p class="text-sm">عمل جيد بشكل عام. كان هناك بعض التأخير البسيط لكن تم معالجته. جودة التشطيب مرضية.</p>
+                    </div>
+
+                    <!-- Review 4 -->
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="flex items-center gap-3">
+                                <div class="avatar" style="background: var(--primary-orange);">ع.ر</div>
+                                <div>
+                                    <div class="font-semibold">عبدالله الراشد</div>
+                                    <div class="text-sm text-muted">مشروع: ترميم منزل</div>
+                                </div>
+                            </div>
+                            <div class="text-left">
+                                <div class="flex gap-1 mb-1">
+                                    <svg width="16" height="16" fill="#D4A853" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg width="16" height="16" fill="#D4A853" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg width="16" height="16" fill="#D4A853" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg width="16" height="16" fill="#D4A853" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg width="16" height="16" fill="#D4A853" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                </div>
+                                <div class="text-xs text-muted">منذ 3 أسابيع</div>
+                            </div>
+                        </div>
+                        <p class="text-sm">شركة ممتازة وأسعار معقولة. العمال محترفون والتواصل كان ممتازاً طوال فترة المشروع.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../js/main.js"></script>
+</body>
+</html>

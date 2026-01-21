@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - معمار</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+        <button class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <!-- User Profile Card -->
+                <div class="sidebar-user">
+                    <div class="avatar">م.س</div>
+                    <div class="sidebar-user-info">
+                        <div class="sidebar-user-name">م. سارة الأحمد</div>
+                        <div class="sidebar-user-role">مكتب تصميم</div>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="sidebar-links">
+                    <a href="dashboard.html" class="sidebar-link active">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                        لوحة التحكم
+                    </a>
+                    <a href="search.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        البحث عن مقاولين
+                    </a>
+                    <a href="quotes.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                        عروض الأسعار
+                    </a>
+                    <a href="projects.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        </svg>
+                        مشاريعي
+                    </a>
+                    <a href="messages.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        الرسائل
+                    </a>
+                    <a href="profile.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        الملف الشخصي
+                    </a>
+                    <a href="../login.html" class="sidebar-link">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                        تسجيل الخروج
+                    </a>
+                </div>
+            </nav>
+            <!-- Logo at Bottom -->
+            <div class="sidebar-logo">
+                <a href="../index.html">
+                    <img src="../assets/images/logo.png" alt="معمار">
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Welcome Section -->
+            <div class="mb-8">
+                <h1 style="font-size: var(--font-size-2xl); margin-bottom: var(--space-2);">مرحباً، سارة 👋</h1>
+                <p class="text-muted">إليك نظرة عامة على نشاطك في منصة معمار</p>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid mb-8">
+                <div class="stat-card">
+                    <div class="stat-card-icon orange">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        </svg>
+                    </div>
+                    <div class="stat-card-value">4</div>
+                    <div class="stat-card-label">مشاريع نشطة</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon gold">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                    </div>
+                    <div class="stat-card-value">3</div>
+                    <div class="stat-card-label">عروض أسعار جديدة</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon green">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                    </div>
+                    <div class="stat-card-value">12</div>
+                    <div class="stat-card-label">مشاريع مكتملة</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon blue">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+                        </svg>
+                    </div>
+                    <div class="stat-card-value">8</div>
+                    <div class="stat-card-label">مقاولين محفوظين</div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="card mb-8">
+                <div class="card-header">
+                    <h3 style="margin: 0;">إجراءات سريعة</h3>
+                </div>
+                <div class="card-body">
+                    <div class="flex gap-4 flex-wrap">
+                        <a href="search.html" class="btn btn-primary">
+                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                            البحث عن مقاول
+                        </a>
+                        <a href="request-quote.html" class="btn btn-outline">
+                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                            طلب عرض سعر جديد
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-6">
+                <!-- Recent Quotes -->
+                <div class="card">
+                    <div class="card-header flex justify-between items-center">
+                        <h3 style="margin: 0;">عروض الأسعار الأخيرة</h3>
+                        <a href="quotes.html" class="text-sm">عرض الكل</a>
+                    </div>
+                    <div class="card-body p-0">
+                        <div style="border-bottom: 1px solid var(--gray-200); padding: var(--space-4) var(--space-6);">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-semibold">شركة البناء المتقدم</span>
+                                <span class="badge badge-warning">في انتظار الرد</span>
+                            </div>
+                            <div class="text-sm text-muted mb-2">تجديد مكتب - 150 م²</div>
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-primary">85,000 ر.س</span>
+                                <span class="text-xs text-muted">منذ ساعتين</span>
+                            </div>
+                        </div>
+                        <div style="border-bottom: 1px solid var(--gray-200); padding: var(--space-4) var(--space-6);">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-semibold">مؤسسة الإتقان</span>
+                                <span class="badge badge-success">تم القبول</span>
+                            </div>
+                            <div class="text-sm text-muted mb-2">أعمال كهربائية</div>
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-primary">12,500 ر.س</span>
+                                <span class="text-xs text-muted">منذ يوم</span>
+                            </div>
+                        </div>
+                        <div style="padding: var(--space-4) var(--space-6);">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-semibold">شركة الأساس الراسخ</span>
+                                <span class="badge badge-info">جديد</span>
+                            </div>
+                            <div class="text-sm text-muted mb-2">بناء ملحق جديد</div>
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-primary">220,000 ر.س</span>
+                                <span class="text-xs text-muted">منذ 3 ساعات</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Projects -->
+                <div class="card">
+                    <div class="card-header flex justify-between items-center">
+                        <h3 style="margin: 0;">المشاريع النشطة</h3>
+                        <a href="projects.html" class="text-sm">عرض الكل</a>
+                    </div>
+                    <div class="card-body p-0">
+                        <div style="border-bottom: 1px solid var(--gray-200); padding: var(--space-4) var(--space-6);">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-semibold">تجديد فيلا الملقا</span>
+                                <span class="badge badge-primary">قيد التنفيذ</span>
+                            </div>
+                            <div class="text-sm text-muted mb-3">مؤسسة الجودة للتشطيبات</div>
+                            <div class="progress-bar">
+                                <div class="progress-bar-fill" style="width: 65%;"></div>
+                            </div>
+                            <div class="text-xs text-muted mt-2">65% مكتمل</div>
+                        </div>
+                        <div style="border-bottom: 1px solid var(--gray-200); padding: var(--space-4) var(--space-6);">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-semibold">تشطيب مكتب النور</span>
+                                <span class="badge badge-warning">في انتظار المواد</span>
+                            </div>
+                            <div class="text-sm text-muted mb-3">شركة البناء المتقدم</div>
+                            <div class="progress-bar">
+                                <div class="progress-bar-fill gold" style="width: 40%;"></div>
+                            </div>
+                            <div class="text-xs text-muted mt-2">40% مكتمل</div>
+                        </div>
+                        <div style="padding: var(--space-4) var(--space-6);">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-semibold">أعمال سباكة</span>
+                                <span class="badge badge-success">شارف على الانتهاء</span>
+                            </div>
+                            <div class="text-sm text-muted mb-3">مؤسسة الإتقان</div>
+                            <div class="progress-bar">
+                                <div class="progress-bar-fill success" style="width: 90%;"></div>
+                            </div>
+                            <div class="text-xs text-muted mt-2">90% مكتمل</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recommended Contractors -->
+            <div class="card mt-8">
+                <div class="card-header flex justify-between items-center">
+                    <h3 style="margin: 0;">مقاولون موصى بهم</h3>
+                    <a href="search.html" class="text-sm">عرض المزيد</a>
+                </div>
+                <div class="card-body">
+                    <div class="grid grid-cols-3 gap-6">
+                        <div class="contractor-card">
+                            <div class="contractor-card-header">
+                                <span class="contractor-card-badge badge badge-success">موثق</span>
+                                <div class="contractor-card-logo">ب.م</div>
+                                <h4 class="contractor-card-name">شركة البناء المتقدم</h4>
+                                <p class="contractor-card-category">مقاولات عامة • تصنيف أول</p>
+                            </div>
+                            <div class="contractor-card-body">
+                                <div class="rating mb-3">
+                                    <span class="rating-value">4.8</span>
+                                    <div class="rating-stars">
+                                        <svg class="rating-star" width="16" height="16" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                        <svg class="rating-star" width="16" height="16" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                        <svg class="rating-star" width="16" height="16" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                        <svg class="rating-star" width="16" height="16" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                        <svg class="rating-star" width="16" height="16" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    </div>
+                                    <span class="rating-count">(127)</span>
+                                </div>
+                                <div class="contractor-card-meta">
+                                    <div class="contractor-card-meta-item">
+                                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                            <circle cx="12" cy="10" r="3"></circle>
+                                        </svg>
+                                        الرياض
+                                    </div>
+                                    <div class="contractor-card-meta-item">
+                                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                            <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
+                                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                        </svg>
+                                        85 مشروع
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contractor-card-footer">
+                                <a href="contractor-profile.html" class="btn btn-primary btn-sm" style="flex: 1;">عرض الملف</a>
+                                <button class="btn btn-outline btn-sm">
+                                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="contractor-card">
+                            <div class="contractor-card-header">
+                                <span class="contractor-card-badge badge badge-success">موثق</span>
+                                <div class="contractor-card-logo" style="background-color: var(--secondary-gold); color: var(--white);">إ.م</div>
+                                <h4 class="contractor-card-name">مؤسسة الإتقان للمقاولات</h4>
+                                <p class="contractor-card-category">تشطيبات • تصنيف ثاني</p>
+                            </div>
+                            <div class="contractor-card-body">
+                                <div class="rating mb-3">
+                                    <span class="rating-value">4.5</span>
+                                    <div class="rating-stars">
+                                        <svg class="rating-star" width="16" height="16" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                        <svg class="rating-star" width="16" height="16" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                        <svg class="rating-star" width="16" height="16" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                        <svg class="rating-star" width="16" height="16" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                        <svg class="rating-star empty" width="16" height="16" fill="none" stroke="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    </div>
+                                    <span class="rating-count">(89)</span>
+                                </div>
+                                <div class="contractor-card-meta">
+                                    <div class="contractor-card-meta-item">
+                                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                            <circle cx="12" cy="10" r="3"></circle>
+                                        </svg>
+                                        جدة
+                                    </div>
+                                    <div class="contractor-card-meta-item">
+                                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                            <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
+                                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                        </svg>
+                                        62 مشروع
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contractor-card-footer">
+                                <a href="contractor-profile.html" class="btn btn-primary btn-sm" style="flex: 1;">عرض الملف</a>
+                                <button class="btn btn-outline btn-sm">
+                                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="contractor-card">
+                            <div class="contractor-card-header">
+                                <span class="contractor-card-badge badge badge-gold">مميز</span>
+                                <div class="contractor-card-logo" style="background-color: var(--success); color: var(--white);">أ.ر</div>
+                                <h4 class="contractor-card-name">شركة الأساس الراسخ</h4>
+                                <p class="contractor-card-category">بناء جديد • تصنيف أول</p>
+                            </div>
+                            <div class="contractor-card-body">
+                                <div class="rating mb-3">
+                                    <span class="rating-value">4.9</span>
+                                    <div class="rating-stars">
+                                        <svg class="rating-star" width="16" height="16" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                        <svg class="rating-star" width="16" height="16" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                        <svg class="rating-star" width="16" height="16" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                        <svg class="rating-star" width="16" height="16" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                        <svg class="rating-star" width="16" height="16" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    </div>
+                                    <span class="rating-count">(156)</span>
+                                </div>
+                                <div class="contractor-card-meta">
+                                    <div class="contractor-card-meta-item">
+                                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                            <circle cx="12" cy="10" r="3"></circle>
+                                        </svg>
+                                        الدمام
+                                    </div>
+                                    <div class="contractor-card-meta-item">
+                                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                            <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
+                                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                        </svg>
+                                        104 مشروع
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contractor-card-footer">
+                                <a href="contractor-profile.html" class="btn btn-primary btn-sm" style="flex: 1;">عرض الملف</a>
+                                <button class="btn btn-outline btn-sm">
+                                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

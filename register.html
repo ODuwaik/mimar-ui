@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إنشاء حساب - معمار</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Header Styles - Cloned from Homepage */
+        .header {
+            position: relative;
+            background-color: transparent;
+            box-shadow: none;
+            height: auto;
+            padding: var(--space-4) 0;
+        }
+        .logo img {
+            height: 88px;
+        }
+        .nav-link {
+            color: var(--dark-charcoal);
+        }
+        .nav-link:hover {
+            color: var(--primary-orange);
+        }
+
+        /* Mobile Navigation - Cloned from Homepage */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 280px;
+            height: 100vh;
+            background: var(--white);
+            box-shadow: var(--shadow-xl);
+            z-index: 1001;
+            padding: var(--space-6);
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        .mobile-nav.open {
+            transform: translateX(0);
+        }
+        .mobile-nav-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .mobile-nav-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-8);
+            padding-bottom: var(--space-4);
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .mobile-nav-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray-600);
+        }
+        .mobile-nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+        }
+        .mobile-nav-links a {
+            display: block;
+            padding: var(--space-3) var(--space-4);
+            color: var(--dark-charcoal);
+            text-decoration: none;
+            border-radius: var(--radius-lg);
+            transition: background 0.2s;
+        }
+        .mobile-nav-links a:hover {
+            background: var(--light-beige);
+            color: var(--primary-orange);
+        }
+        .mobile-nav-actions {
+            margin-top: var(--space-8);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+        }
+        @media (max-width: 991px) {
+            .mobile-nav,
+            .mobile-nav-overlay {
+                display: block;
+            }
+            .menu-toggle {
+                display: flex !important;
+                flex-direction: column;
+                gap: 5px;
+                padding: var(--space-2);
+                cursor: pointer;
+                z-index: 1001;
+                background: none;
+                border: none;
+            }
+            .menu-toggle span {
+                width: 24px;
+                height: 3px;
+                background-color: var(--dark-charcoal);
+                border-radius: 2px;
+                display: block;
+                transition: none;
+            }
+            .menu-toggle.active span {
+                transform: none !important;
+                opacity: 1 !important;
+            }
+            .nav-links,
+            .nav-actions {
+                display: none !important;
+            }
+            .logo img {
+                height: 70px;
+            }
+        }
+        @media (max-width: 767px) {
+            .logo img {
+                height: 56px;
+            }
+        }
+
+        /* Register Page Styles */
+        .register-page {
+            min-height: calc(100vh - 120px);
+            background: var(--light-beige);
+            padding: var(--space-12) var(--space-4);
+        }
+        .register-container {
+            max-width: 640px;
+            margin: 0 auto;
+        }
+        .register-header {
+            text-align: center;
+            margin-bottom: var(--space-10);
+        }
+        .register-header h1 {
+            font-size: var(--font-size-3xl);
+            margin-bottom: var(--space-3);
+            color: var(--dark-charcoal);
+        }
+        .register-header p {
+            color: var(--gray-500);
+            font-size: var(--font-size-base);
+        }
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--space-3);
+            margin-bottom: var(--space-10);
+        }
+        .step {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+        .step-dot {
+            width: 36px;
+            height: 36px;
+            border-radius: var(--radius-full);
+            background: var(--gray-300);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: var(--font-size-sm);
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+        .step.active .step-dot {
+            background: var(--primary-orange);
+            box-shadow: 0 4px 12px rgba(199, 91, 42, 0.3);
+        }
+        .step.completed .step-dot {
+            background: var(--success);
+        }
+        .step-label {
+            font-size: var(--font-size-sm);
+            color: var(--gray-500);
+            font-weight: 500;
+        }
+        .step.active .step-label {
+            color: var(--primary-orange);
+            font-weight: 600;
+        }
+        .step.completed .step-label {
+            color: var(--success);
+        }
+        .step-line {
+            width: 50px;
+            height: 3px;
+            background: var(--gray-300);
+            border-radius: 2px;
+        }
+        .step.completed + .step-line {
+            background: var(--success);
+        }
+        .register-step {
+            display: none;
+        }
+        .register-step.active {
+            display: block;
+        }
+        .card {
+            background: var(--white);
+            border-radius: var(--radius-2xl);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+        }
+        .card-body {
+            padding: var(--space-10) var(--space-8);
+        }
+        .form-group {
+            margin-bottom: var(--space-5);
+        }
+        .form-label {
+            font-weight: 500;
+            margin-bottom: var(--space-2);
+            display: block;
+            color: var(--dark-charcoal);
+        }
+        .form-input,
+        .form-select {
+            padding: var(--space-4);
+            border-radius: var(--radius-lg);
+            font-size: var(--font-size-base);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo.png" alt="معمار">
+            </a>
+            <nav class="nav">
+                <ul class="nav-links">
+                    <li><a href="index.html#contractors" class="nav-link">المقاولون</a></li>
+                    <li><a href="index.html#how-it-works" class="nav-link">كيف يعمل</a></li>
+                    <li><a href="index.html#services" class="nav-link">الخدمات</a></li>
+                    <li><a href="index.html#contact" class="nav-link">تواصل معنا</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="login.html" class="btn btn-ghost">تسجيل الدخول</a>
+                    <a href="register.html" class="btn btn-primary">إنشاء حساب</a>
+                </div>
+                <button class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="register-page">
+        <div class="register-container">
+            <div class="register-header">
+                <h1>إنشاء حساب جديد</h1>
+                <p>انضم إلى معمار وابدأ رحلتك</p>
+            </div>
+
+            <!-- Step Indicator -->
+            <div class="step-indicator">
+                <div class="step active" data-step="1">
+                    <div class="step-dot">1</div>
+                    <span class="step-label">نوع الحساب</span>
+                </div>
+                <div class="step-line"></div>
+                <div class="step" data-step="2">
+                    <div class="step-dot">2</div>
+                    <span class="step-label">البيانات الأساسية</span>
+                </div>
+                <div class="step-line"></div>
+                <div class="step" data-step="3">
+                    <div class="step-dot">3</div>
+                    <span class="step-label">التأكيد</span>
+                </div>
+            </div>
+
+            <!-- Step 1: User Type -->
+            <div class="register-step active" id="step1">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="mb-6" style="text-align: center;">اختر نوع حسابك</h3>
+                        <div class="user-type-cards">
+                            <div class="user-type-card" data-user-type="consumer" onclick="selectUserType('consumer')">
+                                <div class="user-type-icon">
+                                    <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="9" cy="7" r="4"></circle>
+                                        <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                    </svg>
+                                </div>
+                                <h4 class="user-type-title">عميل</h4>
+                                <p class="user-type-text">أبحث عن مقاولين لمشاريع البناء أو التجديد</p>
+                            </div>
+                            <div class="user-type-card" data-user-type="provider" onclick="selectUserType('provider')">
+                                <div class="user-type-icon">
+                                    <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <rect width="16" height="20" x="4" y="2" rx="2" ry="2"></rect>
+                                        <path d="M9 22v-4h6v4"></path>
+                                        <path d="M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01"></path>
+                                    </svg>
+                                </div>
+                                <h4 class="user-type-title">مزود خدمة</h4>
+                                <p class="user-type-text">أقدم خدمات المقاولات والتشطيبات</p>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-lg w-full mt-8" onclick="nextStep()" id="step1Next" disabled>
+                            التالي
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Basic Info -->
+            <div class="register-step" id="step2">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="mb-6">البيانات الأساسية</h3>
+
+                        <!-- Consumer Form -->
+                        <form id="consumerForm" style="display: none;">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="form-group">
+                                    <label class="form-label">الاسم الأول</label>
+                                    <input type="text" class="form-input" placeholder="أحمد">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">الاسم الأخير</label>
+                                    <input type="text" class="form-input" placeholder="العمري">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">البريد الإلكتروني</label>
+                                <input type="email" class="form-input" placeholder="example@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">رقم الجوال</label>
+                                <input type="tel" class="form-input" placeholder="05xxxxxxxx" dir="ltr" style="text-align: left;">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">المدينة</label>
+                                <select class="form-select">
+                                    <option value="">اختر المدينة</option>
+                                    <option value="riyadh">الرياض</option>
+                                    <option value="jeddah">جدة</option>
+                                    <option value="dammam">الدمام</option>
+                                    <option value="makkah">مكة المكرمة</option>
+                                    <option value="madinah">المدينة المنورة</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">كلمة المرور</label>
+                                <input type="password" class="form-input" placeholder="••••••••">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">تأكيد كلمة المرور</label>
+                                <input type="password" class="form-input" placeholder="••••••••">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">نوع العميل</label>
+                                <select class="form-select">
+                                    <option value="">اختر النوع</option>
+                                    <option value="individual">فرد / صاحب منزل</option>
+                                    <option value="design_office">مكتب تصميم</option>
+                                    <option value="sme">شركة صغيرة ومتوسطة</option>
+                                    <option value="developer">مطور عقاري</option>
+                                </select>
+                            </div>
+                        </form>
+
+                        <!-- Provider Form -->
+                        <form id="providerForm" style="display: none;">
+                            <div class="form-group">
+                                <label class="form-label">اسم الشركة / المؤسسة</label>
+                                <input type="text" class="form-input" placeholder="شركة الإتقان للمقاولات">
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="form-group">
+                                    <label class="form-label">رقم السجل التجاري</label>
+                                    <input type="text" class="form-input" placeholder="10xxxxxxxxx" dir="ltr" style="text-align: left;">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">درجة التصنيف</label>
+                                    <select class="form-select">
+                                        <option value="">اختر التصنيف</option>
+                                        <option value="1">تصنيف أول</option>
+                                        <option value="2">تصنيف ثاني</option>
+                                        <option value="3">تصنيف ثالث</option>
+                                        <option value="4">تصنيف رابع</option>
+                                        <option value="5">تصنيف خامس</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">البريد الإلكتروني</label>
+                                <input type="email" class="form-input" placeholder="info@company.sa">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">رقم الجوال</label>
+                                <input type="tel" class="form-input" placeholder="05xxxxxxxx" dir="ltr" style="text-align: left;">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">المدينة الرئيسية</label>
+                                <select class="form-select">
+                                    <option value="">اختر المدينة</option>
+                                    <option value="riyadh">الرياض</option>
+                                    <option value="jeddah">جدة</option>
+                                    <option value="dammam">الدمام</option>
+                                    <option value="makkah">مكة المكرمة</option>
+                                    <option value="madinah">المدينة المنورة</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">التخصص الرئيسي</label>
+                                <select class="form-select">
+                                    <option value="">اختر التخصص</option>
+                                    <option value="general">مقاولات عامة</option>
+                                    <option value="finishing">تشطيبات</option>
+                                    <option value="electrical">أعمال كهربائية</option>
+                                    <option value="plumbing">أعمال سباكة</option>
+                                    <option value="hvac">تكييف وتبريد</option>
+                                    <option value="waterproofing">عزل مائي وحراري</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">كلمة المرور</label>
+                                <input type="password" class="form-input" placeholder="••••••••">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">تأكيد كلمة المرور</label>
+                                <input type="password" class="form-input" placeholder="••••••••">
+                            </div>
+                        </form>
+
+                        <div class="form-group mt-6">
+                            <label class="form-checkbox">
+                                <input type="checkbox" id="termsCheckbox">
+                                <span>أوافق على <a href="#">الشروط والأحكام</a> و <a href="#">سياسة الخصوصية</a></span>
+                            </label>
+                        </div>
+
+                        <div class="flex gap-4 mt-6">
+                            <button class="btn btn-ghost" onclick="prevStep()">السابق</button>
+                            <button class="btn btn-primary btn-lg" style="flex: 1;" onclick="nextStep()">التالي</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Confirmation -->
+            <div class="register-step" id="step3">
+                <div class="card">
+                    <div class="card-body" style="text-align: center;">
+                        <div style="width: 80px; height: 80px; margin: 0 auto var(--space-6); background: var(--success-light); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center;">
+                            <svg width="40" height="40" fill="none" stroke="var(--success)" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                        </div>
+                        <h3 class="mb-4">شكراً لتسجيلك!</h3>
+                        <p class="text-muted mb-6">
+                            تم إنشاء حسابك بنجاح. يمكنك الآن تسجيل الدخول والبدء في استخدام المنصة.
+                        </p>
+
+                        <button class="btn btn-primary btn-lg w-full" onclick="completeRegistration()">
+                            الدخول إلى حسابي
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-center text-muted mt-6">
+                لديك حساب بالفعل؟
+                <a href="login.html" class="font-semibold">تسجيل الدخول</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <img src="assets/images/logo.png" alt="معمار" style="height: 40px;">
+            <button class="mobile-nav-close" id="mobileNavClose">&times;</button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="index.html#contractors">المقاولون</a></li>
+            <li><a href="index.html#how-it-works">كيف يعمل</a></li>
+            <li><a href="index.html#services">الخدمات</a></li>
+            <li><a href="index.html#contact">تواصل معنا</a></li>
+        </ul>
+        <div class="mobile-nav-actions">
+            <a href="login.html" class="btn btn-outline" style="width: 100%; text-align: center;">تسجيل الدخول</a>
+            <a href="register.html" class="btn btn-primary" style="width: 100%; text-align: center;">إنشاء حساب</a>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Mobile Navigation
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mobileNav = document.getElementById('mobileNav');
+        const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+        const mobileNavClose = document.getElementById('mobileNavClose');
+
+        function openMobileNav() {
+            mobileNav.classList.add('open');
+            mobileNavOverlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileNav() {
+            mobileNav.classList.remove('open');
+            mobileNavOverlay.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', openMobileNav);
+        }
+        if (mobileNavClose) {
+            mobileNavClose.addEventListener('click', closeMobileNav);
+        }
+        if (mobileNavOverlay) {
+            mobileNavOverlay.addEventListener('click', closeMobileNav);
+        }
+
+        // Registration functionality
+        let currentStep = 1;
+        let selectedUserType = null;
+
+        function selectUserType(type) {
+            selectedUserType = type;
+            document.querySelectorAll('.user-type-card').forEach(card => {
+                card.classList.toggle('selected', card.dataset.userType === type);
+            });
+            document.getElementById('step1Next').disabled = false;
+        }
+
+        function nextStep() {
+            if (currentStep === 1 && !selectedUserType) return;
+
+            // Update step indicator
+            document.querySelector(`.step[data-step="${currentStep}"]`).classList.remove('active');
+            document.querySelector(`.step[data-step="${currentStep}"]`).classList.add('completed');
+
+            currentStep++;
+
+            document.querySelector(`.step[data-step="${currentStep}"]`).classList.add('active');
+
+            // Show correct form in step 2
+            if (currentStep === 2) {
+                document.getElementById('consumerForm').style.display = selectedUserType === 'consumer' ? 'block' : 'none';
+                document.getElementById('providerForm').style.display = selectedUserType === 'provider' ? 'block' : 'none';
+            }
+
+            // Update visible step
+            document.querySelectorAll('.register-step').forEach(step => step.classList.remove('active'));
+            document.getElementById(`step${currentStep}`).classList.add('active');
+        }
+
+        function prevStep() {
+            document.querySelector(`.step[data-step="${currentStep}"]`).classList.remove('active');
+            currentStep--;
+            document.querySelector(`.step[data-step="${currentStep}"]`).classList.remove('completed');
+            document.querySelector(`.step[data-step="${currentStep}"]`).classList.add('active');
+
+            document.querySelectorAll('.register-step').forEach(step => step.classList.remove('active'));
+            document.getElementById(`step${currentStep}`).classList.add('active');
+        }
+
+        function completeRegistration() {
+            if (selectedUserType === 'consumer') {
+                window.location.href = 'consumer/dashboard.html';
+            } else {
+                window.location.href = 'provider/dashboard.html';
+            }
+        }
+
+        // Check URL params for pre-selected type
+        const urlParams = new URLSearchParams(window.location.search);
+        const typeParam = urlParams.get('type');
+        if (typeParam === 'consumer' || typeParam === 'provider') {
+            selectUserType(typeParam);
+        }
+    </script>
+</body>
+</html>
