@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لماذا معمار - قيمتنا المميزة</title>
+    <title>Why Mi'mar - Our Value Proposition</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
+        /* Override RTL for this page */
+        body {
+            direction: ltr;
+            text-align: left;
+        }
+
         /* Header Styles */
         .header {
             position: relative;
@@ -29,14 +35,14 @@
             display: none;
             position: fixed;
             top: 0;
-            right: 0;
+            left: 0;
             width: 280px;
             height: 100vh;
             background: var(--white);
             box-shadow: var(--shadow-xl);
             z-index: 1001;
             padding: var(--space-6);
-            transform: translateX(100%);
+            transform: translateX(-100%);
             transition: transform 0.3s ease;
         }
         .mobile-nav.open {
@@ -135,7 +141,7 @@
             content: '';
             position: absolute;
             top: -50%;
-            right: -20%;
+            left: -20%;
             width: 600px;
             height: 600px;
             background: rgba(255,255,255,0.05);
@@ -145,7 +151,7 @@
             content: '';
             position: absolute;
             bottom: -30%;
-            left: -10%;
+            right: -10%;
             width: 400px;
             height: 400px;
             background: rgba(255,255,255,0.03);
@@ -184,6 +190,7 @@
             border-radius: var(--radius-full);
             font-size: var(--font-size-sm);
             backdrop-filter: blur(10px);
+            margin-bottom: var(--space-6);
         }
 
         /* Section Styling */
@@ -230,6 +237,7 @@
             font-weight: 700;
             color: var(--primary-orange);
             font-size: var(--font-size-sm);
+            text-transform: uppercase;
         }
         .uvp-value {
             flex: 1;
@@ -329,12 +337,12 @@
             color: var(--dark-charcoal);
             line-height: 1.7;
             position: relative;
-            padding-right: var(--space-6);
+            padding-left: var(--space-6);
         }
         .segment-quote::before {
             content: '"';
             position: absolute;
-            right: 0;
+            left: 0;
             top: -10px;
             font-size: 3rem;
             color: var(--primary-orange);
@@ -379,7 +387,7 @@
             left: 60px;
             right: 40px;
             bottom: 60px;
-            border-right: 2px solid var(--gray-200);
+            border-left: 2px solid var(--gray-200);
             border-bottom: 2px solid var(--gray-200);
         }
         .map-grid::before {
@@ -396,13 +404,15 @@
             top: 0;
             bottom: 0;
             left: 50%;
-            border-right: 1px dashed var(--gray-200);
+            border-left: 1px dashed var(--gray-200);
         }
         .axis-label {
             position: absolute;
             font-size: var(--font-size-xs);
             color: var(--gray-500);
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         .axis-label.top {
             top: 30px;
@@ -415,16 +425,14 @@
             transform: translateX(-50%);
         }
         .axis-label.right {
-            right: 20px;
+            right: 10px;
             top: 50%;
-            transform: translateY(-50%);
-            writing-mode: vertical-rl;
+            transform: translateY(-50%) rotate(90deg);
         }
         .axis-label.left {
-            left: 20px;
+            left: 10px;
             top: 50%;
-            transform: translateY(-50%);
-            writing-mode: vertical-rl;
+            transform: translateY(-50%) rotate(-90deg);
         }
         .competitor-dot {
             position: absolute;
@@ -446,7 +454,7 @@
         }
         .competitor-dot.mimar {
             top: 15%;
-            right: 20%;
+            left: 70%;
         }
         .competitor-dot.mimar .dot {
             width: 24px;
@@ -460,15 +468,15 @@
         }
         .competitor-dot.muqawil {
             top: 25%;
-            right: 70%;
+            left: 20%;
         }
         .competitor-dot.haraj {
             top: 70%;
-            right: 25%;
+            left: 65%;
         }
         .competitor-dot.referrals {
             top: 65%;
-            right: 55%;
+            left: 35%;
         }
 
         /* Differentiators */
@@ -617,19 +625,19 @@
     <header class="header">
         <div class="header-container">
             <a href="index.html" class="logo">
-                <img src="assets/images/logo.png" alt="معمار">
+                <img src="assets/images/logo.png" alt="Mi'mar">
             </a>
             <nav class="nav">
                 <ul class="nav-links">
-                    <li><a href="index.html" class="nav-link">الرئيسية</a></li>
-                    <li><a href="contractors.html" class="nav-link">المقاولون</a></li>
-                    <li><a href="about.html" class="nav-link active">لماذا معمار</a></li>
-                    <li><a href="index.html#how-it-works" class="nav-link">كيف يعمل</a></li>
-                    <li><a href="index.html#contact" class="nav-link">تواصل معنا</a></li>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="contractors.html" class="nav-link">Contractors</a></li>
+                    <li><a href="about.html" class="nav-link active">Why Mi'mar</a></li>
+                    <li><a href="index.html#how-it-works" class="nav-link">How It Works</a></li>
+                    <li><a href="index.html#contact" class="nav-link">Contact</a></li>
                 </ul>
                 <div class="nav-actions">
-                    <a href="login.html" class="btn btn-ghost">تسجيل الدخول</a>
-                    <a href="register.html" class="btn btn-primary">إنشاء حساب</a>
+                    <a href="login.html" class="btn btn-ghost">Login</a>
+                    <a href="register.html" class="btn btn-primary">Sign Up</a>
                 </div>
                 <button class="menu-toggle">
                     <span></span>
@@ -648,14 +656,14 @@
                     <path d="M9 12l2 2 4-4"></path>
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                 </svg>
-                شركاء موثوقون
+                Trusted Partners
             </div>
             <h1>
-                نحول قرارات البناء من مقامرة إلى ثقة
-                <span>المنصة الرقمية الموثوقة لخدمات البناء في المملكة</span>
+                Choose Your Contractor with Confidence
+                <span>The Trusted Digital Platform for Construction Services in Saudi Arabia</span>
             </h1>
             <p class="uvp-hero-statement">
-                منصة رقمية موثوقة تزيل مخاطر اختيار المقاولين من خلال الجمع بين التصنيفات الحكومية الرسمية وتقييمات العملاء الحقيقية، لتحويل قرارات البناء من مقامرات غير مضمونة إلى خيارات واثقة.
+                A trusted digital platform that eliminates contractor selection risk by combining official government classifications with verified customer reviews, transforming construction decisions from uncertain gambles into confident choices.
             </p>
         </div>
     </section>
@@ -663,33 +671,33 @@
     <!-- UVP Framework -->
     <section class="section section-beige">
         <div class="container">
-            <h2 class="section-title">إطار القيمة المميزة</h2>
-            <p class="section-subtitle">كيف نقدم قيمة فريدة لعملائنا</p>
+            <h2 class="section-title">Our Value Proposition Framework</h2>
+            <p class="section-subtitle">How we deliver unique value to our customers</p>
 
             <div class="uvp-framework">
                 <div class="uvp-row">
-                    <div class="uvp-label">لمن؟</div>
-                    <div class="uvp-value">مكاتب التصميم، الشركات الصغيرة والمتوسطة، وأصحاب المنازل في المملكة العربية السعودية</div>
+                    <div class="uvp-label">For</div>
+                    <div class="uvp-value">Design offices, SMEs, and homeowners in Saudi Arabia</div>
                 </div>
                 <div class="uvp-row">
-                    <div class="uvp-label">الذين</div>
-                    <div class="uvp-value">يحتاجون إلى إيجاد مقاولين موثوقين ومؤهلين لكنهم يواجهون عدم اليقين والمخاطر وانعدام الشفافية</div>
+                    <div class="uvp-label">Who</div>
+                    <div class="uvp-value">Need to find reliable, qualified contractors but face uncertainty, risk, and lack of transparency</div>
                 </div>
                 <div class="uvp-row">
-                    <div class="uvp-label">منتجنا</div>
-                    <div class="uvp-value">سوق رقمي لخدمات البناء</div>
+                    <div class="uvp-label">Our Product</div>
+                    <div class="uvp-value">Is a digital construction services marketplace</div>
                 </div>
                 <div class="uvp-row">
-                    <div class="uvp-label">الذي يوفر</div>
-                    <div class="uvp-value">ملفات تعريف موثقة للمقاولين مع تصنيفات رسمية وتقييمات عملاء حقيقية ومقارنات شفافة</div>
+                    <div class="uvp-label">That</div>
+                    <div class="uvp-value">Provides verified contractor profiles with official classifications, real customer reviews, and transparent comparisons</div>
                 </div>
                 <div class="uvp-row">
-                    <div class="uvp-label">على عكس</div>
-                    <div class="uvp-value">الإحالات الشخصية (مستهلكة للوقت، غير موضوعية)، مقاول (غير سهل الاستخدام)، وحراج (غير متخصص، غير موثق)</div>
+                    <div class="uvp-label">Unlike</div>
+                    <div class="uvp-value">Personal referrals (time-consuming, subjective), Muqawil (not user-friendly), and Haraj (not specialized, unverified)</div>
                 </div>
                 <div class="uvp-row">
-                    <div class="uvp-label">نحن</div>
-                    <div class="uvp-value">نجمع بين بيانات التصنيف الحكومي الرسمي وتقييمات العملاء الحقيقية في منصة واحدة احترافية وسهلة الاستخدام</div>
+                    <div class="uvp-label">We</div>
+                    <div class="uvp-value">Combine official government classification data with real customer feedback in one professional, easy-to-use platform</div>
                 </div>
             </div>
         </div>
@@ -698,8 +706,8 @@
     <!-- 4 Pillars -->
     <section class="section section-light">
         <div class="container">
-            <h2 class="section-title">الركائز الأربع للقيمة</h2>
-            <p class="section-subtitle">أساس نجاحنا في خدمة عملائنا</p>
+            <h2 class="section-title">The Four Pillars of Value</h2>
+            <p class="section-subtitle">The foundation of how we serve our customers</p>
 
             <div class="pillars-grid">
                 <!-- Transparency -->
@@ -711,9 +719,9 @@
                             <line x1="12" y1="8" x2="12.01" y2="8"></line>
                         </svg>
                     </div>
-                    <h3>الشفافية</h3>
-                    <p class="pillar-problem">المشكلة: معلومات مخفية وقدرات غير واضحة للمقاولين</p>
-                    <p class="pillar-solution">الحل: بيانات واضحة وغير محررة، تقييمات حقيقية، وتصنيفات رسمية</p>
+                    <h3>Transparency</h3>
+                    <p class="pillar-problem">Problem: Hidden information and unclear contractor capabilities</p>
+                    <p class="pillar-solution">Solution: Clear, unedited data, real reviews, and official classifications</p>
                 </div>
 
                 <!-- Reliability -->
@@ -724,9 +732,9 @@
                             <path d="M9 12l2 2 4-4"></path>
                         </svg>
                     </div>
-                    <h3>الموثوقية</h3>
-                    <p class="pillar-problem">المشكلة: جودة غير متوقعة، تأخيرات، وتكاليف مفاجئة</p>
-                    <p class="pillar-solution">الحل: مهنيون موثقون مع سجلات أداء وتاريخ عمل حقيقي</p>
+                    <h3>Reliability</h3>
+                    <p class="pillar-problem">Problem: Unpredictable quality, delays, and surprise costs</p>
+                    <p class="pillar-solution">Solution: Verified professionals with track records and real performance history</p>
                 </div>
 
                 <!-- Empowerment -->
@@ -737,9 +745,9 @@
                             <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
                         </svg>
                     </div>
-                    <h3>التمكين</h3>
-                    <p class="pillar-problem">المشكلة: الاعتماد على إحالات محدودة وعدم تماثل المعلومات</p>
-                    <p class="pillar-solution">الحل: أدوات وبيانات لاتخاذ قرارات مستنيرة بشكل مستقل</p>
+                    <h3>Empowerment</h3>
+                    <p class="pillar-problem">Problem: Dependence on limited referrals and information asymmetry</p>
+                    <p class="pillar-solution">Solution: Tools and data to make informed decisions independently</p>
                 </div>
 
                 <!-- Integrity -->
@@ -750,9 +758,9 @@
                             <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
                         </svg>
                     </div>
-                    <h3>النزاهة</h3>
-                    <p class="pillar-problem">المشكلة: ادعاءات غير موثقة وانعدام المساءلة</p>
-                    <p class="pillar-solution">الحل: مهنيون مصنفون ومدققون فقط في قوائمنا</p>
+                    <h3>Integrity</h3>
+                    <p class="pillar-problem">Problem: Unverified claims and lack of accountability</p>
+                    <p class="pillar-solution">Solution: Only classified and vetted professionals in our listings</p>
                 </div>
             </div>
         </div>
@@ -761,8 +769,8 @@
     <!-- Segments -->
     <section class="section section-beige">
         <div class="container">
-            <h2 class="section-title">القيمة حسب الشريحة</h2>
-            <p class="section-subtitle">حلول مخصصة لكل نوع من العملاء</p>
+            <h2 class="section-title">Value by Segment</h2>
+            <p class="section-subtitle">Tailored solutions for each type of customer</p>
 
             <div class="segments-grid">
                 <!-- Primary Segment -->
@@ -779,26 +787,26 @@
                                 <path d="M14 16h1"></path>
                                 <path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"></path>
                             </svg>
-                            مكاتب التصميم والشركات
+                            Design Offices & SMEs
                         </h3>
-                        <p>الشريحة الأساسية - B2B</p>
+                        <p>Primary Segment - B2B</p>
                     </div>
                     <div class="segment-body">
                         <p class="segment-quote">
-                            ابحث عن مقاولين موثقين بشكل أسرع، وقلل مخاطر المشاريع، واحمِ سمعتك من خلال شبكة شفافة من مزودي الخدمات المصنفين - كل ذلك في منصة واحدة.
+                            Source verified contractors faster, reduce project risk, and protect your reputation with a transparent network of classified service providers—all in one platform.
                         </p>
                         <div class="segment-features">
                             <div class="segment-feature">
                                 <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span>شبكة موثقة من مزودي الخدمات</span>
+                                <span>Verified network of service providers</span>
                             </div>
                             <div class="segment-feature">
                                 <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span>تقليل المخاطر من خلال مقارنات شفافة</span>
+                                <span>Risk reduction through transparent comparisons</span>
                             </div>
                             <div class="segment-feature">
                                 <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span>تتبع مراحل المشروع والتوثيق</span>
+                                <span>Milestone tracking and documentation</span>
                             </div>
                         </div>
                     </div>
@@ -812,26 +820,26 @@
                                 <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                                 <polyline points="9 22 9 12 15 12 15 22"></polyline>
                             </svg>
-                            أصحاب المنازل
+                            Homeowners
                         </h3>
-                        <p>الشريحة الثانوية - B2C</p>
+                        <p>Secondary Segment - B2C</p>
                     </div>
                     <div class="segment-body">
                         <p class="segment-quote">
-                            ابنِ أو جدد منزلك بثقة. قارن بين المقاولين الموثقين، اطلع على التقييمات الحقيقية، واتخذ قرارات مستنيرة - لا مزيد من المقامرة على الإحالات.
+                            Build or renovate with confidence. Compare verified contractors, see real reviews, and make informed decisions—no more gambling on referrals.
                         </p>
                         <div class="segment-features">
                             <div class="segment-feature">
                                 <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span>مقاولون مصنفون ومقيمون</span>
+                                <span>Classified and rated contractors</span>
                             </div>
                             <div class="segment-feature">
                                 <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span>عروض أسعار شفافة ومقارنات</span>
+                                <span>Transparent quotes and comparisons</span>
                             </div>
                             <div class="segment-feature">
                                 <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span>حجز بسيط وتتبع سهل</span>
+                                <span>Simple booking and easy tracking</span>
                             </div>
                         </div>
                     </div>
@@ -843,32 +851,32 @@
     <!-- Competitive Positioning -->
     <section class="section section-light">
         <div class="container">
-            <h2 class="section-title">موقعنا التنافسي</h2>
-            <p class="section-subtitle">كيف نتميز عن البدائل الحالية</p>
+            <h2 class="section-title">Competitive Positioning</h2>
+            <p class="section-subtitle">How we stand out from current alternatives</p>
 
             <div class="positioning-wrapper">
                 <div class="positioning-map">
-                    <span class="axis-label top">ثقة وتوثيق عالي</span>
-                    <span class="axis-label bottom">ثقة وتوثيق منخفض</span>
-                    <span class="axis-label right">سهولة استخدام عالية</span>
-                    <span class="axis-label left">سهولة استخدام منخفضة</span>
+                    <span class="axis-label top">High Trust & Verification</span>
+                    <span class="axis-label bottom">Low Trust & Verification</span>
+                    <span class="axis-label right">High Usability</span>
+                    <span class="axis-label left">Low Usability</span>
 
                     <div class="map-grid">
                         <div class="competitor-dot mimar">
                             <div class="dot"></div>
-                            <span class="label">معمار</span>
+                            <span class="label">Mi'mar</span>
                         </div>
                         <div class="competitor-dot muqawil">
                             <div class="dot"></div>
-                            <span class="label">مُقاول</span>
+                            <span class="label">Muqawil</span>
                         </div>
                         <div class="competitor-dot haraj">
                             <div class="dot"></div>
-                            <span class="label">حراج</span>
+                            <span class="label">Haraj</span>
                         </div>
                         <div class="competitor-dot referrals">
                             <div class="dot"></div>
-                            <span class="label">الإحالات الشخصية</span>
+                            <span class="label">Personal Referrals</span>
                         </div>
                     </div>
                 </div>
@@ -879,8 +887,8 @@
     <!-- Key Differentiators -->
     <section class="section section-beige">
         <div class="container">
-            <h2 class="section-title">المميزات الرئيسية</h2>
-            <p class="section-subtitle">ما يجعلنا مختلفين عن الآخرين</p>
+            <h2 class="section-title">Key Differentiators</h2>
+            <p class="section-subtitle">What makes us different from others</p>
 
             <div class="diff-grid">
                 <div class="diff-card">
@@ -890,10 +898,10 @@
                             <polyline points="14 2 14 8 20 8"></polyline>
                             <path d="M9 15l2 2 4-4"></path>
                         </svg>
-                        التصنيف الرسمي
+                        Official Classification
                     </h4>
-                    <p class="diff-what">تصنيفات المقاولين المعتمدة حكومياً (من الأول إلى الخامس)</p>
-                    <p class="diff-why">ضمان المصداقية والامتثال للمعايير</p>
+                    <p class="diff-what">Government-verified contractor ratings (1st to 5th class)</p>
+                    <p class="diff-why">Ensures credibility and compliance</p>
                 </div>
 
                 <div class="diff-card">
@@ -901,10 +909,10 @@
                         <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                         </svg>
-                        تقييمات حقيقية
+                        Real Customer Reviews
                     </h4>
-                    <p class="diff-what">تقييمات موثقة من مشاريع مكتملة فعلياً</p>
-                    <p class="diff-why">رؤى صادقة عن الأداء الحقيقي</p>
+                    <p class="diff-what">Verified feedback from actually completed projects</p>
+                    <p class="diff-why">Honest insights into real performance</p>
                 </div>
 
                 <div class="diff-card">
@@ -914,10 +922,10 @@
                             <line x1="12" y1="20" x2="12" y2="4"></line>
                             <line x1="6" y1="20" x2="6" y2="14"></line>
                         </svg>
-                        مقارنة شفافة
+                        Transparent Comparison
                     </h4>
-                    <p class="diff-what">تقييم المقاولين جنباً إلى جنب</p>
-                    <p class="diff-why">اتخاذ قرارات مستنيرة وواعية</p>
+                    <p class="diff-what">Side-by-side contractor evaluation</p>
+                    <p class="diff-why">Informed and aware decision-making</p>
                 </div>
 
                 <div class="diff-card">
@@ -927,10 +935,10 @@
                             <line x1="8" y1="21" x2="16" y2="21"></line>
                             <line x1="12" y1="17" x2="12" y2="21"></line>
                         </svg>
-                        وصول متعدد الخدمات
+                        Multi-Service Access
                     </h4>
-                    <p class="diff-what">منصة واحدة لجميع تخصصات البناء</p>
-                    <p class="diff-why">راحة وكفاءة في البحث</p>
+                    <p class="diff-what">One platform for all construction specialties</p>
+                    <p class="diff-why">Convenience and efficiency in search</p>
                 </div>
 
                 <div class="diff-card">
@@ -938,10 +946,10 @@
                         <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
                         </svg>
-                        تتبع المراحل
+                        Milestone Tracking
                     </h4>
-                    <p class="diff-what">متابعة تقدم المشروع بشكل مرئي</p>
-                    <p class="diff-why">مساءلة وتحكم كامل</p>
+                    <p class="diff-what">Visual project progress monitoring</p>
+                    <p class="diff-why">Full accountability and control</p>
                 </div>
 
                 <div class="diff-card">
@@ -949,10 +957,10 @@
                         <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                         </svg>
-                        ضمان الجودة
+                        Quality Assurance
                     </h4>
-                    <p class="diff-what">فحص وتدقيق المقاولين قبل الإدراج</p>
-                    <p class="diff-why">ثقة ومصداقية مضمونة</p>
+                    <p class="diff-what">Contractor vetting before listing</p>
+                    <p class="diff-why">Guaranteed trust and credibility</p>
                 </div>
             </div>
         </div>
@@ -961,10 +969,10 @@
     <!-- Brand Promise -->
     <section class="promise-section">
         <div class="container">
-            <h2>وعد العلامة التجارية</h2>
-            <p class="promise-statement">"نزيل عدم اليقين من قرارات البناء"</p>
+            <h2>Our Brand Promise</h2>
+            <p class="promise-statement">"Build with Confidence, Not Chance"</p>
             <p style="opacity: 0.8; max-width: 600px; margin: 0 auto;">
-                كل ميزة، كل تفاعل، كل جزء من المحتوى يعزز:
+                Every feature, every interaction, every piece of content reinforces:
             </p>
 
             <div class="promise-pillars">
@@ -974,7 +982,7 @@
                             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                         </svg>
                     </div>
-                    <span>تقليل المخاطر</span>
+                    <span>Risk Reduction</span>
                 </div>
                 <div class="promise-pillar">
                     <div class="promise-pillar-icon">
@@ -983,7 +991,7 @@
                             <polyline points="12 6 12 12 16 14"></polyline>
                         </svg>
                     </div>
-                    <span>اختيار مستنير</span>
+                    <span>Informed Choice</span>
                 </div>
                 <div class="promise-pillar">
                     <div class="promise-pillar-icon">
@@ -994,7 +1002,7 @@
                             <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                         </svg>
                     </div>
-                    <span>ثقة مهنية</span>
+                    <span>Professional Trust</span>
                 </div>
             </div>
         </div>
@@ -1003,11 +1011,11 @@
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
-            <h2>ابدأ رحلتك مع معمار اليوم</h2>
-            <p>انضم إلى آلاف العملاء الذين يثقون في معمار لاختيار مقاوليهم</p>
+            <h2>Start Your Journey with Mi'mar Today</h2>
+            <p>Join thousands of customers who trust Mi'mar to find their contractors</p>
             <div class="cta-buttons">
-                <a href="register.html" class="btn" style="background: var(--white); color: var(--primary-orange);">أبحث عن مقاول</a>
-                <a href="register.html?type=provider" class="btn btn-outline" style="border-color: var(--white); color: var(--white);">انضم كمقاول</a>
+                <a href="register.html" class="btn" style="background: var(--white); color: var(--primary-orange);">Find a Contractor</a>
+                <a href="register.html?type=provider" class="btn btn-outline" style="border-color: var(--white); color: var(--white);">Join as Contractor</a>
             </div>
         </div>
     </section>
@@ -1017,9 +1025,9 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <img src="assets/images/logo.png" alt="معمار">
+                    <img src="assets/images/logo.png" alt="Mi'mar">
                     <p>
-                        منصة رقمية سعودية تربط العملاء بمقاولين موثوقين ومعتمدين، لتسهيل اتخاذ قرارات البناء والتجديد بثقة وشفافية.
+                        A Saudi digital platform connecting customers with trusted and certified contractors, making construction and renovation decisions with confidence and transparency.
                     </p>
                     <div style="display: flex; gap: var(--space-3); margin-top: var(--space-4);">
                         <a href="#" style="width: 40px; height: 40px; background: var(--gray-200); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; color: var(--gray-600);">
@@ -1034,37 +1042,37 @@
                     </div>
                 </div>
                 <div>
-                    <h4 class="footer-title">روابط سريعة</h4>
+                    <h4 class="footer-title">Quick Links</h4>
                     <ul class="footer-links">
-                        <li><a href="index.html">الرئيسية</a></li>
-                        <li><a href="contractors.html">المقاولون</a></li>
-                        <li><a href="about.html">لماذا معمار</a></li>
-                        <li><a href="index.html#how-it-works">كيف يعمل</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="contractors.html">Contractors</a></li>
+                        <li><a href="about.html">Why Mi'mar</a></li>
+                        <li><a href="index.html#how-it-works">How It Works</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="footer-title">للعملاء</h4>
+                    <h4 class="footer-title">For Customers</h4>
                     <ul class="footer-links">
-                        <li><a href="contractors.html">ابحث عن مقاول</a></li>
-                        <li><a href="#">أسئلة شائعة</a></li>
-                        <li><a href="#">الدعم الفني</a></li>
+                        <li><a href="contractors.html">Find a Contractor</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Support</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="footer-title">للمقاولين</h4>
+                    <h4 class="footer-title">For Contractors</h4>
                     <ul class="footer-links">
-                        <li><a href="register.html?type=provider">انضم كمقاول</a></li>
-                        <li><a href="provider/subscription.html">باقات الاشتراك</a></li>
-                        <li><a href="#">دليل النجاح</a></li>
-                        <li><a href="#">تواصل معنا</a></li>
+                        <li><a href="register.html?type=provider">Join as Contractor</a></li>
+                        <li><a href="provider/subscription.html">Subscription Plans</a></li>
+                        <li><a href="#">Success Guide</a></li>
+                        <li><a href="#">Contact Us</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p style="color: var(--dark-charcoal);">© 2026 معمار. جميع الحقوق محفوظة.</p>
+                <p style="color: var(--dark-charcoal);">© 2026 Mi'mar. All rights reserved.</p>
                 <div class="flex gap-4">
-                    <a href="#" style="color: var(--dark-charcoal);">سياسة الخصوصية</a>
-                    <a href="#" style="color: var(--dark-charcoal);">الشروط والأحكام</a>
+                    <a href="#" style="color: var(--dark-charcoal);">Privacy Policy</a>
+                    <a href="#" style="color: var(--dark-charcoal);">Terms & Conditions</a>
                 </div>
             </div>
         </div>
@@ -1074,19 +1082,19 @@
     <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
     <div class="mobile-nav" id="mobileNav">
         <div class="mobile-nav-header">
-            <img src="assets/images/logo.png" alt="معمار" style="height: 40px;">
+            <img src="assets/images/logo.png" alt="Mi'mar" style="height: 40px;">
             <button class="mobile-nav-close" id="mobileNavClose">&times;</button>
         </div>
         <ul class="mobile-nav-links">
-            <li><a href="index.html">الرئيسية</a></li>
-            <li><a href="contractors.html">المقاولون</a></li>
-            <li><a href="about.html">لماذا معمار</a></li>
-            <li><a href="index.html#how-it-works">كيف يعمل</a></li>
-            <li><a href="index.html#contact">تواصل معنا</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="contractors.html">Contractors</a></li>
+            <li><a href="about.html">Why Mi'mar</a></li>
+            <li><a href="index.html#how-it-works">How It Works</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
         </ul>
         <div class="mobile-nav-actions">
-            <a href="login.html" class="btn btn-outline" style="width: 100%; text-align: center;">تسجيل الدخول</a>
-            <a href="register.html" class="btn btn-primary" style="width: 100%; text-align: center;">إنشاء حساب</a>
+            <a href="login.html" class="btn btn-outline" style="width: 100%; text-align: center;">Login</a>
+            <a href="register.html" class="btn btn-primary" style="width: 100%; text-align: center;">Sign Up</a>
         </div>
     </div>
 
