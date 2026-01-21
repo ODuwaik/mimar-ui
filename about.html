@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لماذا معمار - قيمتنا المميزة</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Header Styles */
+        .header {
+            position: relative;
+            background-color: var(--white);
+            box-shadow: var(--shadow-sm);
+            height: auto;
+            padding: var(--space-4) 0;
+        }
+        .logo img {
+            height: 88px;
+        }
+        .nav-link {
+            color: var(--dark-charcoal);
+        }
+        .nav-link:hover {
+            color: var(--primary-orange);
+        }
+
+        /* Mobile Navigation */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 280px;
+            height: 100vh;
+            background: var(--white);
+            box-shadow: var(--shadow-xl);
+            z-index: 1001;
+            padding: var(--space-6);
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        .mobile-nav.open {
+            transform: translateX(0);
+        }
+        .mobile-nav-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .mobile-nav-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-8);
+            padding-bottom: var(--space-4);
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .mobile-nav-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray-600);
+        }
+        .mobile-nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+        }
+        .mobile-nav-links a {
+            display: block;
+            padding: var(--space-3) var(--space-4);
+            color: var(--dark-charcoal);
+            text-decoration: none;
+            border-radius: var(--radius-lg);
+            transition: background 0.2s;
+        }
+        .mobile-nav-links a:hover {
+            background: var(--light-beige);
+            color: var(--primary-orange);
+        }
+        .mobile-nav-actions {
+            margin-top: var(--space-8);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+        }
+        @media (max-width: 991px) {
+            .mobile-nav,
+            .mobile-nav-overlay {
+                display: block;
+            }
+            .menu-toggle {
+                display: flex !important;
+                flex-direction: column;
+                gap: 5px;
+                padding: var(--space-2);
+                cursor: pointer;
+                z-index: 1001;
+                background: none;
+                border: none;
+            }
+            .menu-toggle span {
+                width: 24px;
+                height: 3px;
+                background: var(--dark-charcoal);
+                border-radius: 2px;
+                transition: all 0.3s ease;
+            }
+        }
+
+        /* Hero Section */
+        .uvp-hero {
+            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--primary-orange-hover) 100%);
+            padding: var(--space-16) 0;
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .uvp-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+        }
+        .uvp-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 50%;
+        }
+        .uvp-hero .container {
+            position: relative;
+            z-index: 1;
+        }
+        .uvp-hero h1 {
+            color: var(--white);
+            font-size: var(--font-size-4xl);
+            margin-bottom: var(--space-4);
+            line-height: 1.3;
+        }
+        .uvp-hero h1 span {
+            display: block;
+            font-size: var(--font-size-xl);
+            font-weight: 400;
+            opacity: 0.9;
+            margin-top: var(--space-2);
+        }
+        .uvp-hero-statement {
+            font-size: var(--font-size-lg);
+            max-width: 800px;
+            margin: 0 auto var(--space-8);
+            opacity: 0.95;
+            line-height: 1.8;
+        }
+        .uvp-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            background: rgba(255,255,255,0.15);
+            padding: var(--space-3) var(--space-6);
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-sm);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Section Styling */
+        .section {
+            padding: var(--space-16) 0;
+        }
+        .section-light {
+            background: var(--white);
+        }
+        .section-beige {
+            background: var(--light-beige);
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: var(--space-4);
+        }
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray-600);
+            max-width: 600px;
+            margin: 0 auto var(--space-10);
+        }
+
+        /* UVP Framework */
+        .uvp-framework {
+            background: var(--white);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-8);
+            box-shadow: var(--shadow-lg);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .uvp-row {
+            display: flex;
+            border-bottom: 1px solid var(--gray-100);
+            padding: var(--space-4) 0;
+        }
+        .uvp-row:last-child {
+            border-bottom: none;
+        }
+        .uvp-label {
+            width: 120px;
+            flex-shrink: 0;
+            font-weight: 700;
+            color: var(--primary-orange);
+            font-size: var(--font-size-sm);
+        }
+        .uvp-value {
+            flex: 1;
+            color: var(--dark-charcoal);
+            line-height: 1.7;
+        }
+
+        /* Pillars Section */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-6);
+        }
+        .pillar-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            padding: var(--space-6);
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        .pillar-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-orange);
+        }
+        .pillar-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--primary-orange-hover) 100%);
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-4);
+            color: var(--white);
+        }
+        .pillar-card h3 {
+            color: var(--dark-charcoal);
+            margin-bottom: var(--space-2);
+            font-size: var(--font-size-lg);
+        }
+        .pillar-problem {
+            font-size: var(--font-size-sm);
+            color: var(--gray-500);
+            margin-bottom: var(--space-3);
+            padding-bottom: var(--space-3);
+            border-bottom: 1px dashed var(--gray-200);
+        }
+        .pillar-solution {
+            font-size: var(--font-size-sm);
+            color: var(--dark-charcoal);
+            line-height: 1.6;
+        }
+
+        /* Segments Section */
+        .segments-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-8);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .segment-card {
+            background: var(--white);
+            border-radius: var(--radius-2xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        .segment-header {
+            padding: var(--space-6);
+            color: var(--white);
+        }
+        .segment-header.primary {
+            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--primary-orange-hover) 100%);
+        }
+        .segment-header.secondary {
+            background: linear-gradient(135deg, var(--secondary-gold) 0%, var(--secondary-gold-hover) 100%);
+        }
+        .segment-header h3 {
+            color: var(--white);
+            margin-bottom: var(--space-2);
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+        }
+        .segment-header p {
+            opacity: 0.9;
+            font-size: var(--font-size-sm);
+        }
+        .segment-body {
+            padding: var(--space-6);
+        }
+        .segment-quote {
+            font-size: var(--font-size-lg);
+            color: var(--dark-charcoal);
+            line-height: 1.7;
+            position: relative;
+            padding-right: var(--space-6);
+        }
+        .segment-quote::before {
+            content: '"';
+            position: absolute;
+            right: 0;
+            top: -10px;
+            font-size: 3rem;
+            color: var(--primary-orange);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+        }
+        .segment-features {
+            margin-top: var(--space-4);
+            padding-top: var(--space-4);
+            border-top: 1px solid var(--gray-100);
+        }
+        .segment-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-3);
+            margin-bottom: var(--space-3);
+            font-size: var(--font-size-sm);
+            color: var(--gray-600);
+        }
+        .segment-feature svg {
+            flex-shrink: 0;
+            color: var(--success);
+            margin-top: 2px;
+        }
+
+        /* Positioning Map */
+        .positioning-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .positioning-map {
+            background: var(--white);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-8);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            height: 500px;
+        }
+        .map-grid {
+            position: absolute;
+            top: 60px;
+            left: 60px;
+            right: 40px;
+            bottom: 60px;
+            border-right: 2px solid var(--gray-200);
+            border-bottom: 2px solid var(--gray-200);
+        }
+        .map-grid::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            border-top: 1px dashed var(--gray-200);
+        }
+        .map-grid::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            border-right: 1px dashed var(--gray-200);
+        }
+        .axis-label {
+            position: absolute;
+            font-size: var(--font-size-xs);
+            color: var(--gray-500);
+            font-weight: 600;
+        }
+        .axis-label.top {
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .axis-label.bottom {
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .axis-label.right {
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            writing-mode: vertical-rl;
+        }
+        .axis-label.left {
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            writing-mode: vertical-rl;
+        }
+        .competitor-dot {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-1);
+        }
+        .competitor-dot .dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--gray-400);
+        }
+        .competitor-dot .label {
+            font-size: var(--font-size-xs);
+            color: var(--gray-600);
+            white-space: nowrap;
+        }
+        .competitor-dot.mimar {
+            top: 15%;
+            right: 20%;
+        }
+        .competitor-dot.mimar .dot {
+            width: 24px;
+            height: 24px;
+            background: var(--primary-orange);
+            box-shadow: 0 0 0 4px rgba(199, 91, 42, 0.2);
+        }
+        .competitor-dot.mimar .label {
+            font-weight: 700;
+            color: var(--primary-orange);
+        }
+        .competitor-dot.muqawil {
+            top: 25%;
+            right: 70%;
+        }
+        .competitor-dot.haraj {
+            top: 70%;
+            right: 25%;
+        }
+        .competitor-dot.referrals {
+            top: 65%;
+            right: 55%;
+        }
+
+        /* Differentiators */
+        .diff-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-6);
+        }
+        .diff-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            padding: var(--space-6);
+            box-shadow: var(--shadow-md);
+            border-top: 4px solid var(--primary-orange);
+        }
+        .diff-card h4 {
+            color: var(--dark-charcoal);
+            margin-bottom: var(--space-2);
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+        .diff-card h4 svg {
+            color: var(--primary-orange);
+        }
+        .diff-what {
+            font-size: var(--font-size-sm);
+            color: var(--gray-600);
+            margin-bottom: var(--space-3);
+            padding-bottom: var(--space-3);
+            border-bottom: 1px solid var(--gray-100);
+        }
+        .diff-why {
+            font-size: var(--font-size-sm);
+            color: var(--dark-charcoal);
+            font-weight: 500;
+        }
+
+        /* Brand Promise */
+        .promise-section {
+            background: linear-gradient(135deg, var(--dark-charcoal) 0%, #2a2a2a 100%);
+            padding: var(--space-16) 0;
+            text-align: center;
+            color: var(--white);
+        }
+        .promise-section h2 {
+            color: var(--white);
+            margin-bottom: var(--space-4);
+        }
+        .promise-statement {
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+            margin-bottom: var(--space-6);
+            color: var(--primary-orange);
+        }
+        .promise-pillars {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-8);
+            margin-top: var(--space-8);
+        }
+        .promise-pillar {
+            text-align: center;
+        }
+        .promise-pillar-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(255,255,255,0.1);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-3);
+            color: var(--primary-orange);
+        }
+        .promise-pillar span {
+            font-size: var(--font-size-sm);
+            opacity: 0.8;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--primary-orange-hover) 100%);
+            padding: var(--space-12) 0;
+            text-align: center;
+        }
+        .cta-section h2 {
+            color: var(--white);
+            margin-bottom: var(--space-4);
+        }
+        .cta-section p {
+            color: rgba(255,255,255,0.9);
+            margin-bottom: var(--space-6);
+            font-size: var(--font-size-lg);
+        }
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-4);
+        }
+        .cta-buttons .btn {
+            padding: var(--space-4) var(--space-8);
+        }
+
+        /* Responsive */
+        @media (max-width: 991px) {
+            .pillars-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .segments-grid {
+                grid-template-columns: 1fr;
+            }
+            .diff-grid {
+                grid-template-columns: 1fr;
+            }
+            .promise-pillars {
+                flex-wrap: wrap;
+                gap: var(--space-4);
+            }
+        }
+        @media (max-width: 767px) {
+            .pillars-grid {
+                grid-template-columns: 1fr;
+            }
+            .uvp-hero h1 {
+                font-size: var(--font-size-2xl);
+            }
+            .uvp-row {
+                flex-direction: column;
+                gap: var(--space-2);
+            }
+            .uvp-label {
+                width: 100%;
+            }
+            .positioning-map {
+                height: 400px;
+            }
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo.png" alt="معمار">
+            </a>
+            <nav class="nav">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">الرئيسية</a></li>
+                    <li><a href="contractors.html" class="nav-link">المقاولون</a></li>
+                    <li><a href="about.html" class="nav-link active">لماذا معمار</a></li>
+                    <li><a href="index.html#how-it-works" class="nav-link">كيف يعمل</a></li>
+                    <li><a href="index.html#contact" class="nav-link">تواصل معنا</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="login.html" class="btn btn-ghost">تسجيل الدخول</a>
+                    <a href="register.html" class="btn btn-primary">إنشاء حساب</a>
+                </div>
+                <button class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="uvp-hero">
+        <div class="container">
+            <div class="uvp-hero-badge">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M9 12l2 2 4-4"></path>
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+                شركاء موثوقون
+            </div>
+            <h1>
+                نحول قرارات البناء من مقامرة إلى ثقة
+                <span>المنصة الرقمية الموثوقة لخدمات البناء في المملكة</span>
+            </h1>
+            <p class="uvp-hero-statement">
+                منصة رقمية موثوقة تزيل مخاطر اختيار المقاولين من خلال الجمع بين التصنيفات الحكومية الرسمية وتقييمات العملاء الحقيقية، لتحويل قرارات البناء من مقامرات غير مضمونة إلى خيارات واثقة.
+            </p>
+        </div>
+    </section>
+
+    <!-- UVP Framework -->
+    <section class="section section-beige">
+        <div class="container">
+            <h2 class="section-title">إطار القيمة المميزة</h2>
+            <p class="section-subtitle">كيف نقدم قيمة فريدة لعملائنا</p>
+
+            <div class="uvp-framework">
+                <div class="uvp-row">
+                    <div class="uvp-label">لمن؟</div>
+                    <div class="uvp-value">مكاتب التصميم، الشركات الصغيرة والمتوسطة، وأصحاب المنازل في المملكة العربية السعودية</div>
+                </div>
+                <div class="uvp-row">
+                    <div class="uvp-label">الذين</div>
+                    <div class="uvp-value">يحتاجون إلى إيجاد مقاولين موثوقين ومؤهلين لكنهم يواجهون عدم اليقين والمخاطر وانعدام الشفافية</div>
+                </div>
+                <div class="uvp-row">
+                    <div class="uvp-label">منتجنا</div>
+                    <div class="uvp-value">سوق رقمي لخدمات البناء</div>
+                </div>
+                <div class="uvp-row">
+                    <div class="uvp-label">الذي يوفر</div>
+                    <div class="uvp-value">ملفات تعريف موثقة للمقاولين مع تصنيفات رسمية وتقييمات عملاء حقيقية ومقارنات شفافة</div>
+                </div>
+                <div class="uvp-row">
+                    <div class="uvp-label">على عكس</div>
+                    <div class="uvp-value">الإحالات الشخصية (مستهلكة للوقت، غير موضوعية)، مقاول (غير سهل الاستخدام)، وحراج (غير متخصص، غير موثق)</div>
+                </div>
+                <div class="uvp-row">
+                    <div class="uvp-label">نحن</div>
+                    <div class="uvp-value">نجمع بين بيانات التصنيف الحكومي الرسمي وتقييمات العملاء الحقيقية في منصة واحدة احترافية وسهلة الاستخدام</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4 Pillars -->
+    <section class="section section-light">
+        <div class="container">
+            <h2 class="section-title">الركائز الأربع للقيمة</h2>
+            <p class="section-subtitle">أساس نجاحنا في خدمة عملائنا</p>
+
+            <div class="pillars-grid">
+                <!-- Transparency -->
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg>
+                    </div>
+                    <h3>الشفافية</h3>
+                    <p class="pillar-problem">المشكلة: معلومات مخفية وقدرات غير واضحة للمقاولين</p>
+                    <p class="pillar-solution">الحل: بيانات واضحة وغير محررة، تقييمات حقيقية، وتصنيفات رسمية</p>
+                </div>
+
+                <!-- Reliability -->
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            <path d="M9 12l2 2 4-4"></path>
+                        </svg>
+                    </div>
+                    <h3>الموثوقية</h3>
+                    <p class="pillar-problem">المشكلة: جودة غير متوقعة، تأخيرات، وتكاليف مفاجئة</p>
+                    <p class="pillar-solution">الحل: مهنيون موثقون مع سجلات أداء وتاريخ عمل حقيقي</p>
+                </div>
+
+                <!-- Empowerment -->
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                        </svg>
+                    </div>
+                    <h3>التمكين</h3>
+                    <p class="pillar-problem">المشكلة: الاعتماد على إحالات محدودة وعدم تماثل المعلومات</p>
+                    <p class="pillar-solution">الحل: أدوات وبيانات لاتخاذ قرارات مستنيرة بشكل مستقل</p>
+                </div>
+
+                <!-- Integrity -->
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <polyline points="9 11 12 14 22 4"></polyline>
+                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                        </svg>
+                    </div>
+                    <h3>النزاهة</h3>
+                    <p class="pillar-problem">المشكلة: ادعاءات غير موثقة وانعدام المساءلة</p>
+                    <p class="pillar-solution">الحل: مهنيون مصنفون ومدققون فقط في قوائمنا</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Segments -->
+    <section class="section section-beige">
+        <div class="container">
+            <h2 class="section-title">القيمة حسب الشريحة</h2>
+            <p class="section-subtitle">حلول مخصصة لكل نوع من العملاء</p>
+
+            <div class="segments-grid">
+                <!-- Primary Segment -->
+                <div class="segment-card">
+                    <div class="segment-header primary">
+                        <h3>
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M3 21h18"></path>
+                                <path d="M9 8h1"></path>
+                                <path d="M9 12h1"></path>
+                                <path d="M9 16h1"></path>
+                                <path d="M14 8h1"></path>
+                                <path d="M14 12h1"></path>
+                                <path d="M14 16h1"></path>
+                                <path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"></path>
+                            </svg>
+                            مكاتب التصميم والشركات
+                        </h3>
+                        <p>الشريحة الأساسية - B2B</p>
+                    </div>
+                    <div class="segment-body">
+                        <p class="segment-quote">
+                            ابحث عن مقاولين موثقين بشكل أسرع، وقلل مخاطر المشاريع، واحمِ سمعتك من خلال شبكة شفافة من مزودي الخدمات المصنفين - كل ذلك في منصة واحدة.
+                        </p>
+                        <div class="segment-features">
+                            <div class="segment-feature">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span>شبكة موثقة من مزودي الخدمات</span>
+                            </div>
+                            <div class="segment-feature">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span>تقليل المخاطر من خلال مقارنات شفافة</span>
+                            </div>
+                            <div class="segment-feature">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span>تتبع مراحل المشروع والتوثيق</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Secondary Segment -->
+                <div class="segment-card">
+                    <div class="segment-header secondary">
+                        <h3>
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                            </svg>
+                            أصحاب المنازل
+                        </h3>
+                        <p>الشريحة الثانوية - B2C</p>
+                    </div>
+                    <div class="segment-body">
+                        <p class="segment-quote">
+                            ابنِ أو جدد منزلك بثقة. قارن بين المقاولين الموثقين، اطلع على التقييمات الحقيقية، واتخذ قرارات مستنيرة - لا مزيد من المقامرة على الإحالات.
+                        </p>
+                        <div class="segment-features">
+                            <div class="segment-feature">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span>مقاولون مصنفون ومقيمون</span>
+                            </div>
+                            <div class="segment-feature">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span>عروض أسعار شفافة ومقارنات</span>
+                            </div>
+                            <div class="segment-feature">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span>حجز بسيط وتتبع سهل</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Competitive Positioning -->
+    <section class="section section-light">
+        <div class="container">
+            <h2 class="section-title">موقعنا التنافسي</h2>
+            <p class="section-subtitle">كيف نتميز عن البدائل الحالية</p>
+
+            <div class="positioning-wrapper">
+                <div class="positioning-map">
+                    <span class="axis-label top">ثقة وتوثيق عالي</span>
+                    <span class="axis-label bottom">ثقة وتوثيق منخفض</span>
+                    <span class="axis-label right">سهولة استخدام عالية</span>
+                    <span class="axis-label left">سهولة استخدام منخفضة</span>
+
+                    <div class="map-grid">
+                        <div class="competitor-dot mimar">
+                            <div class="dot"></div>
+                            <span class="label">معمار</span>
+                        </div>
+                        <div class="competitor-dot muqawil">
+                            <div class="dot"></div>
+                            <span class="label">مُقاول</span>
+                        </div>
+                        <div class="competitor-dot haraj">
+                            <div class="dot"></div>
+                            <span class="label">حراج</span>
+                        </div>
+                        <div class="competitor-dot referrals">
+                            <div class="dot"></div>
+                            <span class="label">الإحالات الشخصية</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Differentiators -->
+    <section class="section section-beige">
+        <div class="container">
+            <h2 class="section-title">المميزات الرئيسية</h2>
+            <p class="section-subtitle">ما يجعلنا مختلفين عن الآخرين</p>
+
+            <div class="diff-grid">
+                <div class="diff-card">
+                    <h4>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <path d="M9 15l2 2 4-4"></path>
+                        </svg>
+                        التصنيف الرسمي
+                    </h4>
+                    <p class="diff-what">تصنيفات المقاولين المعتمدة حكومياً (من الأول إلى الخامس)</p>
+                    <p class="diff-why">ضمان المصداقية والامتثال للمعايير</p>
+                </div>
+
+                <div class="diff-card">
+                    <h4>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        تقييمات حقيقية
+                    </h4>
+                    <p class="diff-what">تقييمات موثقة من مشاريع مكتملة فعلياً</p>
+                    <p class="diff-why">رؤى صادقة عن الأداء الحقيقي</p>
+                </div>
+
+                <div class="diff-card">
+                    <h4>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <line x1="18" y1="20" x2="18" y2="10"></line>
+                            <line x1="12" y1="20" x2="12" y2="4"></line>
+                            <line x1="6" y1="20" x2="6" y2="14"></line>
+                        </svg>
+                        مقارنة شفافة
+                    </h4>
+                    <p class="diff-what">تقييم المقاولين جنباً إلى جنب</p>
+                    <p class="diff-why">اتخاذ قرارات مستنيرة وواعية</p>
+                </div>
+
+                <div class="diff-card">
+                    <h4>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                        </svg>
+                        وصول متعدد الخدمات
+                    </h4>
+                    <p class="diff-what">منصة واحدة لجميع تخصصات البناء</p>
+                    <p class="diff-why">راحة وكفاءة في البحث</p>
+                </div>
+
+                <div class="diff-card">
+                    <h4>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                        </svg>
+                        تتبع المراحل
+                    </h4>
+                    <p class="diff-what">متابعة تقدم المشروع بشكل مرئي</p>
+                    <p class="diff-why">مساءلة وتحكم كامل</p>
+                </div>
+
+                <div class="diff-card">
+                    <h4>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                        ضمان الجودة
+                    </h4>
+                    <p class="diff-what">فحص وتدقيق المقاولين قبل الإدراج</p>
+                    <p class="diff-why">ثقة ومصداقية مضمونة</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Promise -->
+    <section class="promise-section">
+        <div class="container">
+            <h2>وعد العلامة التجارية</h2>
+            <p class="promise-statement">"نزيل عدم اليقين من قرارات البناء"</p>
+            <p style="opacity: 0.8; max-width: 600px; margin: 0 auto;">
+                كل ميزة، كل تفاعل، كل جزء من المحتوى يعزز:
+            </p>
+
+            <div class="promise-pillars">
+                <div class="promise-pillar">
+                    <div class="promise-pillar-icon">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <span>تقليل المخاطر</span>
+                </div>
+                <div class="promise-pillar">
+                    <div class="promise-pillar-icon">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </div>
+                    <span>اختيار مستنير</span>
+                </div>
+                <div class="promise-pillar">
+                    <div class="promise-pillar-icon">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <span>ثقة مهنية</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>ابدأ رحلتك مع معمار اليوم</h2>
+            <p>انضم إلى آلاف العملاء الذين يثقون في معمار لاختيار مقاوليهم</p>
+            <div class="cta-buttons">
+                <a href="register.html" class="btn" style="background: var(--white); color: var(--primary-orange);">أبحث عن مقاول</a>
+                <a href="register.html?type=provider" class="btn btn-outline" style="border-color: var(--white); color: var(--white);">انضم كمقاول</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="assets/images/logo.png" alt="معمار">
+                    <p>
+                        منصة رقمية سعودية تربط العملاء بمقاولين موثوقين ومعتمدين، لتسهيل اتخاذ قرارات البناء والتجديد بثقة وشفافية.
+                    </p>
+                    <div style="display: flex; gap: var(--space-3); margin-top: var(--space-4);">
+                        <a href="#" style="width: 40px; height: 40px; background: var(--gray-200); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; color: var(--gray-600);">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                        </a>
+                        <a href="#" style="width: 40px; height: 40px; background: var(--gray-200); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; color: var(--gray-600);">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                        <a href="#" style="width: 40px; height: 40px; background: var(--gray-200); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; color: var(--gray-600);">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-title">روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="contractors.html">المقاولون</a></li>
+                        <li><a href="about.html">لماذا معمار</a></li>
+                        <li><a href="index.html#how-it-works">كيف يعمل</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">للعملاء</h4>
+                    <ul class="footer-links">
+                        <li><a href="contractors.html">ابحث عن مقاول</a></li>
+                        <li><a href="#">أسئلة شائعة</a></li>
+                        <li><a href="#">الدعم الفني</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">للمقاولين</h4>
+                    <ul class="footer-links">
+                        <li><a href="register.html?type=provider">انضم كمقاول</a></li>
+                        <li><a href="provider/subscription.html">باقات الاشتراك</a></li>
+                        <li><a href="#">دليل النجاح</a></li>
+                        <li><a href="#">تواصل معنا</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p style="color: var(--dark-charcoal);">© 2026 معمار. جميع الحقوق محفوظة.</p>
+                <div class="flex gap-4">
+                    <a href="#" style="color: var(--dark-charcoal);">سياسة الخصوصية</a>
+                    <a href="#" style="color: var(--dark-charcoal);">الشروط والأحكام</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <img src="assets/images/logo.png" alt="معمار" style="height: 40px;">
+            <button class="mobile-nav-close" id="mobileNavClose">&times;</button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="contractors.html">المقاولون</a></li>
+            <li><a href="about.html">لماذا معمار</a></li>
+            <li><a href="index.html#how-it-works">كيف يعمل</a></li>
+            <li><a href="index.html#contact">تواصل معنا</a></li>
+        </ul>
+        <div class="mobile-nav-actions">
+            <a href="login.html" class="btn btn-outline" style="width: 100%; text-align: center;">تسجيل الدخول</a>
+            <a href="register.html" class="btn btn-primary" style="width: 100%; text-align: center;">إنشاء حساب</a>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Mobile Navigation
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mobileNav = document.getElementById('mobileNav');
+        const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+        const mobileNavClose = document.getElementById('mobileNavClose');
+
+        function openMobileNav() {
+            mobileNav.classList.add('open');
+            mobileNavOverlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileNav() {
+            mobileNav.classList.remove('open');
+            mobileNavOverlay.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        menuToggle?.addEventListener('click', openMobileNav);
+        mobileNavClose?.addEventListener('click', closeMobileNav);
+        mobileNavOverlay?.addEventListener('click', closeMobileNav);
+
+        document.querySelectorAll('.mobile-nav-links a').forEach(link => {
+            link.addEventListener('click', closeMobileNav);
+        });
+    </script>
+</body>
+</html>
