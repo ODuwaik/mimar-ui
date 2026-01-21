@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe - Contractor Profile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8f8f8;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Wireframe Helpers */
+        .placeholder-text {
+            background: #e0e0e0;
+            height: 12px;
+            border-radius: 2px;
+        }
+        .placeholder-text.sm { height: 10px; }
+        .placeholder-text.lg { height: 16px; }
+
+        .placeholder-btn {
+            background: #d0d0d0;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            color: #666;
+            font-size: 14px;
+        }
+        .placeholder-btn.primary {
+            background: #888;
+            color: #fff;
+        }
+        .placeholder-btn.outline {
+            background: transparent;
+            border: 2px solid #ccc;
+        }
+        .placeholder-btn.lg {
+            padding: 14px 28px;
+            width: 100%;
+        }
+
+        /* Section Label */
+        .section-label {
+            display: inline-block;
+            background: #333;
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== DASHBOARD LAYOUT ===== */
+        .dashboard-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            width: 280px;
+            background: #fff;
+            border-left: 1px solid #e0e0e0;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 100;
+        }
+        .sidebar-user {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .sidebar-avatar {
+            width: 44px;
+            height: 44px;
+            background: #d0d0d0;
+            border-radius: 8px;
+        }
+        .sidebar-user-info {
+            flex: 1;
+        }
+        .sidebar-user-name {
+            height: 12px;
+            background: #d0d0d0;
+            border-radius: 2px;
+            width: 100px;
+            margin-bottom: 6px;
+        }
+        .sidebar-user-role {
+            height: 10px;
+            background: #e5e5e5;
+            border-radius: 2px;
+            width: 70px;
+        }
+        .sidebar-nav {
+            flex: 1;
+        }
+        .sidebar-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 4px;
+        }
+        .sidebar-link.active {
+            background: #f0f0f0;
+        }
+        .sidebar-link-icon {
+            width: 22px;
+            height: 22px;
+            background: #d0d0d0;
+            border-radius: 4px;
+        }
+        .sidebar-link-text {
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 2px;
+            width: 80px;
+        }
+        .sidebar-logo {
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        .sidebar-logo-img {
+            width: 80px;
+            height: 40px;
+            background: #e0e0e0;
+            border-radius: 4px;
+        }
+
+        /* ===== MOBILE HEADER ===== */
+        .mobile-header {
+            display: none;
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            z-index: 200;
+        }
+        .burger-btn {
+            width: 48px;
+            height: 48px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        .burger-line {
+            width: 20px;
+            height: 2px;
+            background: #888;
+            border-radius: 1px;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main-content {
+            flex: 1;
+            margin-right: 280px;
+            padding: 32px;
+        }
+
+        /* ===== BACK LINK ===== */
+        .back-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+        .back-icon {
+            width: 18px;
+            height: 18px;
+            background: #e0e0e0;
+            border-radius: 4px;
+        }
+        .back-text {
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 2px;
+            width: 120px;
+        }
+
+        /* ===== PROFILE HERO ===== */
+        .profile-hero {
+            background: linear-gradient(135deg, #f5f5f5 0%, #fff 100%);
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 24px;
+            position: relative;
+        }
+        .profile-hero-content {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+        }
+        .profile-logo {
+            width: 100px;
+            height: 100px;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .profile-logo-inner {
+            width: 60px;
+            height: 30px;
+            background: #d0d0d0;
+            border-radius: 4px;
+        }
+        .profile-info {
+            flex: 1;
+        }
+        .profile-title-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+        .profile-title {
+            height: 24px;
+            background: #d0d0d0;
+            border-radius: 4px;
+            width: 200px;
+        }
+        .profile-badge {
+            background: #d5e8d5;
+            padding: 4px 12px;
+            border-radius: 20px;
+            height: 24px;
+            width: 60px;
+        }
+        .profile-subtitle {
+            height: 12px;
+            background: #e0e0e0;
+            border-radius: 2px;
+            width: 180px;
+            margin-bottom: 16px;
+        }
+        .profile-rating {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .rating-score {
+            width: 50px;
+            height: 36px;
+            background: #d0d0d0;
+            border-radius: 6px;
+        }
+        .rating-stars {
+            display: flex;
+            gap: 4px;
+        }
+        .star {
+            width: 18px;
+            height: 18px;
+            background: #ddd;
+            border-radius: 2px;
+        }
+        .rating-count {
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 2px;
+            width: 60px;
+        }
+        .profile-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .profile-tag {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            padding: 8px 16px;
+            border-radius: 20px;
+            height: 34px;
+            width: 80px;
+        }
+        .profile-actions {
+            display: flex;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+        .action-btn {
+            width: 44px;
+            height: 44px;
+            background: #f0f0f0;
+            border-radius: 10px;
+        }
+
+        /* ===== STATS BAR ===== */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .stat-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+        .stat-value {
+            height: 28px;
+            background: #d0d0d0;
+            border-radius: 4px;
+            width: 60px;
+            margin: 0 auto 8px;
+        }
+        .stat-label {
+            height: 10px;
+            background: #e5e5e5;
+            border-radius: 2px;
+            width: 80px;
+            margin: 0 auto;
+        }
+
+        /* ===== PROFILE GRID ===== */
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 24px;
+            align-items: flex-start;
+        }
+
+        /* ===== CONTENT TABS ===== */
+        .content-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .tab-btn {
+            padding: 10px 20px;
+            background: transparent;
+            border: none;
+            border-radius: 8px;
+        }
+        .tab-btn.active {
+            background: #888;
+        }
+        .tab-text {
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 2px;
+            width: 60px;
+        }
+        .tab-btn.active .tab-text {
+            background: rgba(255,255,255,0.5);
+        }
+
+        /* ===== CARD ===== */
+        .card {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .card-body {
+            padding: 24px;
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about-text {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .info-card {
+            background: #f8f8f8;
+            border-radius: 12px;
+            padding: 16px;
+        }
+        .info-card-title {
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 2px;
+            width: 80px;
+            margin-bottom: 12px;
+        }
+        .info-badges {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .info-badge {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            padding: 6px 12px;
+            border-radius: 6px;
+            height: 28px;
+            width: 60px;
+        }
+
+        /* ===== CERTIFICATIONS ===== */
+        .section-title {
+            height: 14px;
+            background: #d0d0d0;
+            border-radius: 2px;
+            width: 140px;
+            margin-bottom: 16px;
+        }
+        .cert-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .cert-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            background: #e8f5e8;
+            border-radius: 12px;
+        }
+        .cert-icon {
+            width: 44px;
+            height: 44px;
+            background: #fff;
+            border-radius: 50%;
+        }
+        .cert-info {
+            flex: 1;
+        }
+        .cert-name {
+            height: 12px;
+            background: #c5dcc5;
+            border-radius: 2px;
+            width: 140px;
+            margin-bottom: 6px;
+        }
+        .cert-detail {
+            height: 10px;
+            background: #d5e8d5;
+            border-radius: 2px;
+            width: 100px;
+        }
+
+        /* ===== PORTFOLIO GALLERY ===== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        .gallery-item {
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, #e0e0e0 0%, #d0d0d0 100%);
+            border-radius: 12px;
+            border: 2px dashed #ccc;
+        }
+
+        /* ===== SERVICES GRID ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .service-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            background: #f5f5f5;
+            border-radius: 10px;
+            margin-bottom: 16px;
+        }
+        .service-title {
+            height: 14px;
+            background: #d0d0d0;
+            border-radius: 2px;
+            width: 100px;
+            margin-bottom: 8px;
+        }
+        .service-desc {
+            height: 10px;
+            background: #e5e5e5;
+            border-radius: 2px;
+            width: 100%;
+            margin-bottom: 4px;
+        }
+        .service-price {
+            height: 12px;
+            background: #d0d0d0;
+            border-radius: 2px;
+            width: 80px;
+            margin-top: 12px;
+        }
+
+        /* ===== REVIEWS ===== */
+        .reviews-summary {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            padding: 24px;
+            background: #f8f8f8;
+            border-radius: 12px;
+            margin-bottom: 24px;
+        }
+        .reviews-score {
+            text-align: center;
+        }
+        .reviews-score-value {
+            width: 60px;
+            height: 40px;
+            background: #d0d0d0;
+            border-radius: 6px;
+            margin: 0 auto 8px;
+        }
+        .reviews-score-label {
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 2px;
+            width: 40px;
+            margin: 0 auto;
+        }
+        .reviews-breakdown {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .breakdown-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .breakdown-label {
+            width: 50px;
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 2px;
+        }
+        .breakdown-bar {
+            flex: 1;
+            height: 8px;
+            background: #e5e5e5;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .breakdown-fill {
+            height: 100%;
+            background: #ccc;
+            border-radius: 4px;
+        }
+        .breakdown-count {
+            width: 20px;
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 2px;
+        }
+        .review-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .review-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .review-avatar {
+            width: 44px;
+            height: 44px;
+            background: #e5e5e5;
+            border-radius: 50%;
+        }
+        .review-author-name {
+            height: 12px;
+            background: #d0d0d0;
+            border-radius: 2px;
+            width: 100px;
+            margin-bottom: 6px;
+        }
+        .review-author-project {
+            height: 10px;
+            background: #e5e5e5;
+            border-radius: 2px;
+            width: 120px;
+        }
+        .review-text {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        /* ===== CONTACT SIDEBAR ===== */
+        .contact-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 16px;
+            padding: 24px;
+            position: sticky;
+            top: 32px;
+        }
+        .contact-title {
+            height: 16px;
+            background: #d0d0d0;
+            border-radius: 2px;
+            width: 140px;
+            margin-bottom: 20px;
+        }
+        .contact-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .contact-divider {
+            height: 1px;
+            background: #eee;
+            margin-bottom: 24px;
+        }
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .contact-info-icon {
+            width: 36px;
+            height: 36px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+        .contact-info-label {
+            height: 10px;
+            background: #e5e5e5;
+            border-radius: 2px;
+            width: 60px;
+            margin-bottom: 6px;
+        }
+        .contact-info-value {
+            height: 12px;
+            background: #d0d0d0;
+            border-radius: 2px;
+            width: 140px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .profile-grid {
+                grid-template-columns: 1fr 280px;
+            }
+        }
+        @media (max-width: 991px) {
+            .sidebar {
+                display: none;
+            }
+            .mobile-header {
+                display: block;
+            }
+            .main-content {
+                margin-right: 0;
+                padding: 80px 24px 32px;
+            }
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-card {
+                position: static;
+            }
+            .profile-hero-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .profile-title-row {
+                justify-content: center;
+            }
+            .profile-rating {
+                justify-content: center;
+            }
+            .profile-tags {
+                justify-content: center;
+            }
+            .profile-actions {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        @media (max-width: 767px) {
+            .stats-bar {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .reviews-summary {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-layout">
+        <!-- Mobile Header -->
+        <div class="mobile-header">
+            <div class="burger-btn">
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <span class="section-label">SIDEBAR</span>
+            <div class="sidebar-user">
+                <div class="sidebar-avatar"></div>
+                <div class="sidebar-user-info">
+                    <div class="sidebar-user-name"></div>
+                    <div class="sidebar-user-role"></div>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="sidebar-link">
+                    <div class="sidebar-link-icon"></div>
+                    <div class="sidebar-link-text"></div>
+                </div>
+                <div class="sidebar-link active">
+                    <div class="sidebar-link-icon"></div>
+                    <div class="sidebar-link-text"></div>
+                </div>
+                <div class="sidebar-link">
+                    <div class="sidebar-link-icon"></div>
+                    <div class="sidebar-link-text"></div>
+                </div>
+                <div class="sidebar-link">
+                    <div class="sidebar-link-icon"></div>
+                    <div class="sidebar-link-text"></div>
+                </div>
+                <div class="sidebar-link">
+                    <div class="sidebar-link-icon"></div>
+                    <div class="sidebar-link-text"></div>
+                </div>
+                <div class="sidebar-link">
+                    <div class="sidebar-link-icon"></div>
+                    <div class="sidebar-link-text"></div>
+                </div>
+            </nav>
+            <div class="sidebar-logo">
+                <div class="sidebar-logo-img"></div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Back Link -->
+            <div class="back-link">
+                <div class="back-icon"></div>
+                <div class="back-text"></div>
+            </div>
+
+            <!-- Profile Hero -->
+            <span class="section-label">PROFILE HERO</span>
+            <div class="profile-hero">
+                <div class="profile-hero-content">
+                    <div class="profile-logo">
+                        <div class="profile-logo-inner"></div>
+                    </div>
+                    <div class="profile-info">
+                        <div class="profile-title-row">
+                            <div class="profile-title"></div>
+                            <div class="profile-badge"></div>
+                        </div>
+                        <div class="profile-subtitle"></div>
+                        <div class="profile-rating">
+                            <div class="rating-score"></div>
+                            <div class="rating-stars">
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                            </div>
+                            <div class="rating-count"></div>
+                        </div>
+                        <div class="profile-tags">
+                            <div class="profile-tag"></div>
+                            <div class="profile-tag"></div>
+                            <div class="profile-tag"></div>
+                            <div class="profile-tag"></div>
+                        </div>
+                    </div>
+                    <div class="profile-actions">
+                        <div class="action-btn"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Bar -->
+            <span class="section-label">STATS BAR</span>
+            <div class="stats-bar">
+                <div class="stat-card">
+                    <div class="stat-value"></div>
+                    <div class="stat-label"></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value"></div>
+                    <div class="stat-label"></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value"></div>
+                    <div class="stat-label"></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value"></div>
+                    <div class="stat-label"></div>
+                </div>
+            </div>
+
+            <!-- Profile Grid -->
+            <div class="profile-grid">
+                <!-- Main Column -->
+                <div>
+                    <!-- Content Tabs -->
+                    <span class="section-label">CONTENT TABS</span>
+                    <div class="content-tabs">
+                        <div class="tab-btn active">
+                            <div class="tab-text"></div>
+                        </div>
+                        <div class="tab-btn">
+                            <div class="tab-text"></div>
+                        </div>
+                        <div class="tab-btn">
+                            <div class="tab-text"></div>
+                        </div>
+                        <div class="tab-btn">
+                            <div class="tab-text"></div>
+                        </div>
+                    </div>
+
+                    <!-- About Tab Content -->
+                    <span class="section-label">ABOUT TAB CONTENT</span>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="about-text">
+                                <div class="placeholder-text" style="width: 100%;"></div>
+                                <div class="placeholder-text" style="width: 95%;"></div>
+                                <div class="placeholder-text" style="width: 85%;"></div>
+                                <div class="placeholder-text" style="width: 90%;"></div>
+                                <div class="placeholder-text" style="width: 70%;"></div>
+                            </div>
+                            <div class="info-grid">
+                                <div class="info-card">
+                                    <div class="info-card-title"></div>
+                                    <div class="info-badges">
+                                        <div class="info-badge"></div>
+                                        <div class="info-badge"></div>
+                                        <div class="info-badge"></div>
+                                    </div>
+                                </div>
+                                <div class="info-card">
+                                    <div class="info-card-title"></div>
+                                    <div class="info-badges">
+                                        <div class="info-badge"></div>
+                                        <div class="info-badge"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="section-title"></div>
+                            <div class="cert-list">
+                                <div class="cert-item">
+                                    <div class="cert-icon"></div>
+                                    <div class="cert-info">
+                                        <div class="cert-name"></div>
+                                        <div class="cert-detail"></div>
+                                    </div>
+                                </div>
+                                <div class="cert-item">
+                                    <div class="cert-icon"></div>
+                                    <div class="cert-info">
+                                        <div class="cert-name"></div>
+                                        <div class="cert-detail"></div>
+                                    </div>
+                                </div>
+                                <div class="cert-item">
+                                    <div class="cert-icon"></div>
+                                    <div class="cert-info">
+                                        <div class="cert-name"></div>
+                                        <div class="cert-detail"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Portfolio Preview -->
+                    <span class="section-label">PORTFOLIO GALLERY (Tab 2)</span>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="gallery-grid">
+                                <div class="gallery-item"></div>
+                                <div class="gallery-item"></div>
+                                <div class="gallery-item"></div>
+                                <div class="gallery-item"></div>
+                                <div class="gallery-item"></div>
+                                <div class="gallery-item"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Services Preview -->
+                    <span class="section-label">SERVICES GRID (Tab 3)</span>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="services-grid">
+                                <div class="service-card">
+                                    <div class="service-icon"></div>
+                                    <div class="service-title"></div>
+                                    <div class="service-desc"></div>
+                                    <div class="service-desc" style="width: 80%;"></div>
+                                    <div class="service-price"></div>
+                                </div>
+                                <div class="service-card">
+                                    <div class="service-icon"></div>
+                                    <div class="service-title"></div>
+                                    <div class="service-desc"></div>
+                                    <div class="service-desc" style="width: 75%;"></div>
+                                    <div class="service-price"></div>
+                                </div>
+                                <div class="service-card">
+                                    <div class="service-icon"></div>
+                                    <div class="service-title"></div>
+                                    <div class="service-desc"></div>
+                                    <div class="service-desc" style="width: 85%;"></div>
+                                    <div class="service-price"></div>
+                                </div>
+                                <div class="service-card">
+                                    <div class="service-icon"></div>
+                                    <div class="service-title"></div>
+                                    <div class="service-desc"></div>
+                                    <div class="service-desc" style="width: 70%;"></div>
+                                    <div class="service-price"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reviews Preview -->
+                    <span class="section-label">REVIEWS (Tab 4)</span>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="reviews-summary">
+                                <div class="reviews-score">
+                                    <div class="reviews-score-value"></div>
+                                    <div class="reviews-score-label"></div>
+                                </div>
+                                <div class="reviews-breakdown">
+                                    <div class="breakdown-row">
+                                        <div class="breakdown-label"></div>
+                                        <div class="breakdown-bar"><div class="breakdown-fill" style="width: 85%;"></div></div>
+                                        <div class="breakdown-count"></div>
+                                    </div>
+                                    <div class="breakdown-row">
+                                        <div class="breakdown-label"></div>
+                                        <div class="breakdown-bar"><div class="breakdown-fill" style="width: 10%;"></div></div>
+                                        <div class="breakdown-count"></div>
+                                    </div>
+                                    <div class="breakdown-row">
+                                        <div class="breakdown-label"></div>
+                                        <div class="breakdown-bar"><div class="breakdown-fill" style="width: 4%;"></div></div>
+                                        <div class="breakdown-count"></div>
+                                    </div>
+                                    <div class="breakdown-row">
+                                        <div class="breakdown-label"></div>
+                                        <div class="breakdown-bar"><div class="breakdown-fill" style="width: 1%;"></div></div>
+                                        <div class="breakdown-count"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="review-list">
+                                <div class="review-card">
+                                    <div class="review-header">
+                                        <div class="review-author">
+                                            <div class="review-avatar"></div>
+                                            <div>
+                                                <div class="review-author-name"></div>
+                                                <div class="review-author-project"></div>
+                                            </div>
+                                        </div>
+                                        <div class="rating-stars" style="gap: 2px;">
+                                            <div class="star" style="width: 14px; height: 14px;"></div>
+                                            <div class="star" style="width: 14px; height: 14px;"></div>
+                                            <div class="star" style="width: 14px; height: 14px;"></div>
+                                            <div class="star" style="width: 14px; height: 14px;"></div>
+                                            <div class="star" style="width: 14px; height: 14px;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="review-text">
+                                        <div class="placeholder-text" style="width: 100%;"></div>
+                                        <div class="placeholder-text" style="width: 90%;"></div>
+                                        <div class="placeholder-text" style="width: 60%;"></div>
+                                    </div>
+                                </div>
+                                <div class="review-card">
+                                    <div class="review-header">
+                                        <div class="review-author">
+                                            <div class="review-avatar"></div>
+                                            <div>
+                                                <div class="review-author-name"></div>
+                                                <div class="review-author-project"></div>
+                                            </div>
+                                        </div>
+                                        <div class="rating-stars" style="gap: 2px;">
+                                            <div class="star" style="width: 14px; height: 14px;"></div>
+                                            <div class="star" style="width: 14px; height: 14px;"></div>
+                                            <div class="star" style="width: 14px; height: 14px;"></div>
+                                            <div class="star" style="width: 14px; height: 14px;"></div>
+                                            <div class="star" style="width: 14px; height: 14px;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="review-text">
+                                        <div class="placeholder-text" style="width: 100%;"></div>
+                                        <div class="placeholder-text" style="width: 85%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar Column -->
+                <div>
+                    <span class="section-label">CONTACT SIDEBAR</span>
+                    <div class="contact-card">
+                        <div class="contact-title"></div>
+                        <div class="contact-actions">
+                            <button class="placeholder-btn primary lg">Request Quote</button>
+                            <button class="placeholder-btn outline lg">Send Message</button>
+                        </div>
+                        <div class="contact-divider"></div>
+                        <div class="contact-info">
+                            <div class="contact-info-item">
+                                <div class="contact-info-icon"></div>
+                                <div>
+                                    <div class="contact-info-label"></div>
+                                    <div class="contact-info-value"></div>
+                                </div>
+                            </div>
+                            <div class="contact-info-item">
+                                <div class="contact-info-icon"></div>
+                                <div>
+                                    <div class="contact-info-label"></div>
+                                    <div class="contact-info-value"></div>
+                                </div>
+                            </div>
+                            <div class="contact-info-item">
+                                <div class="contact-info-icon"></div>
+                                <div>
+                                    <div class="contact-info-label"></div>
+                                    <div class="contact-info-value"></div>
+                                </div>
+                            </div>
+                            <div class="contact-info-item">
+                                <div class="contact-info-icon"></div>
+                                <div>
+                                    <div class="contact-info-label"></div>
+                                    <div class="contact-info-value"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe - Request Quote</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8f8f8;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Wireframe Helpers */
+        .placeholder-text {
+            background: #e0e0e0;
+            height: 12px;
+            border-radius: 2px;
+        }
+        .placeholder-text.sm { height: 10px; }
+        .placeholder-text.lg { height: 16px; }
+        .placeholder-text.xl { height: 24px; }
+
+        .placeholder-box {
+            background: #e5e5e5;
+            border: 2px dashed #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 12px;
+        }
+
+        .placeholder-btn {
+            background: #d0d0d0;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            color: #666;
+            font-size: 14px;
+        }
+        .placeholder-btn.primary {
+            background: #888;
+            color: #fff;
+        }
+        .placeholder-btn.outline {
+            background: transparent;
+            border: 2px solid #ccc;
+        }
+        .placeholder-btn.lg {
+            padding: 14px 28px;
+        }
+
+        .placeholder-input {
+            width: 100%;
+            height: 44px;
+            background: #fff;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+        }
+
+        .placeholder-textarea {
+            width: 100%;
+            height: 100px;
+            background: #fff;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+        }
+
+        .placeholder-select {
+            width: 100%;
+            height: 44px;
+            background: #fff;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            position: relative;
+        }
+        .placeholder-select::after {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid #999;
+        }
+
+        /* Section Label */
+        .section-label {
+            display: inline-block;
+            background: #333;
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            padding: 20px 0;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+        }
+        .header-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-placeholder {
+            width: 80px;
+            height: 40px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            color: #999;
+        }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 13px;
+        }
+        .back-icon {
+            width: 18px;
+            height: 18px;
+            background: #e0e0e0;
+            border-radius: 4px;
+        }
+        .avatar-placeholder {
+            width: 36px;
+            height: 36px;
+            background: #d0d0d0;
+            border-radius: 50%;
+        }
+
+        /* ===== PAGE CONTENT ===== */
+        .page-content {
+            padding: 40px 0 80px;
+        }
+
+        .page-header {
+            margin-bottom: 32px;
+        }
+        .page-title {
+            height: 28px;
+            background: #d0d0d0;
+            border-radius: 4px;
+            width: 150px;
+            margin-bottom: 12px;
+        }
+        .page-subtitle {
+            height: 12px;
+            background: #e0e0e0;
+            border-radius: 2px;
+            width: 320px;
+        }
+
+        /* ===== CARD ===== */
+        .card {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .card-body {
+            padding: 24px;
+        }
+        .card-title {
+            height: 16px;
+            background: #d0d0d0;
+            border-radius: 2px;
+            width: 120px;
+            margin-bottom: 24px;
+        }
+
+        /* ===== PROJECT TYPE ===== */
+        .project-type-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        .project-type-card {
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .project-type-card:hover {
+            border-color: #ccc;
+        }
+        .project-type-card.selected {
+            border-color: #888;
+            background: #fafafa;
+        }
+        .project-type-icon {
+            width: 48px;
+            height: 48px;
+            background: #e5e5e5;
+            border-radius: 8px;
+            margin: 0 auto 12px;
+        }
+        .project-type-label {
+            height: 12px;
+            background: #d0d0d0;
+            border-radius: 2px;
+            width: 60%;
+            margin: 0 auto;
+        }
+
+        /* ===== FORM ===== */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-label {
+            height: 10px;
+            background: #d0d0d0;
+            border-radius: 2px;
+            width: 80px;
+            margin-bottom: 8px;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        /* ===== SERVICES GRID ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        .service-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+        }
+        .checkbox-placeholder {
+            width: 20px;
+            height: 20px;
+            background: #e5e5e5;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+        .checkbox-label {
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 2px;
+            flex: 1;
+        }
+
+        /* ===== UPLOAD AREA ===== */
+        .upload-area {
+            border: 2px dashed #ccc;
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+        }
+        .upload-icon {
+            width: 48px;
+            height: 48px;
+            background: #e5e5e5;
+            border-radius: 8px;
+            margin: 0 auto 16px;
+        }
+        .upload-text {
+            height: 12px;
+            background: #e0e0e0;
+            border-radius: 2px;
+            width: 180px;
+            margin: 0 auto 12px;
+        }
+        .upload-hint {
+            height: 10px;
+            background: #e5e5e5;
+            border-radius: 2px;
+            width: 220px;
+            margin: 16px auto 0;
+        }
+
+        /* ===== FORM ACTIONS ===== */
+        .form-actions {
+            display: flex;
+            gap: 16px;
+            margin-top: 32px;
+        }
+        .form-actions .placeholder-btn.primary {
+            flex: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 767px) {
+            .project-type-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-container">
+            <span class="section-label">HEADER</span>
+        </div>
+        <div class="header-container">
+            <div class="logo-placeholder">LOGO</div>
+            <div class="header-actions">
+                <button class="back-btn">
+                    <div class="back-icon"></div>
+                    Back
+                </button>
+                <div class="avatar-placeholder"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- PAGE CONTENT -->
+    <div class="page-content">
+        <div class="container">
+            <span class="section-label">PAGE HEADER</span>
+            <div class="page-header">
+                <div class="page-title"></div>
+                <div class="page-subtitle"></div>
+            </div>
+
+            <!-- Project Type Card -->
+            <span class="section-label">PROJECT TYPE SELECTION</span>
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title"></div>
+                    <div class="project-type-grid">
+                        <div class="project-type-card selected">
+                            <div class="project-type-icon"></div>
+                            <div class="project-type-label"></div>
+                        </div>
+                        <div class="project-type-card">
+                            <div class="project-type-icon"></div>
+                            <div class="project-type-label"></div>
+                        </div>
+                        <div class="project-type-card">
+                            <div class="project-type-icon"></div>
+                            <div class="project-type-label"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Details Card -->
+            <span class="section-label">PROJECT DETAILS FORM</span>
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title"></div>
+                    <div class="form-group">
+                        <div class="form-label"></div>
+                        <div class="placeholder-input"></div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-label"></div>
+                        <div class="placeholder-textarea"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <div class="form-label"></div>
+                            <div class="placeholder-input"></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-label"></div>
+                            <div class="placeholder-select"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Services Card -->
+            <span class="section-label">SERVICES SELECTION</span>
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title"></div>
+                    <div class="services-grid">
+                        <div class="service-checkbox">
+                            <div class="checkbox-placeholder"></div>
+                            <div class="checkbox-label"></div>
+                        </div>
+                        <div class="service-checkbox">
+                            <div class="checkbox-placeholder"></div>
+                            <div class="checkbox-label"></div>
+                        </div>
+                        <div class="service-checkbox">
+                            <div class="checkbox-placeholder"></div>
+                            <div class="checkbox-label"></div>
+                        </div>
+                        <div class="service-checkbox">
+                            <div class="checkbox-placeholder"></div>
+                            <div class="checkbox-label"></div>
+                        </div>
+                        <div class="service-checkbox">
+                            <div class="checkbox-placeholder"></div>
+                            <div class="checkbox-label"></div>
+                        </div>
+                        <div class="service-checkbox">
+                            <div class="checkbox-placeholder"></div>
+                            <div class="checkbox-label"></div>
+                        </div>
+                        <div class="service-checkbox">
+                            <div class="checkbox-placeholder"></div>
+                            <div class="checkbox-label"></div>
+                        </div>
+                        <div class="service-checkbox">
+                            <div class="checkbox-placeholder"></div>
+                            <div class="checkbox-label"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Location & Timeline Card -->
+            <span class="section-label">LOCATION & TIMELINE</span>
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title"></div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <div class="form-label"></div>
+                            <div class="placeholder-select"></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-label"></div>
+                            <div class="placeholder-input"></div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <div class="form-label"></div>
+                            <div class="placeholder-input"></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-label"></div>
+                            <div class="placeholder-select"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Budget Card -->
+            <span class="section-label">BUDGET</span>
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title"></div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <div class="form-label"></div>
+                        <div class="placeholder-select"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Attachments Card -->
+            <span class="section-label">ATTACHMENTS UPLOAD</span>
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title"></div>
+                    <div class="upload-area">
+                        <div class="upload-icon"></div>
+                        <div class="upload-text"></div>
+                        <button class="placeholder-btn outline">Browse Files</button>
+                        <div class="upload-hint"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Actions -->
+            <span class="section-label">FORM ACTIONS</span>
+            <div class="form-actions">
+                <button class="placeholder-btn outline lg">Cancel</button>
+                <button class="placeholder-btn primary lg">Submit Request</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
