@@ -114,6 +114,22 @@
             letter-spacing: 0.5px;
         }
 
+        /* Descriptor */
+        .descriptor {
+            font-size: 10px;
+            color: #888;
+            font-style: italic;
+            margin-top: 4px;
+            text-align: center;
+        }
+        .descriptor-inline {
+            font-size: 9px;
+            color: #999;
+            font-style: italic;
+            display: block;
+            margin-top: 2px;
+        }
+
         /* ===== HEADER ===== */
         .header {
             padding: 20px 0;
@@ -349,6 +365,7 @@
     <header class="header">
         <div class="header-container">
             <span class="section-label">HEADER</span>
+            <p class="descriptor" style="text-align: right;">Minimal header with back navigation</p>
         </div>
         <div class="header-container">
             <div class="logo-placeholder">LOGO</div>
@@ -357,7 +374,9 @@
                     <div class="back-icon"></div>
                     Back
                 </button>
+                <span class="descriptor-inline">Back to dashboard</span>
                 <div class="avatar-placeholder"></div>
+                <span class="descriptor-inline">User avatar</span>
             </div>
         </div>
     </header>
@@ -368,26 +387,33 @@
             <span class="section-label">PAGE HEADER</span>
             <div class="page-header">
                 <div class="page-title"></div>
+                <span class="descriptor-inline">Request a Quote</span>
                 <div class="page-subtitle"></div>
+                <span class="descriptor-inline">Fill in the details to get quotes from contractors</span>
             </div>
 
             <!-- Project Type Card -->
             <span class="section-label">PROJECT TYPE SELECTION</span>
+            <p class="descriptor" style="text-align: right; margin-bottom: 8px;">Step 1: Choose project type - single selection</p>
             <div class="card">
                 <div class="card-body">
                     <div class="card-title"></div>
+                    <span class="descriptor-inline">What type of project?</span>
                     <div class="project-type-grid">
                         <div class="project-type-card selected">
                             <div class="project-type-icon"></div>
                             <div class="project-type-label"></div>
+                            <p class="descriptor">Residential (selected)</p>
                         </div>
                         <div class="project-type-card">
                             <div class="project-type-icon"></div>
                             <div class="project-type-label"></div>
+                            <p class="descriptor">Commercial</p>
                         </div>
                         <div class="project-type-card">
                             <div class="project-type-icon"></div>
                             <div class="project-type-label"></div>
+                            <p class="descriptor">Industrial</p>
                         </div>
                     </div>
                 </div>
@@ -395,25 +421,34 @@
 
             <!-- Project Details Card -->
             <span class="section-label">PROJECT DETAILS FORM</span>
+            <p class="descriptor" style="text-align: right; margin-bottom: 8px;">Step 2: Project information fields</p>
             <div class="card">
                 <div class="card-body">
                     <div class="card-title"></div>
+                    <span class="descriptor-inline">Project Details</span>
                     <div class="form-group">
                         <div class="form-label"></div>
+                        <span class="descriptor-inline">Project Title</span>
                         <div class="placeholder-input"></div>
+                        <span class="descriptor-inline">Text input field</span>
                     </div>
                     <div class="form-group">
                         <div class="form-label"></div>
+                        <span class="descriptor-inline">Project Description</span>
                         <div class="placeholder-textarea"></div>
+                        <span class="descriptor-inline">Multi-line text area</span>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
                             <div class="form-label"></div>
+                            <span class="descriptor-inline">Property Size (sqm)</span>
                             <div class="placeholder-input"></div>
                         </div>
                         <div class="form-group">
                             <div class="form-label"></div>
+                            <span class="descriptor-inline">Property Type</span>
                             <div class="placeholder-select"></div>
+                            <span class="descriptor-inline">Dropdown select</span>
                         </div>
                     </div>
                 </div>
@@ -421,41 +456,51 @@
 
             <!-- Services Card -->
             <span class="section-label">SERVICES SELECTION</span>
+            <p class="descriptor" style="text-align: right; margin-bottom: 8px;">Step 3: Select required services - multi-select checkboxes</p>
             <div class="card">
                 <div class="card-body">
                     <div class="card-title"></div>
+                    <span class="descriptor-inline">Services Needed</span>
                     <div class="services-grid">
                         <div class="service-checkbox">
                             <div class="checkbox-placeholder"></div>
                             <div class="checkbox-label"></div>
+                            <span class="descriptor-inline">Interior Design</span>
                         </div>
                         <div class="service-checkbox">
                             <div class="checkbox-placeholder"></div>
                             <div class="checkbox-label"></div>
+                            <span class="descriptor-inline">Renovation</span>
                         </div>
                         <div class="service-checkbox">
                             <div class="checkbox-placeholder"></div>
                             <div class="checkbox-label"></div>
+                            <span class="descriptor-inline">Electrical</span>
                         </div>
                         <div class="service-checkbox">
                             <div class="checkbox-placeholder"></div>
                             <div class="checkbox-label"></div>
+                            <span class="descriptor-inline">Plumbing</span>
                         </div>
                         <div class="service-checkbox">
                             <div class="checkbox-placeholder"></div>
                             <div class="checkbox-label"></div>
+                            <span class="descriptor-inline">Flooring</span>
                         </div>
                         <div class="service-checkbox">
                             <div class="checkbox-placeholder"></div>
                             <div class="checkbox-label"></div>
+                            <span class="descriptor-inline">Painting</span>
                         </div>
                         <div class="service-checkbox">
                             <div class="checkbox-placeholder"></div>
                             <div class="checkbox-label"></div>
+                            <span class="descriptor-inline">HVAC</span>
                         </div>
                         <div class="service-checkbox">
                             <div class="checkbox-placeholder"></div>
                             <div class="checkbox-label"></div>
+                            <span class="descriptor-inline">Landscaping</span>
                         </div>
                     </div>
                 </div>
@@ -463,26 +508,33 @@
 
             <!-- Location & Timeline Card -->
             <span class="section-label">LOCATION & TIMELINE</span>
+            <p class="descriptor" style="text-align: right; margin-bottom: 8px;">Step 4: Location and scheduling preferences</p>
             <div class="card">
                 <div class="card-body">
                     <div class="card-title"></div>
+                    <span class="descriptor-inline">Location & Timeline</span>
                     <div class="form-row">
                         <div class="form-group">
                             <div class="form-label"></div>
+                            <span class="descriptor-inline">City</span>
                             <div class="placeholder-select"></div>
                         </div>
                         <div class="form-group">
                             <div class="form-label"></div>
+                            <span class="descriptor-inline">District / Area</span>
                             <div class="placeholder-input"></div>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
                             <div class="form-label"></div>
+                            <span class="descriptor-inline">Preferred Start Date</span>
                             <div class="placeholder-input"></div>
+                            <span class="descriptor-inline">Date picker</span>
                         </div>
                         <div class="form-group">
                             <div class="form-label"></div>
+                            <span class="descriptor-inline">Project Urgency</span>
                             <div class="placeholder-select"></div>
                         </div>
                     </div>
@@ -491,35 +543,47 @@
 
             <!-- Budget Card -->
             <span class="section-label">BUDGET</span>
+            <p class="descriptor" style="text-align: right; margin-bottom: 8px;">Step 5: Budget range selection</p>
             <div class="card">
                 <div class="card-body">
                     <div class="card-title"></div>
+                    <span class="descriptor-inline">Budget Range</span>
                     <div class="form-group" style="margin-bottom: 0;">
                         <div class="form-label"></div>
+                        <span class="descriptor-inline">Estimated Budget (SAR)</span>
                         <div class="placeholder-select"></div>
+                        <span class="descriptor-inline">Range dropdown: Under 10K, 10K-50K, 50K-100K, etc.</span>
                     </div>
                 </div>
             </div>
 
             <!-- Attachments Card -->
             <span class="section-label">ATTACHMENTS UPLOAD</span>
+            <p class="descriptor" style="text-align: right; margin-bottom: 8px;">Step 6: Upload supporting documents</p>
             <div class="card">
                 <div class="card-body">
                     <div class="card-title"></div>
+                    <span class="descriptor-inline">Attachments (Optional)</span>
                     <div class="upload-area">
                         <div class="upload-icon"></div>
+                        <p class="descriptor">Upload icon</p>
                         <div class="upload-text"></div>
+                        <span class="descriptor-inline">Drag & drop files here</span>
                         <button class="placeholder-btn outline">Browse Files</button>
                         <div class="upload-hint"></div>
+                        <span class="descriptor-inline">Max 10MB per file. PDF, JPG, PNG accepted</span>
                     </div>
                 </div>
             </div>
 
             <!-- Form Actions -->
             <span class="section-label">FORM ACTIONS</span>
+            <p class="descriptor" style="text-align: right; margin-bottom: 8px;">Primary and secondary action buttons</p>
             <div class="form-actions">
                 <button class="placeholder-btn outline lg">Cancel</button>
+                <span class="descriptor-inline">Return to dashboard</span>
                 <button class="placeholder-btn primary lg">Submit Request</button>
+                <span class="descriptor-inline">Submit for quotes</span>
             </div>
         </div>
     </div>

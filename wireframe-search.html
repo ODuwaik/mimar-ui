@@ -77,6 +77,22 @@
             letter-spacing: 0.5px;
         }
 
+        /* Descriptor */
+        .descriptor {
+            font-size: 10px;
+            color: #888;
+            font-style: italic;
+            margin-top: 4px;
+            text-align: center;
+        }
+        .descriptor-inline {
+            font-size: 9px;
+            color: #999;
+            font-style: italic;
+            display: block;
+            margin-top: 2px;
+        }
+
         /* ===== DASHBOARD LAYOUT ===== */
         .dashboard-layout {
             display: flex;
@@ -591,41 +607,52 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <span class="section-label">SIDEBAR</span>
+            <p class="descriptor" style="margin-bottom: 12px;">Fixed navigation sidebar</p>
             <div class="sidebar-user">
                 <div class="sidebar-avatar"></div>
                 <div class="sidebar-user-info">
                     <div class="sidebar-user-name"></div>
+                    <span class="descriptor-inline">User name</span>
                     <div class="sidebar-user-role"></div>
+                    <span class="descriptor-inline">Account type</span>
                 </div>
             </div>
             <nav class="sidebar-nav">
+                <p class="descriptor" style="margin-bottom: 8px;">Navigation links</p>
                 <div class="sidebar-link">
                     <div class="sidebar-link-icon"></div>
                     <div class="sidebar-link-text"></div>
+                    <span class="descriptor-inline">Dashboard</span>
                 </div>
                 <div class="sidebar-link active">
                     <div class="sidebar-link-icon"></div>
                     <div class="sidebar-link-text"></div>
+                    <span class="descriptor-inline">Search (active)</span>
                 </div>
                 <div class="sidebar-link">
                     <div class="sidebar-link-icon"></div>
                     <div class="sidebar-link-text"></div>
+                    <span class="descriptor-inline">My Projects</span>
                 </div>
                 <div class="sidebar-link">
                     <div class="sidebar-link-icon"></div>
                     <div class="sidebar-link-text"></div>
+                    <span class="descriptor-inline">Messages</span>
                 </div>
                 <div class="sidebar-link">
                     <div class="sidebar-link-icon"></div>
                     <div class="sidebar-link-text"></div>
+                    <span class="descriptor-inline">Favorites</span>
                 </div>
                 <div class="sidebar-link">
                     <div class="sidebar-link-icon"></div>
                     <div class="sidebar-link-text"></div>
+                    <span class="descriptor-inline">Settings</span>
                 </div>
             </nav>
             <div class="sidebar-logo">
                 <div class="sidebar-logo-img"></div>
+                <p class="descriptor">App logo</p>
             </div>
         </aside>
 
@@ -633,40 +660,52 @@
         <main class="main-content">
             <!-- Search Hero -->
             <span class="section-label">SEARCH HERO</span>
+            <p class="descriptor" style="text-align: right; margin-bottom: 8px;">Search bar with keyword input</p>
             <div class="search-hero">
                 <div class="search-hero-title"></div>
+                <span class="descriptor-inline" style="color: rgba(255,255,255,0.5);">Find Contractors</span>
                 <div class="search-hero-subtitle"></div>
+                <span class="descriptor-inline" style="color: rgba(255,255,255,0.5);">Search by name, service, or location</span>
                 <div class="search-bar">
                     <div class="search-input-wrapper">
                         <div class="search-input"></div>
+                        <span class="descriptor-inline">Search input field</span>
                         <div class="search-icon"></div>
                     </div>
                     <div class="search-btn"></div>
+                    <span class="descriptor-inline">Search button</span>
                 </div>
             </div>
 
             <!-- Filters -->
             <span class="section-label">FILTERS</span>
+            <p class="descriptor" style="text-align: right; margin-bottom: 8px;">Filter options - 4 dropdowns in a row</p>
             <div class="filters-card">
                 <div class="filters-header">
                     <div class="filters-title"></div>
+                    <span class="descriptor-inline">Filters</span>
                     <button class="placeholder-btn outline sm">Reset</button>
+                    <span class="descriptor-inline">Clear all filters</span>
                 </div>
                 <div class="filters-grid">
                     <div class="filter-group">
                         <div class="filter-label"></div>
+                        <span class="descriptor-inline">Service Type</span>
                         <div class="placeholder-select"></div>
                     </div>
                     <div class="filter-group">
                         <div class="filter-label"></div>
+                        <span class="descriptor-inline">Location</span>
                         <div class="placeholder-select"></div>
                     </div>
                     <div class="filter-group">
                         <div class="filter-label"></div>
+                        <span class="descriptor-inline">Rating</span>
                         <div class="placeholder-select"></div>
                     </div>
                     <div class="filter-group">
                         <div class="filter-label"></div>
+                        <span class="descriptor-inline">Price Range</span>
                         <div class="placeholder-select"></div>
                     </div>
                 </div>
@@ -674,22 +713,29 @@
 
             <!-- Results Header -->
             <span class="section-label">RESULTS HEADER</span>
+            <p class="descriptor" style="text-align: right; margin-bottom: 8px;">Results count, sort options, and view toggle</p>
             <div class="results-header">
                 <div class="results-count">
                     <div class="count-number"></div>
+                    <span class="descriptor-inline">48</span>
                     <div class="count-label"></div>
+                    <span class="descriptor-inline">Contractors found</span>
                 </div>
                 <div class="results-controls">
                     <div class="sort-control">
                         <div class="sort-label"></div>
+                        <span class="descriptor-inline">Sort by:</span>
                         <div class="sort-select"></div>
+                        <span class="descriptor-inline">Relevance dropdown</span>
                     </div>
                     <div class="view-toggle">
                         <div class="view-btn active">
                             <div class="view-icon"></div>
+                            <span class="descriptor-inline">List</span>
                         </div>
                         <div class="view-btn">
                             <div class="view-icon"></div>
+                            <span class="descriptor-inline">Grid</span>
                         </div>
                     </div>
                 </div>
@@ -697,21 +743,28 @@
 
             <!-- Contractor List -->
             <span class="section-label">CONTRACTOR LIST ITEMS</span>
+            <p class="descriptor" style="text-align: right; margin-bottom: 8px;">Search results - contractor cards in list view</p>
 
             <!-- Contractor 1 -->
             <div class="contractor-list-item">
                 <div class="contractor-logo">
                     <div class="contractor-logo-inner"></div>
+                    <p class="descriptor">Company logo</p>
                 </div>
                 <div class="contractor-content">
                     <div class="contractor-header">
                         <div class="contractor-name"></div>
+                        <span class="descriptor-inline">Company name</span>
                         <div class="contractor-badge verified"></div>
+                        <span class="descriptor-inline">Verified</span>
                         <div class="contractor-badge rank"></div>
+                        <span class="descriptor-inline">Top Rated</span>
                     </div>
                     <div class="contractor-subtitle"></div>
+                    <span class="descriptor-inline">Service category / Specialization</span>
                     <div class="contractor-rating">
                         <div class="rating-value"></div>
+                        <span class="descriptor-inline">4.8</span>
                         <div class="rating-stars">
                             <div class="star"></div>
                             <div class="star"></div>
@@ -720,6 +773,7 @@
                             <div class="star"></div>
                         </div>
                         <div class="rating-count"></div>
+                        <span class="descriptor-inline">(124 reviews)</span>
                     </div>
                     <div class="contractor-services">
                         <div class="service-tag"></div>
@@ -727,14 +781,18 @@
                         <div class="service-tag"></div>
                         <div class="service-tag"></div>
                     </div>
+                    <p class="descriptor" style="margin-top: 4px;">Service tags - clickable filters</p>
                 </div>
                 <div class="contractor-actions">
                     <div class="projects-count">
                         <div class="projects-label"></div>
+                        <span class="descriptor-inline">Completed Projects</span>
                         <div class="projects-value"></div>
+                        <span class="descriptor-inline">156 projects</span>
                     </div>
                     <div class="action-buttons">
                         <button class="placeholder-btn primary">View Profile</button>
+                        <p class="descriptor">CTA button</p>
                     </div>
                 </div>
             </div>
@@ -861,27 +919,35 @@
 
             <!-- Pagination -->
             <span class="section-label">PAGINATION</span>
+            <p class="descriptor" style="text-align: center; margin-bottom: 8px;">Page navigation - Previous, page numbers, Next</p>
             <div class="pagination">
                 <div class="pagination-btn">
                     <div class="pagination-icon"></div>
+                    <span class="descriptor-inline">Previous</span>
                 </div>
                 <div class="pagination-btn active">
                     <div class="pagination-number"></div>
+                    <span class="descriptor-inline">1 (active)</span>
                 </div>
                 <div class="pagination-btn">
                     <div class="pagination-number"></div>
+                    <span class="descriptor-inline">2</span>
                 </div>
                 <div class="pagination-btn">
                     <div class="pagination-number"></div>
+                    <span class="descriptor-inline">3</span>
                 </div>
                 <div class="pagination-btn">
                     <div class="pagination-number"></div>
+                    <span class="descriptor-inline">4</span>
                 </div>
                 <div class="pagination-btn">
                     <div class="pagination-number"></div>
+                    <span class="descriptor-inline">5</span>
                 </div>
                 <div class="pagination-btn">
                     <div class="pagination-icon"></div>
+                    <span class="descriptor-inline">Next</span>
                 </div>
             </div>
         </main>

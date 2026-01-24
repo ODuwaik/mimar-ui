@@ -88,6 +88,22 @@
             letter-spacing: 0.5px;
         }
 
+        /* Descriptor */
+        .descriptor {
+            font-size: 10px;
+            color: #888;
+            font-style: italic;
+            margin-top: 4px;
+            text-align: center;
+        }
+        .descriptor-inline {
+            font-size: 9px;
+            color: #999;
+            font-style: italic;
+            display: block;
+            margin-top: 2px;
+        }
+
         /* ===== DASHBOARD LAYOUT ===== */
         .dashboard-layout {
             display: flex;
@@ -467,45 +483,57 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <span class="section-label">SIDEBAR</span>
+            <p class="descriptor" style="margin-bottom: 12px;">Provider navigation sidebar</p>
             <div class="sidebar-user">
                 <div class="sidebar-avatar"></div>
                 <div class="sidebar-user-info">
                     <div class="sidebar-user-name"></div>
+                    <span class="descriptor-inline">Contractor name</span>
                     <div class="sidebar-user-role"></div>
+                    <span class="descriptor-inline">Provider account</span>
                 </div>
             </div>
             <nav class="sidebar-nav">
+                <p class="descriptor" style="margin-bottom: 8px;">Navigation menu</p>
                 <div class="sidebar-link">
                     <div class="sidebar-link-icon"></div>
                     <div class="sidebar-link-text"></div>
+                    <span class="descriptor-inline">Dashboard</span>
                 </div>
                 <div class="sidebar-link">
                     <div class="sidebar-link-icon"></div>
                     <div class="sidebar-link-text"></div>
+                    <span class="descriptor-inline">Projects</span>
                 </div>
                 <div class="sidebar-link active">
                     <div class="sidebar-link-icon"></div>
                     <div class="sidebar-link-text"></div>
+                    <span class="descriptor-inline">Quotes (active)</span>
                 </div>
                 <div class="sidebar-link">
                     <div class="sidebar-link-icon"></div>
                     <div class="sidebar-link-text"></div>
+                    <span class="descriptor-inline">Messages</span>
                 </div>
                 <div class="sidebar-link">
                     <div class="sidebar-link-icon"></div>
                     <div class="sidebar-link-text"></div>
+                    <span class="descriptor-inline">Analytics</span>
                 </div>
                 <div class="sidebar-link">
                     <div class="sidebar-link-icon"></div>
                     <div class="sidebar-link-text"></div>
+                    <span class="descriptor-inline">Profile</span>
                 </div>
                 <div class="sidebar-link">
                     <div class="sidebar-link-icon"></div>
                     <div class="sidebar-link-text"></div>
+                    <span class="descriptor-inline">Settings</span>
                 </div>
             </nav>
             <div class="sidebar-logo">
                 <div class="sidebar-logo-img"></div>
+                <p class="descriptor">App logo</p>
             </div>
         </aside>
 
@@ -514,7 +542,9 @@
             <span class="section-label">PAGE HEADER</span>
             <div class="page-header">
                 <div class="page-title"></div>
+                <span class="descriptor-inline">Send Quote</span>
                 <div class="page-subtitle"></div>
+                <span class="descriptor-inline">Create a detailed quote for the customer request</span>
             </div>
 
             <div class="quote-layout">
@@ -522,27 +552,38 @@
                 <div class="quote-form">
                     <!-- Quote Items Card -->
                     <span class="section-label">QUOTE ITEMS TABLE</span>
+                    <p class="descriptor" style="text-align: right; margin-bottom: 8px;">Line items with description, quantity, unit, price</p>
                     <div class="card">
                         <div class="card-header">
                             <div class="card-title"></div>
+                            <span class="descriptor-inline">Quote Items</span>
                             <button class="placeholder-btn outline sm">+ Add Item</button>
+                            <span class="descriptor-inline">Add new row</span>
                         </div>
                         <div class="card-body">
                             <div class="quote-table-header">
                                 <div class="table-col-label" style="width: 50px;"></div>
+                                <span class="descriptor-inline">Description</span>
                                 <div class="table-col-label" style="width: 40px;"></div>
+                                <span class="descriptor-inline">Qty</span>
                                 <div class="table-col-label" style="width: 40px;"></div>
+                                <span class="descriptor-inline">Unit</span>
                                 <div class="table-col-label" style="width: 60px;"></div>
+                                <span class="descriptor-inline">Unit Price</span>
                                 <div class="table-col-label" style="width: 50px;"></div>
+                                <span class="descriptor-inline">Total</span>
                                 <div></div>
                             </div>
                             <div class="quote-table-row">
                                 <div class="row-input"></div>
+                                <span class="descriptor-inline">Item description</span>
                                 <div class="row-input"></div>
                                 <div class="row-input"></div>
                                 <div class="row-input"></div>
                                 <div class="row-total"></div>
+                                <span class="descriptor-inline">Calculated</span>
                                 <div class="row-delete">×</div>
+                                <span class="descriptor-inline">Delete</span>
                             </div>
                             <div class="quote-table-row">
                                 <div class="row-input"></div>
@@ -573,19 +614,25 @@
 
                     <!-- Timeline Card -->
                     <span class="section-label">TIMELINE</span>
+                    <p class="descriptor" style="text-align: right; margin-bottom: 8px;">Project duration and start date</p>
                     <div class="card">
                         <div class="card-header">
                             <div class="card-title"></div>
+                            <span class="descriptor-inline">Timeline</span>
                         </div>
                         <div class="card-body">
                             <div class="form-row">
                                 <div class="form-group">
                                     <div class="form-label"></div>
+                                    <span class="descriptor-inline">Estimated Duration</span>
                                     <div class="placeholder-input"></div>
+                                    <span class="descriptor-inline">Number input (days/weeks)</span>
                                 </div>
                                 <div class="form-group">
                                     <div class="form-label"></div>
+                                    <span class="descriptor-inline">Duration Unit</span>
                                     <div class="placeholder-select"></div>
+                                    <span class="descriptor-inline">Days/Weeks/Months</span>
                                 </div>
                             </div>
                         </div>
@@ -593,34 +640,46 @@
 
                     <!-- Terms Card -->
                     <span class="section-label">TERMS & NOTES</span>
+                    <p class="descriptor" style="text-align: right; margin-bottom: 8px;">Payment terms and additional notes</p>
                     <div class="card">
                         <div class="card-header">
                             <div class="card-title"></div>
+                            <span class="descriptor-inline">Terms & Conditions</span>
                         </div>
                         <div class="card-body">
                             <div class="form-row">
                                 <div class="form-group">
                                     <div class="form-label"></div>
+                                    <span class="descriptor-inline">Payment Terms</span>
                                     <div class="placeholder-select"></div>
+                                    <span class="descriptor-inline">50% upfront, etc.</span>
                                 </div>
                                 <div class="form-group">
                                     <div class="form-label"></div>
+                                    <span class="descriptor-inline">Quote Validity</span>
                                     <div class="placeholder-select"></div>
+                                    <span class="descriptor-inline">7/14/30 days</span>
                                 </div>
                             </div>
                             <div class="form-group" style="margin-bottom: 0;">
                                 <div class="form-label"></div>
+                                <span class="descriptor-inline">Additional Notes</span>
                                 <div class="placeholder-textarea"></div>
+                                <span class="descriptor-inline">Free text for terms, conditions, exclusions</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Form Actions -->
                     <span class="section-label">FORM ACTIONS</span>
+                    <p class="descriptor" style="text-align: right; margin-bottom: 8px;">Cancel, save draft, or submit</p>
                     <div class="form-actions">
                         <button class="placeholder-btn outline">Cancel</button>
+                        <span class="descriptor-inline">Discard changes</span>
                         <button class="placeholder-btn outline">Save Draft</button>
+                        <span class="descriptor-inline">Save for later</span>
                         <button class="placeholder-btn primary">Send Quote</button>
+                        <span class="descriptor-inline">Submit to customer</span>
                     </div>
                 </div>
 
@@ -628,60 +687,81 @@
                 <div class="quote-sidebar">
                     <!-- Quote Summary -->
                     <span class="section-label">QUOTE SUMMARY</span>
+                    <p class="descriptor" style="text-align: right; margin-bottom: 8px;">Running total - auto-calculated</p>
                     <div class="card">
                         <div class="card-header">
                             <div class="card-title"></div>
+                            <span class="descriptor-inline">Quote Summary</span>
                         </div>
                         <div class="card-body">
                             <div class="summary-row">
                                 <div class="summary-label"></div>
+                                <span class="descriptor-inline">Subtotal</span>
                                 <div class="summary-value"></div>
+                                <span class="descriptor-inline">SAR 15,000</span>
                             </div>
                             <div class="summary-row">
                                 <div class="summary-label"></div>
+                                <span class="descriptor-inline">VAT (15%)</span>
                                 <div class="summary-value"></div>
+                                <span class="descriptor-inline">SAR 2,250</span>
                             </div>
                             <div class="summary-divider"></div>
                             <div class="summary-row">
                                 <div class="summary-total-label"></div>
+                                <span class="descriptor-inline">Total</span>
                                 <div class="summary-total-value"></div>
+                                <span class="descriptor-inline">SAR 17,250</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Request Info -->
                     <span class="section-label">REQUEST INFO</span>
+                    <p class="descriptor" style="text-align: right; margin-bottom: 8px;">Original request details for reference</p>
                     <div class="card">
                         <div class="card-header">
                             <div class="card-title"></div>
+                            <span class="descriptor-inline">Request Details</span>
                         </div>
                         <div class="card-body">
                             <div class="info-item">
                                 <div class="info-label"></div>
+                                <span class="descriptor-inline">Customer</span>
                                 <div class="info-row">
                                     <div class="info-avatar"></div>
                                     <div class="info-value"></div>
+                                    <span class="descriptor-inline">Ahmed Mohammed</span>
                                 </div>
                             </div>
                             <div class="info-item">
                                 <div class="info-label"></div>
+                                <span class="descriptor-inline">Project Type</span>
                                 <div class="info-value"></div>
+                                <span class="descriptor-inline">Residential</span>
                             </div>
                             <div class="info-item">
                                 <div class="info-label"></div>
+                                <span class="descriptor-inline">Location</span>
                                 <div class="info-value"></div>
+                                <span class="descriptor-inline">Riyadh, Al Olaya</span>
                             </div>
                             <div class="info-item">
                                 <div class="info-label"></div>
+                                <span class="descriptor-inline">Budget Range</span>
                                 <div class="info-value"></div>
+                                <span class="descriptor-inline">SAR 10K - 50K</span>
                             </div>
                             <div class="info-item">
                                 <div class="info-label"></div>
+                                <span class="descriptor-inline">Timeline</span>
                                 <div class="info-value"></div>
+                                <span class="descriptor-inline">ASAP</span>
                             </div>
                         </div>
                         <div style="padding: 0 24px 24px;">
                             <button class="placeholder-btn outline sm" style="width: 100%;">View Request Details</button>
+                            <p class="descriptor" style="margin-top: 4px;">Link to full request</p>
                         </div>
                     </div>
                 </div>

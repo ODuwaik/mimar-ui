@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mimar - User Flow Canvas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0d1117;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        /* ===== TOOLBAR ===== */
+        .toolbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: #161b22;
+            border-bottom: 1px solid #30363d;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+        }
+
+        .toolbar-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+        }
+
+        .toolbar-title {
+            color: #f0f6fc;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .toolbar-title span {
+            color: #8b949e;
+            font-weight: 400;
+            margin-left: 8px;
+        }
+
+        .toolbar-center {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #21262d;
+            padding: 4px;
+            border-radius: 8px;
+        }
+
+        .zoom-btn {
+            background: none;
+            border: none;
+            color: #f0f6fc;
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .zoom-btn:hover {
+            background: #30363d;
+        }
+
+        .zoom-level {
+            color: #8b949e;
+            font-size: 13px;
+            min-width: 48px;
+            text-align: center;
+        }
+
+        .toolbar-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            border: 1px solid #30363d;
+            background: #21262d;
+            color: #f0f6fc;
+        }
+
+        .btn:hover {
+            background: #30363d;
+        }
+
+        /* ===== CANVAS AREA ===== */
+        .canvas-wrapper {
+            position: fixed;
+            top: 56px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: auto;
+            background:
+                radial-gradient(circle at center, #161b22 0%, #0d1117 100%);
+        }
+
+        .canvas {
+            position: relative;
+            width: 4000px;
+            height: 2200px;
+            background-image:
+                radial-gradient(circle, #30363d 1px, transparent 1px);
+            background-size: 24px 24px;
+            transform-origin: 0 0;
+            transition: transform 0.15s ease-out;
+        }
+
+        /* ===== SVG LAYER ===== */
+        .svg-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .flow-line {
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+        }
+
+        .flow-line.blue { stroke: #58a6ff; }
+        .flow-line.purple { stroke: #a371f7; }
+        .flow-line.green { stroke: #3fb950; }
+        .flow-line.orange { stroke: #d29922; }
+
+        /* ===== SCREEN NODE ===== */
+        .screen-node {
+            position: absolute;
+            width: 280px;
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+            z-index: 10;
+        }
+
+        .screen-node:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+            border-color: #58a6ff;
+        }
+
+        .screen-node.start {
+            border-color: #58a6ff;
+            box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.2);
+        }
+
+        .node-header {
+            padding: 12px 16px;
+            background: #21262d;
+            border-bottom: 1px solid #30363d;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .node-title {
+            color: #f0f6fc;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .node-badge {
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .node-badge.start { background: #58a6ff; color: #fff; }
+        .node-badge.auth { background: #a371f7; color: #fff; }
+        .node-badge.customer { background: #3fb950; color: #fff; }
+        .node-badge.provider { background: #d29922; color: #000; }
+        .node-badge.shared { background: #8b949e; color: #fff; }
+
+        .node-preview {
+            height: 180px;
+            background: #f6f8fa;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .node-preview iframe {
+            width: 1200px;
+            height: 900px;
+            border: none;
+            transform: scale(0.233);
+            transform-origin: 0 0;
+            pointer-events: none;
+        }
+
+        .node-footer {
+            padding: 14px 16px;
+        }
+
+        .node-description {
+            color: #8b949e;
+            font-size: 12px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .node-link {
+            color: #58a6ff;
+            font-size: 12px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .node-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== FLOW LABEL ===== */
+        .flow-label {
+            position: absolute;
+            background: #21262d;
+            border: 1px solid #30363d;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            color: #8b949e;
+            white-space: nowrap;
+            z-index: 5;
+        }
+
+        /* ===== SECTION HEADER ===== */
+        .section-header {
+            position: absolute;
+            z-index: 5;
+        }
+
+        .section-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .section-number.blue { background: #58a6ff; }
+        .section-number.purple { background: #a371f7; }
+        .section-number.green { background: #3fb950; }
+        .section-number.orange { background: #d29922; }
+
+        .section-title {
+            color: #f0f6fc;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .section-subtitle {
+            color: #8b949e;
+            font-size: 12px;
+            max-width: 200px;
+            line-height: 1.4;
+        }
+
+        /* ===== LEGEND ===== */
+        .legend {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            padding: 16px 20px;
+            z-index: 1000;
+        }
+
+        .legend-title {
+            color: #f0f6fc;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .legend-dot.blue { background: #58a6ff; }
+        .legend-dot.purple { background: #a371f7; }
+        .legend-dot.green { background: #3fb950; }
+        .legend-dot.orange { background: #d29922; }
+
+        .legend-text {
+            color: #8b949e;
+            font-size: 12px;
+        }
+
+        /* ===== MINIMAP ===== */
+        .minimap {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 180px;
+            height: 100px;
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            overflow: hidden;
+            z-index: 1000;
+        }
+
+        .minimap-viewport {
+            position: absolute;
+            border: 2px solid #58a6ff;
+            background: rgba(88, 166, 255, 0.1);
+            border-radius: 2px;
+            transition: all 0.1s;
+        }
+
+        .minimap-dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 2px;
+            background: #30363d;
+        }
+    </style>
+</head>
+<body>
+    <!-- Toolbar -->
+    <div class="toolbar">
+        <div class="toolbar-left">
+            <div class="logo"></div>
+            <div class="toolbar-title">Mimar User Flow<span>Wireframe Canvas</span></div>
+        </div>
+        <div class="toolbar-center">
+            <button class="zoom-btn" onclick="zoomOut()">−</button>
+            <span class="zoom-level" id="zoomLevel">100%</span>
+            <button class="zoom-btn" onclick="zoomIn()">+</button>
+            <button class="zoom-btn" onclick="resetZoom()" title="Reset">⟲</button>
+        </div>
+        <div class="toolbar-right">
+            <button class="btn" onclick="fitToScreen()">Fit to Screen</button>
+        </div>
+    </div>
+
+    <!-- Canvas -->
+    <div class="canvas-wrapper" id="canvasWrapper">
+        <div class="canvas" id="canvas">
+
+            <!-- SVG Connectors -->
+            <svg class="svg-layer" viewBox="0 0 4000 2200">
+                <defs>
+                    <marker id="arrow-blue" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+                        <path d="M2,2 L10,6 L2,10 L4,6 Z" fill="#58a6ff"/>
+                    </marker>
+                    <marker id="arrow-purple" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+                        <path d="M2,2 L10,6 L2,10 L4,6 Z" fill="#a371f7"/>
+                    </marker>
+                    <marker id="arrow-green" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+                        <path d="M2,2 L10,6 L2,10 L4,6 Z" fill="#3fb950"/>
+                    </marker>
+                    <marker id="arrow-orange" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+                        <path d="M2,2 L10,6 L2,10 L4,6 Z" fill="#d29922"/>
+                    </marker>
+                </defs>
+
+                <!-- Home to Login -->
+                <path class="flow-line purple" marker-end="url(#arrow-purple)"
+                      d="M 380,280 C 480,280 520,180 620,180"/>
+
+                <!-- Home to Register -->
+                <path class="flow-line purple" marker-end="url(#arrow-purple)"
+                      d="M 380,320 C 480,320 520,480 620,480"/>
+
+                <!-- Login to Consumer Dashboard -->
+                <path class="flow-line green" marker-end="url(#arrow-green)"
+                      d="M 900,180 C 1050,180 1100,280 1250,280"/>
+
+                <!-- Login to Provider Dashboard -->
+                <path class="flow-line orange" marker-end="url(#arrow-orange)"
+                      d="M 900,280 C 1050,350 1100,750 1250,750"/>
+
+                <!-- Register to Consumer Dashboard -->
+                <path class="flow-line green" marker-end="url(#arrow-green)"
+                      d="M 900,480 C 1050,480 1100,380 1250,380"/>
+
+                <!-- Register to Provider Dashboard -->
+                <path class="flow-line orange" marker-end="url(#arrow-orange)"
+                      d="M 900,580 C 1050,650 1100,850 1250,850"/>
+
+                <!-- Consumer Dashboard to Search -->
+                <path class="flow-line green" marker-end="url(#arrow-green)"
+                      d="M 1530,330 C 1680,330 1730,330 1880,330"/>
+
+                <!-- Search to Contractor Profile -->
+                <path class="flow-line green" marker-end="url(#arrow-green)"
+                      d="M 2160,330 C 2310,330 2360,330 2510,330"/>
+
+                <!-- Contractor Profile to Request Quote -->
+                <path class="flow-line green" marker-end="url(#arrow-green)"
+                      d="M 2790,330 C 2940,330 2990,330 3140,330"/>
+
+                <!-- Provider Dashboard to Send Quote -->
+                <path class="flow-line orange" marker-end="url(#arrow-orange)"
+                      d="M 1530,800 C 1680,800 1730,800 1880,800"/>
+
+                <!-- Request Quote back to Dashboard (curved) -->
+                <path class="flow-line green" marker-end="url(#arrow-green)" stroke-dasharray="6,4"
+                      d="M 3300,520 C 3300,620 3200,680 3000,680 C 2400,680 1600,620 1400,520"/>
+
+                <!-- Send Quote back to Dashboard (curved) -->
+                <path class="flow-line orange" marker-end="url(#arrow-orange)" stroke-dasharray="6,4"
+                      d="M 2050,990 C 2050,1050 1900,1080 1700,1080 C 1500,1080 1400,1020 1400,950"/>
+            </svg>
+
+            <!-- ===== SECTION 1: ENTRY ===== -->
+            <div class="section-header" style="left: 100px; top: 100px;">
+                <div class="section-number blue">1</div>
+                <div class="section-title">Entry Point</div>
+                <div class="section-subtitle">User lands on the platform</div>
+            </div>
+
+            <!-- HOME -->
+            <div class="screen-node start" style="left: 100px; top: 180px;" onclick="openWireframe('wireframe-home.html')">
+                <div class="node-header">
+                    <span class="node-title">Home Page</span>
+                    <span class="node-badge start">Start</span>
+                </div>
+                <div class="node-preview">
+                    <iframe src="wireframe-home.html"></iframe>
+                </div>
+                <div class="node-footer">
+                    <div class="node-description">Landing page with hero, featured contractors, services, and CTAs.</div>
+                    <a href="wireframe-home.html" target="_blank" class="node-link">Open wireframe →</a>
+                </div>
+            </div>
+
+            <!-- ===== SECTION 2: AUTH ===== -->
+            <div class="section-header" style="left: 620px; top: 60px;">
+                <div class="section-number purple">2</div>
+                <div class="section-title">Authentication</div>
+                <div class="section-subtitle">Sign in or create account</div>
+            </div>
+
+            <!-- LOGIN -->
+            <div class="screen-node" style="left: 620px; top: 140px;" onclick="openWireframe('wireframe-login.html')">
+                <div class="node-header">
+                    <span class="node-title">Login</span>
+                    <span class="node-badge auth">Auth</span>
+                </div>
+                <div class="node-preview">
+                    <iframe src="wireframe-login.html"></iframe>
+                </div>
+                <div class="node-footer">
+                    <div class="node-description">Sign in with user type toggle for Customer or Provider.</div>
+                    <a href="wireframe-login.html" target="_blank" class="node-link">Open wireframe →</a>
+                </div>
+            </div>
+
+            <!-- REGISTER -->
+            <div class="screen-node" style="left: 620px; top: 440px;" onclick="openWireframe('wireframe-register.html')">
+                <div class="node-header">
+                    <span class="node-title">Register</span>
+                    <span class="node-badge auth">Auth</span>
+                </div>
+                <div class="node-preview">
+                    <iframe src="wireframe-register.html"></iframe>
+                </div>
+                <div class="node-footer">
+                    <div class="node-description">Multi-step registration with Nafath auth option.</div>
+                    <a href="wireframe-register.html" target="_blank" class="node-link">Open wireframe →</a>
+                </div>
+            </div>
+
+            <!-- Flow Labels for Auth -->
+            <div class="flow-label" style="left: 460px; top: 160px;">Sign In</div>
+            <div class="flow-label" style="left: 460px; top: 420px;">Create Account</div>
+
+            <!-- ===== SECTION 3: CUSTOMER FLOW ===== -->
+            <div class="section-header" style="left: 1250px; top: 100px;">
+                <div class="section-number green">3</div>
+                <div class="section-title">Customer Journey</div>
+                <div class="section-subtitle">Find contractors & request quotes</div>
+            </div>
+
+            <!-- CONSUMER DASHBOARD -->
+            <div class="screen-node" style="left: 1250px; top: 180px;" onclick="openWireframe('wireframe-consumer-dashboard.html')">
+                <div class="node-header">
+                    <span class="node-title">Customer Dashboard</span>
+                    <span class="node-badge customer">Customer</span>
+                </div>
+                <div class="node-preview">
+                    <iframe src="wireframe-consumer-dashboard.html"></iframe>
+                </div>
+                <div class="node-footer">
+                    <div class="node-description">Central hub with quotes, projects, and recommendations.</div>
+                    <a href="wireframe-consumer-dashboard.html" target="_blank" class="node-link">Open wireframe →</a>
+                </div>
+            </div>
+
+            <!-- SEARCH -->
+            <div class="screen-node" style="left: 1880px; top: 180px;" onclick="openWireframe('wireframe-search.html')">
+                <div class="node-header">
+                    <span class="node-title">Search Contractors</span>
+                    <span class="node-badge customer">Customer</span>
+                </div>
+                <div class="node-preview">
+                    <iframe src="wireframe-search.html"></iframe>
+                </div>
+                <div class="node-footer">
+                    <div class="node-description">Filter and discover contractors by category and location.</div>
+                    <a href="wireframe-search.html" target="_blank" class="node-link">Open wireframe →</a>
+                </div>
+            </div>
+
+            <!-- CONTRACTOR PROFILE -->
+            <div class="screen-node" style="left: 2510px; top: 180px;" onclick="openWireframe('wireframe-contractor-profile.html')">
+                <div class="node-header">
+                    <span class="node-title">Contractor Profile</span>
+                    <span class="node-badge shared">Shared</span>
+                </div>
+                <div class="node-preview">
+                    <iframe src="wireframe-contractor-profile.html"></iframe>
+                </div>
+                <div class="node-footer">
+                    <div class="node-description">View portfolio, reviews, services, and contact info.</div>
+                    <a href="wireframe-contractor-profile.html" target="_blank" class="node-link">Open wireframe →</a>
+                </div>
+            </div>
+
+            <!-- REQUEST QUOTE -->
+            <div class="screen-node" style="left: 3140px; top: 180px;" onclick="openWireframe('wireframe-request-quote.html')">
+                <div class="node-header">
+                    <span class="node-title">Request Quote</span>
+                    <span class="node-badge customer">Customer</span>
+                </div>
+                <div class="node-preview">
+                    <iframe src="wireframe-request-quote.html"></iframe>
+                </div>
+                <div class="node-footer">
+                    <div class="node-description">Submit project details, timeline, and budget for quote.</div>
+                    <a href="wireframe-request-quote.html" target="_blank" class="node-link">Open wireframe →</a>
+                </div>
+            </div>
+
+            <!-- Customer Flow Labels -->
+            <div class="flow-label" style="left: 1020px; top: 240px;">Customer</div>
+            <div class="flow-label" style="left: 1650px; top: 290px;">Find</div>
+            <div class="flow-label" style="left: 2280px; top: 290px;">View</div>
+            <div class="flow-label" style="left: 2910px; top: 290px;">Request</div>
+
+            <!-- ===== SECTION 4: PROVIDER FLOW ===== -->
+            <div class="section-header" style="left: 1250px; top: 570px;">
+                <div class="section-number orange">4</div>
+                <div class="section-title">Provider Journey</div>
+                <div class="section-subtitle">Manage requests & send quotes</div>
+            </div>
+
+            <!-- PROVIDER DASHBOARD -->
+            <div class="screen-node" style="left: 1250px; top: 650px;" onclick="openWireframe('wireframe-provider-dashboard.html')">
+                <div class="node-header">
+                    <span class="node-title">Provider Dashboard</span>
+                    <span class="node-badge provider">Provider</span>
+                </div>
+                <div class="node-preview">
+                    <iframe src="wireframe-provider-dashboard.html"></iframe>
+                </div>
+                <div class="node-footer">
+                    <div class="node-description">Manage quote requests, projects, and performance.</div>
+                    <a href="wireframe-provider-dashboard.html" target="_blank" class="node-link">Open wireframe →</a>
+                </div>
+            </div>
+
+            <!-- SEND QUOTE -->
+            <div class="screen-node" style="left: 1880px; top: 650px;" onclick="openWireframe('wireframe-send-quote.html')">
+                <div class="node-header">
+                    <span class="node-title">Send Quote</span>
+                    <span class="node-badge provider">Provider</span>
+                </div>
+                <div class="node-preview">
+                    <iframe src="wireframe-send-quote.html"></iframe>
+                </div>
+                <div class="node-footer">
+                    <div class="node-description">Create detailed quote with pricing and timeline.</div>
+                    <a href="wireframe-send-quote.html" target="_blank" class="node-link">Open wireframe →</a>
+                </div>
+            </div>
+
+            <!-- Provider Flow Labels -->
+            <div class="flow-label" style="left: 1020px; top: 780px;">Provider</div>
+            <div class="flow-label" style="left: 1650px; top: 760px;">Respond</div>
+
+        </div>
+    </div>
+
+    <!-- Legend -->
+    <div class="legend">
+        <div class="legend-title">Flow Types</div>
+        <div class="legend-item">
+            <div class="legend-dot blue"></div>
+            <span class="legend-text">Entry Point</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot purple"></div>
+            <span class="legend-text">Authentication</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot green"></div>
+            <span class="legend-text">Customer Flow</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot orange"></div>
+            <span class="legend-text">Provider Flow</span>
+        </div>
+    </div>
+
+    <!-- Minimap -->
+    <div class="minimap" id="minimap">
+        <div class="minimap-viewport" id="minimapViewport"></div>
+        <div class="minimap-dot" style="left: 5px; top: 10px;"></div>
+        <div class="minimap-dot" style="left: 28px; top: 8px;"></div>
+        <div class="minimap-dot" style="left: 28px; top: 22px;"></div>
+        <div class="minimap-dot" style="left: 56px; top: 10px;"></div>
+        <div class="minimap-dot" style="left: 84px; top: 10px;"></div>
+        <div class="minimap-dot" style="left: 113px; top: 10px;"></div>
+        <div class="minimap-dot" style="left: 141px; top: 10px;"></div>
+        <div class="minimap-dot" style="left: 56px; top: 35px;"></div>
+        <div class="minimap-dot" style="left: 84px; top: 35px;"></div>
+    </div>
+
+    <script>
+        let currentZoom = 0.6;
+        const canvas = document.getElementById('canvas');
+        const canvasWrapper = document.getElementById('canvasWrapper');
+        const zoomLevelEl = document.getElementById('zoomLevel');
+        const minimapViewport = document.getElementById('minimapViewport');
+
+        // Initialize
+        updateZoom();
+        updateMinimap();
+
+        // Scroll event for minimap
+        canvasWrapper.addEventListener('scroll', updateMinimap);
+
+        function zoomIn() {
+            currentZoom = Math.min(currentZoom + 0.1, 1.5);
+            updateZoom();
+        }
+
+        function zoomOut() {
+            currentZoom = Math.max(currentZoom - 0.1, 0.2);
+            updateZoom();
+        }
+
+        function resetZoom() {
+            currentZoom = 0.6;
+            updateZoom();
+        }
+
+        function fitToScreen() {
+            const wrapperWidth = canvasWrapper.clientWidth;
+            const wrapperHeight = canvasWrapper.clientHeight;
+            const canvasWidth = 4000;
+            const canvasHeight = 2200;
+
+            currentZoom = Math.min(
+                wrapperWidth / canvasWidth,
+                wrapperHeight / canvasHeight
+            ) * 0.95;
+
+            updateZoom();
+        }
+
+        function updateZoom() {
+            canvas.style.transform = `scale(${currentZoom})`;
+            zoomLevelEl.textContent = Math.round(currentZoom * 100) + '%';
+            updateMinimap();
+        }
+
+        function updateMinimap() {
+            const minimap = document.getElementById('minimap');
+            const mmWidth = minimap.clientWidth;
+            const mmHeight = minimap.clientHeight;
+
+            const canvasWidth = 4000 * currentZoom;
+            const canvasHeight = 2200 * currentZoom;
+            const viewWidth = canvasWrapper.clientWidth;
+            const viewHeight = canvasWrapper.clientHeight;
+
+            const vpWidth = (viewWidth / canvasWidth) * mmWidth;
+            const vpHeight = (viewHeight / canvasHeight) * mmHeight;
+            const vpLeft = (canvasWrapper.scrollLeft / canvasWidth) * mmWidth;
+            const vpTop = (canvasWrapper.scrollTop / canvasHeight) * mmHeight;
+
+            minimapViewport.style.width = Math.min(vpWidth, mmWidth) + 'px';
+            minimapViewport.style.height = Math.min(vpHeight, mmHeight) + 'px';
+            minimapViewport.style.left = vpLeft + 'px';
+            minimapViewport.style.top = vpTop + 'px';
+        }
+
+        function openWireframe(url) {
+            window.open(url, '_blank');
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === '=' || e.key === '+') zoomIn();
+            if (e.key === '-') zoomOut();
+            if (e.key === '0') resetZoom();
+            if (e.key === 'f' || e.key === 'F') fitToScreen();
+        });
+
+        // Mouse wheel zoom
+        canvasWrapper.addEventListener('wheel', (e) => {
+            if (e.ctrlKey || e.metaKey) {
+                e.preventDefault();
+                if (e.deltaY < 0) zoomIn();
+                else zoomOut();
+            }
+        }, { passive: false });
+    </script>
+</body>
+</html>

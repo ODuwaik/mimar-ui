@@ -61,6 +61,22 @@
             letter-spacing: 0.5px;
         }
 
+        /* Descriptor */
+        .descriptor {
+            font-size: 10px;
+            color: #888;
+            font-style: italic;
+            margin-top: 4px;
+            text-align: center;
+        }
+        .descriptor-inline {
+            font-size: 9px;
+            color: #999;
+            font-style: italic;
+            display: block;
+            margin-top: 2px;
+        }
+
         /* ===== DASHBOARD LAYOUT ===== */
         .dashboard-layout {
             display: flex;
@@ -814,23 +830,30 @@
             <div class="back-link">
                 <div class="back-icon"></div>
                 <div class="back-text"></div>
+                <span class="descriptor-inline">Back to search results</span>
             </div>
 
             <!-- Profile Hero -->
             <span class="section-label">PROFILE HERO</span>
+            <p class="descriptor" style="text-align: right; margin-bottom: 8px;">Main contractor profile header with key info</p>
             <div class="profile-hero">
                 <div class="profile-hero-content">
                     <div class="profile-logo">
                         <div class="profile-logo-inner"></div>
+                        <p class="descriptor" style="margin-top: 8px;">Company Logo</p>
                     </div>
                     <div class="profile-info">
                         <div class="profile-title-row">
                             <div class="profile-title"></div>
+                            <span class="descriptor-inline">Company/Contractor Name</span>
                             <div class="profile-badge"></div>
+                            <span class="descriptor-inline">Verified Badge</span>
                         </div>
                         <div class="profile-subtitle"></div>
+                        <span class="descriptor-inline">Service category / Specialization</span>
                         <div class="profile-rating">
                             <div class="rating-score"></div>
+                            <span class="descriptor-inline">Rating score (4.8)</span>
                             <div class="rating-stars">
                                 <div class="star"></div>
                                 <div class="star"></div>
@@ -839,6 +862,7 @@
                                 <div class="star"></div>
                             </div>
                             <div class="rating-count"></div>
+                            <span class="descriptor-inline">(124 reviews)</span>
                         </div>
                         <div class="profile-tags">
                             <div class="profile-tag"></div>
@@ -846,31 +870,38 @@
                             <div class="profile-tag"></div>
                             <div class="profile-tag"></div>
                         </div>
+                        <p class="descriptor" style="margin-top: 4px;">Service tags: Interior, Exterior, Renovation, etc.</p>
                     </div>
                     <div class="profile-actions">
                         <div class="action-btn"></div>
+                        <p class="descriptor">Favorite button</p>
                     </div>
                 </div>
             </div>
 
             <!-- Stats Bar -->
             <span class="section-label">STATS BAR</span>
+            <p class="descriptor" style="text-align: right; margin-bottom: 8px;">Key performance metrics - 4 stat cards</p>
             <div class="stats-bar">
                 <div class="stat-card">
                     <div class="stat-value"></div>
                     <div class="stat-label"></div>
+                    <p class="descriptor">Completed Projects</p>
                 </div>
                 <div class="stat-card">
                     <div class="stat-value"></div>
                     <div class="stat-label"></div>
+                    <p class="descriptor">Years Experience</p>
                 </div>
                 <div class="stat-card">
                     <div class="stat-value"></div>
                     <div class="stat-label"></div>
+                    <p class="descriptor">Response Rate</p>
                 </div>
                 <div class="stat-card">
                     <div class="stat-value"></div>
                     <div class="stat-label"></div>
+                    <p class="descriptor">On-time Delivery</p>
                 </div>
             </div>
 
@@ -880,18 +911,23 @@
                 <div>
                     <!-- Content Tabs -->
                     <span class="section-label">CONTENT TABS</span>
+                    <p class="descriptor" style="text-align: right; margin-bottom: 8px;">Tab navigation for profile sections</p>
                     <div class="content-tabs">
                         <div class="tab-btn active">
                             <div class="tab-text"></div>
+                            <span class="descriptor-inline">About</span>
                         </div>
                         <div class="tab-btn">
                             <div class="tab-text"></div>
+                            <span class="descriptor-inline">Portfolio</span>
                         </div>
                         <div class="tab-btn">
                             <div class="tab-text"></div>
+                            <span class="descriptor-inline">Services</span>
                         </div>
                         <div class="tab-btn">
                             <div class="tab-text"></div>
+                            <span class="descriptor-inline">Reviews</span>
                         </div>
                     </div>
 
@@ -899,6 +935,7 @@
                     <span class="section-label">ABOUT TAB CONTENT</span>
                     <div class="card">
                         <div class="card-body">
+                            <p class="descriptor" style="margin-bottom: 8px;">Company description / Bio text</p>
                             <div class="about-text">
                                 <div class="placeholder-text" style="width: 100%;"></div>
                                 <div class="placeholder-text" style="width: 95%;"></div>
@@ -906,30 +943,38 @@
                                 <div class="placeholder-text" style="width: 90%;"></div>
                                 <div class="placeholder-text" style="width: 70%;"></div>
                             </div>
+                            <p class="descriptor" style="margin: 12px 0 8px;">Skills and specializations</p>
                             <div class="info-grid">
                                 <div class="info-card">
                                     <div class="info-card-title"></div>
+                                    <span class="descriptor-inline">Skills</span>
                                     <div class="info-badges">
                                         <div class="info-badge"></div>
                                         <div class="info-badge"></div>
                                         <div class="info-badge"></div>
                                     </div>
+                                    <p class="descriptor">Skill badges</p>
                                 </div>
                                 <div class="info-card">
                                     <div class="info-card-title"></div>
+                                    <span class="descriptor-inline">Languages</span>
                                     <div class="info-badges">
                                         <div class="info-badge"></div>
                                         <div class="info-badge"></div>
                                     </div>
+                                    <p class="descriptor">Language badges</p>
                                 </div>
                             </div>
                             <div class="section-title"></div>
+                            <span class="descriptor-inline">Certifications & Licenses</span>
                             <div class="cert-list">
                                 <div class="cert-item">
                                     <div class="cert-icon"></div>
                                     <div class="cert-info">
                                         <div class="cert-name"></div>
+                                        <span class="descriptor-inline">Certification name</span>
                                         <div class="cert-detail"></div>
+                                        <span class="descriptor-inline">Issuing authority</span>
                                     </div>
                                 </div>
                                 <div class="cert-item">
@@ -952,30 +997,36 @@
 
                     <!-- Portfolio Preview -->
                     <span class="section-label">PORTFOLIO GALLERY (Tab 2)</span>
+                    <p class="descriptor" style="text-align: right; margin-bottom: 8px;">Grid of past project images - clickable for lightbox</p>
                     <div class="card">
                         <div class="card-body">
                             <div class="gallery-grid">
-                                <div class="gallery-item"></div>
-                                <div class="gallery-item"></div>
-                                <div class="gallery-item"></div>
-                                <div class="gallery-item"></div>
-                                <div class="gallery-item"></div>
-                                <div class="gallery-item"></div>
+                                <div class="gallery-item"><p class="descriptor">Project Image 1</p></div>
+                                <div class="gallery-item"><p class="descriptor">Project Image 2</p></div>
+                                <div class="gallery-item"><p class="descriptor">Project Image 3</p></div>
+                                <div class="gallery-item"><p class="descriptor">Project Image 4</p></div>
+                                <div class="gallery-item"><p class="descriptor">Project Image 5</p></div>
+                                <div class="gallery-item"><p class="descriptor">Project Image 6</p></div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Services Preview -->
                     <span class="section-label">SERVICES GRID (Tab 3)</span>
+                    <p class="descriptor" style="text-align: right; margin-bottom: 8px;">Available services with pricing - 2x2 grid</p>
                     <div class="card">
                         <div class="card-body">
                             <div class="services-grid">
                                 <div class="service-card">
                                     <div class="service-icon"></div>
+                                    <p class="descriptor">Service icon</p>
                                     <div class="service-title"></div>
+                                    <span class="descriptor-inline">Service name</span>
                                     <div class="service-desc"></div>
                                     <div class="service-desc" style="width: 80%;"></div>
+                                    <span class="descriptor-inline">Service description</span>
                                     <div class="service-price"></div>
+                                    <span class="descriptor-inline">Starting from SAR</span>
                                 </div>
                                 <div class="service-card">
                                     <div class="service-icon"></div>
@@ -1004,31 +1055,39 @@
 
                     <!-- Reviews Preview -->
                     <span class="section-label">REVIEWS (Tab 4)</span>
+                    <p class="descriptor" style="text-align: right; margin-bottom: 8px;">Customer reviews with rating breakdown</p>
                     <div class="card">
                         <div class="card-body">
                             <div class="reviews-summary">
                                 <div class="reviews-score">
                                     <div class="reviews-score-value"></div>
+                                    <p class="descriptor">4.8/5</p>
                                     <div class="reviews-score-label"></div>
+                                    <p class="descriptor">Total reviews</p>
                                 </div>
                                 <div class="reviews-breakdown">
+                                    <p class="descriptor" style="margin-bottom: 8px;">Rating breakdown bars</p>
                                     <div class="breakdown-row">
                                         <div class="breakdown-label"></div>
+                                        <span class="descriptor-inline">5 star</span>
                                         <div class="breakdown-bar"><div class="breakdown-fill" style="width: 85%;"></div></div>
                                         <div class="breakdown-count"></div>
                                     </div>
                                     <div class="breakdown-row">
                                         <div class="breakdown-label"></div>
+                                        <span class="descriptor-inline">4 star</span>
                                         <div class="breakdown-bar"><div class="breakdown-fill" style="width: 10%;"></div></div>
                                         <div class="breakdown-count"></div>
                                     </div>
                                     <div class="breakdown-row">
                                         <div class="breakdown-label"></div>
+                                        <span class="descriptor-inline">3 star</span>
                                         <div class="breakdown-bar"><div class="breakdown-fill" style="width: 4%;"></div></div>
                                         <div class="breakdown-count"></div>
                                     </div>
                                     <div class="breakdown-row">
                                         <div class="breakdown-label"></div>
+                                        <span class="descriptor-inline">2 star</span>
                                         <div class="breakdown-bar"><div class="breakdown-fill" style="width: 1%;"></div></div>
                                         <div class="breakdown-count"></div>
                                     </div>
@@ -1088,40 +1147,53 @@
                 <!-- Sidebar Column -->
                 <div>
                     <span class="section-label">CONTACT SIDEBAR</span>
+                    <p class="descriptor" style="text-align: right; margin-bottom: 8px;">Sticky sidebar with CTAs</p>
                     <div class="contact-card">
                         <div class="contact-title"></div>
+                        <span class="descriptor-inline">Contact This Contractor</span>
                         <div class="contact-actions">
                             <button class="placeholder-btn primary lg">Request Quote</button>
+                            <p class="descriptor">Primary CTA - Request Quote</p>
                             <button class="placeholder-btn outline lg">Send Message</button>
+                            <p class="descriptor">Secondary CTA - Message</p>
                         </div>
                         <div class="contact-divider"></div>
+                        <p class="descriptor" style="margin-bottom: 8px;">Contact information</p>
                         <div class="contact-info">
                             <div class="contact-info-item">
                                 <div class="contact-info-icon"></div>
                                 <div>
                                     <div class="contact-info-label"></div>
+                                    <span class="descriptor-inline">Location</span>
                                     <div class="contact-info-value"></div>
+                                    <span class="descriptor-inline">Riyadh, Saudi Arabia</span>
                                 </div>
                             </div>
                             <div class="contact-info-item">
                                 <div class="contact-info-icon"></div>
                                 <div>
                                     <div class="contact-info-label"></div>
+                                    <span class="descriptor-inline">Response Time</span>
                                     <div class="contact-info-value"></div>
+                                    <span class="descriptor-inline">Within 24 hours</span>
                                 </div>
                             </div>
                             <div class="contact-info-item">
                                 <div class="contact-info-icon"></div>
                                 <div>
                                     <div class="contact-info-label"></div>
+                                    <span class="descriptor-inline">Working Hours</span>
                                     <div class="contact-info-value"></div>
+                                    <span class="descriptor-inline">Sun-Thu 9AM-6PM</span>
                                 </div>
                             </div>
                             <div class="contact-info-item">
                                 <div class="contact-info-icon"></div>
                                 <div>
                                     <div class="contact-info-label"></div>
+                                    <span class="descriptor-inline">Member Since</span>
                                     <div class="contact-info-value"></div>
+                                    <span class="descriptor-inline">January 2022</span>
                                 </div>
                             </div>
                         </div>

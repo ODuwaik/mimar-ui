@@ -81,6 +81,22 @@
             letter-spacing: 0.5px;
         }
 
+        /* Descriptor */
+        .descriptor {
+            font-size: 10px;
+            color: #888;
+            font-style: italic;
+            margin-top: 4px;
+            text-align: center;
+        }
+        .descriptor-inline {
+            font-size: 9px;
+            color: #999;
+            font-style: italic;
+            display: block;
+            margin-top: 2px;
+        }
+
         /* ===== HEADER ===== */
         .header {
             padding: 20px 0;
@@ -732,13 +748,18 @@
     <header class="header">
         <div class="container">
             <span class="section-label">HEADER / NAVIGATION</span>
+            <p class="descriptor" style="text-align: right; margin-bottom: 8px;">Main navigation bar - fixed on scroll</p>
             <div class="header-container">
                 <div class="logo-placeholder">LOGO</div>
                 <div class="nav-links">
                     <div class="nav-link-placeholder"></div>
+                    <span class="descriptor-inline">Home</span>
                     <div class="nav-link-placeholder"></div>
+                    <span class="descriptor-inline">Services</span>
                     <div class="nav-link-placeholder"></div>
+                    <span class="descriptor-inline">How it Works</span>
                     <div class="nav-link-placeholder"></div>
+                    <span class="descriptor-inline">About</span>
                 </div>
                 <div class="nav-actions">
                     <button class="placeholder-btn outline">Login</button>
@@ -752,45 +773,55 @@
     <section class="hero">
         <div class="container">
             <span class="section-label">HERO SECTION</span>
+            <p class="descriptor" style="text-align: right; margin-bottom: 8px;">Main hero with value proposition and CTA</p>
             <div class="hero-grid">
                 <div class="hero-content">
                     <div class="hero-title"></div>
+                    <p class="descriptor" style="text-align: right;">Main headline - "Find Trusted Contractors"</p>
                     <div class="hero-desc">
                         <div class="placeholder-text" style="width: 100%"></div>
                         <div class="placeholder-text" style="width: 95%"></div>
                         <div class="placeholder-text" style="width: 80%"></div>
                     </div>
+                    <p class="descriptor" style="text-align: right;">Supporting description text</p>
                     <div class="hero-buttons">
                         <button class="placeholder-btn primary">Primary CTA</button>
                         <button class="placeholder-btn outline">Secondary CTA</button>
                     </div>
+                    <p class="descriptor" style="text-align: right;">"Get Started" and "Browse Contractors" buttons</p>
                     <div class="hero-stats">
                         <div class="hero-stat">
                             <div class="stat-value"></div>
                             <div class="stat-label"></div>
+                            <p class="descriptor">500+ Contractors</p>
                         </div>
                         <div class="hero-stat">
                             <div class="stat-value"></div>
                             <div class="stat-label"></div>
+                            <p class="descriptor">1000+ Projects</p>
                         </div>
                         <div class="hero-stat">
                             <div class="stat-value"></div>
                             <div class="stat-label"></div>
+                            <p class="descriptor">4.8 Rating</p>
                         </div>
                         <div class="hero-stat">
                             <div class="stat-value"></div>
                             <div class="stat-label"></div>
+                            <p class="descriptor">24/7 Support</p>
                         </div>
                     </div>
                 </div>
                 <div class="hero-image">
                     Hero Image
+                    <p class="descriptor" style="position: absolute; top: 20px; right: 20px;">Construction/interior image</p>
                     <div class="hero-badge">
                         <div class="badge-icon"></div>
                         <div class="badge-text">
                             <div class="placeholder-text" style="width: 80px"></div>
                             <div class="placeholder-text sm" style="width: 60px"></div>
                         </div>
+                        <span class="descriptor-inline">Trust badge</span>
                     </div>
                 </div>
             </div>
@@ -803,17 +834,25 @@
             <span class="section-label">FEATURED CONTRACTORS</span>
             <div class="section-header">
                 <div class="section-title"></div>
+                <p class="descriptor">Featured Contractors</p>
                 <div class="section-subtitle"></div>
+                <p class="descriptor">Top-rated contractors in your area</p>
             </div>
+            <p class="descriptor" style="margin-bottom: 16px;">Grid of 4 contractor cards - horizontally scrollable on mobile</p>
             <div class="contractors-grid">
                 <div class="contractor-card">
                     <div class="contractor-image">
+                        <p class="descriptor" style="margin-top: 8px;">Cover image</p>
                         <div class="contractor-badge"></div>
+                        <span class="descriptor-inline" style="position: absolute; top: 36px; right: 12px;">Featured badge</span>
                     </div>
                     <div class="contractor-body">
                         <div class="contractor-logo"></div>
+                        <p class="descriptor">Logo</p>
                         <div class="contractor-name"></div>
+                        <span class="descriptor-inline">Company name</span>
                         <div class="contractor-category"></div>
+                        <span class="descriptor-inline">Service category</span>
                         <div class="contractor-rating">
                             <div class="star"></div>
                             <div class="star"></div>
@@ -821,9 +860,12 @@
                             <div class="star"></div>
                             <div class="star"></div>
                         </div>
+                        <p class="descriptor">5-star rating</p>
                         <div class="contractor-meta">
                             <div class="meta-item"></div>
+                            <span class="descriptor-inline">Projects</span>
                             <div class="meta-item"></div>
+                            <span class="descriptor-inline">Location</span>
                         </div>
                     </div>
                 </div>
@@ -903,9 +945,12 @@
             <span class="section-label">TESTIMONIALS</span>
             <div class="section-header">
                 <div class="section-title"></div>
+                <p class="descriptor">Customer Reviews</p>
                 <div class="section-subtitle"></div>
+                <p class="descriptor">What our customers say about us</p>
             </div>
         </div>
+        <p class="descriptor" style="padding: 0 24px; margin-bottom: 16px;">Horizontal scrolling testimonial carousel</p>
         <div class="testimonials-track" style="padding: 0 24px;">
             <div class="testimonial-card">
                 <div class="testimonial-stars">
@@ -915,16 +960,20 @@
                     <div class="star"></div>
                     <div class="star"></div>
                 </div>
+                <p class="descriptor">5-star rating</p>
                 <div class="testimonial-text">
                     <div class="placeholder-text" style="width: 100%"></div>
                     <div class="placeholder-text" style="width: 90%"></div>
                     <div class="placeholder-text" style="width: 70%"></div>
                 </div>
+                <p class="descriptor">Review text content</p>
                 <div class="testimonial-author">
                     <div class="placeholder-avatar"></div>
                     <div class="author-info">
                         <div class="placeholder-text" style="width: 100px"></div>
+                        <span class="descriptor-inline">Customer name</span>
                         <div class="placeholder-text sm" style="width: 80px"></div>
+                        <span class="descriptor-inline">Project type</span>
                     </div>
                 </div>
             </div>
@@ -1000,32 +1049,41 @@
             <span class="section-label">HOW IT WORKS</span>
             <div class="section-header">
                 <div class="section-title"></div>
+                <p class="descriptor">How It Works</p>
                 <div class="section-subtitle"></div>
+                <p class="descriptor">Simple steps to find your contractor</p>
             </div>
             <div class="how-toggle">
                 <button class="toggle-btn">Tab 1</button>
+                <span class="descriptor-inline">For Customers</span>
                 <button class="toggle-btn active">Tab 2</button>
+                <span class="descriptor-inline">For Contractors</span>
             </div>
+            <p class="descriptor" style="margin-bottom: 24px;">4-step process with connecting line</p>
             <div class="how-steps">
                 <div class="how-step">
                     <div class="step-number">1</div>
                     <div class="step-title"></div>
                     <div class="step-desc"></div>
+                    <p class="descriptor">Post Your Project</p>
                 </div>
                 <div class="how-step">
                     <div class="step-number">2</div>
                     <div class="step-title"></div>
                     <div class="step-desc"></div>
+                    <p class="descriptor">Receive Quotes</p>
                 </div>
                 <div class="how-step">
                     <div class="step-number">3</div>
                     <div class="step-title"></div>
                     <div class="step-desc"></div>
+                    <p class="descriptor">Compare & Choose</p>
                 </div>
                 <div class="how-step">
                     <div class="step-number">4</div>
                     <div class="step-title"></div>
                     <div class="step-desc"></div>
+                    <p class="descriptor">Get It Done</p>
                 </div>
             </div>
         </div>
@@ -1037,8 +1095,11 @@
             <span class="section-label">SERVICES BENTO GRID</span>
             <div class="section-header">
                 <div class="section-title"></div>
+                <p class="descriptor">Our Services</p>
                 <div class="section-subtitle"></div>
+                <p class="descriptor">Browse services by category</p>
             </div>
+            <p class="descriptor" style="margin-bottom: 16px;">Bento-style grid with varying card sizes</p>
             <div class="services-bento">
                 <div class="service-item large">
                     <div class="service-badge">
@@ -1049,6 +1110,7 @@
                         <div class="service-title"></div>
                         <div class="service-desc"></div>
                     </div>
+                    <p class="descriptor" style="position: absolute; top: 50px; right: 16px;">Interior Design (Large card)</p>
                 </div>
                 <div class="service-item">
                     <div class="service-badge">
@@ -1059,6 +1121,7 @@
                         <div class="service-title"></div>
                         <div class="service-desc"></div>
                     </div>
+                    <p class="descriptor" style="position: absolute; top: 50px; right: 16px;">Renovation</p>
                 </div>
                 <div class="service-item">
                     <div class="service-badge">
@@ -1110,32 +1173,39 @@
             <span class="section-label">WHY CHOOSE US</span>
             <div class="section-header">
                 <div class="section-title"></div>
+                <p class="descriptor">Why Choose Mimar</p>
                 <div class="section-subtitle"></div>
+                <p class="descriptor">Benefits of using our platform</p>
             </div>
+            <p class="descriptor" style="margin-bottom: 16px;">4 value proposition cards in a grid</p>
             <div class="why-grid">
                 <div class="why-card">
                     <div class="why-icon"></div>
                     <div class="why-title"></div>
                     <div class="why-desc"></div>
                     <div class="why-desc" style="width: 80%"></div>
+                    <p class="descriptor">Verified Contractors</p>
                 </div>
                 <div class="why-card">
                     <div class="why-icon"></div>
                     <div class="why-title"></div>
                     <div class="why-desc"></div>
                     <div class="why-desc" style="width: 85%"></div>
+                    <p class="descriptor">Secure Payments</p>
                 </div>
                 <div class="why-card">
                     <div class="why-icon"></div>
                     <div class="why-title"></div>
                     <div class="why-desc"></div>
                     <div class="why-desc" style="width: 75%"></div>
+                    <p class="descriptor">Quality Guarantee</p>
                 </div>
                 <div class="why-card">
                     <div class="why-icon"></div>
                     <div class="why-title"></div>
                     <div class="why-desc"></div>
                     <div class="why-desc" style="width: 90%"></div>
+                    <p class="descriptor">24/7 Support</p>
                 </div>
             </div>
         </div>
@@ -1147,15 +1217,21 @@
             <span class="section-label">PRICING PLANS</span>
             <div class="section-header">
                 <div class="section-title"></div>
+                <p class="descriptor">Contractor Subscription Plans</p>
                 <div class="section-subtitle"></div>
+                <p class="descriptor">Choose the plan that fits your business</p>
             </div>
+            <p class="descriptor" style="margin-bottom: 16px;">3 pricing tiers - Basic, Pro (featured), Enterprise</p>
             <div class="pricing-grid">
                 <div class="pricing-card">
                     <div class="pricing-header">
                         <div class="pricing-name"></div>
+                        <span class="descriptor-inline">Basic</span>
                         <div class="pricing-price"></div>
+                        <span class="descriptor-inline">Free</span>
                     </div>
                     <div class="pricing-body">
+                        <p class="descriptor" style="margin-bottom: 8px;">Feature list</p>
                         <div class="pricing-feature">
                             <div class="feature-check"></div>
                             <div class="feature-text"></div>
@@ -1178,9 +1254,12 @@
                     </div>
                 </div>
                 <div class="pricing-card featured">
+                    <p class="descriptor" style="margin: 8px 0;">Most Popular (highlighted)</p>
                     <div class="pricing-header gradient">
                         <div class="pricing-name"></div>
+                        <span class="descriptor-inline" style="color: rgba(255,255,255,0.7);">Professional</span>
                         <div class="pricing-price"></div>
+                        <span class="descriptor-inline" style="color: rgba(255,255,255,0.7);">SAR 299/mo</span>
                     </div>
                     <div class="pricing-body">
                         <div class="pricing-feature">
@@ -1255,11 +1334,16 @@
     <section class="cta-section">
         <div class="container">
             <span class="section-label" style="background: rgba(255,255,255,0.2); color: #fff;">CALL TO ACTION</span>
+            <p class="descriptor" style="color: rgba(255,255,255,0.6); margin-bottom: 16px;">Full-width CTA banner with gradient background</p>
             <div class="cta-title"></div>
+            <p class="descriptor" style="color: rgba(255,255,255,0.6);">Ready to Start Your Project?</p>
             <div class="cta-desc"></div>
+            <p class="descriptor" style="color: rgba(255,255,255,0.6);">Supporting text encouraging sign up</p>
             <div class="cta-buttons">
                 <button class="cta-btn">Primary CTA</button>
+                <span class="descriptor-inline" style="color: rgba(255,255,255,0.6);">Get Started Free</span>
                 <button class="cta-btn outline">Secondary CTA</button>
+                <span class="descriptor-inline" style="color: rgba(255,255,255,0.6);">Contact Sales</span>
             </div>
         </div>
     </section>
@@ -1268,46 +1352,67 @@
     <footer class="footer">
         <div class="container">
             <span class="section-label">FOOTER</span>
+            <p class="descriptor" style="text-align: right; margin-bottom: 16px;">4-column footer with links and social icons</p>
             <div class="footer-grid">
                 <div>
                     <div class="footer-logo"></div>
+                    <p class="descriptor">Company logo</p>
                     <div class="footer-desc">
                         <div class="placeholder-text" style="width: 100%"></div>
                         <div class="placeholder-text" style="width: 90%"></div>
                         <div class="placeholder-text" style="width: 70%"></div>
                     </div>
+                    <p class="descriptor">Company description</p>
                     <div class="social-links">
                         <div class="social-icon"></div>
                         <div class="social-icon"></div>
                         <div class="social-icon"></div>
                     </div>
+                    <p class="descriptor">Twitter, Instagram, LinkedIn</p>
                 </div>
                 <div>
                     <div class="footer-title"></div>
+                    <span class="descriptor-inline">Company</span>
                     <div class="footer-link"></div>
+                    <span class="descriptor-inline">About Us</span>
                     <div class="footer-link"></div>
+                    <span class="descriptor-inline">Careers</span>
                     <div class="footer-link"></div>
+                    <span class="descriptor-inline">Contact</span>
                     <div class="footer-link"></div>
+                    <span class="descriptor-inline">Blog</span>
                 </div>
                 <div>
                     <div class="footer-title"></div>
+                    <span class="descriptor-inline">Services</span>
                     <div class="footer-link"></div>
+                    <span class="descriptor-inline">Interior Design</span>
                     <div class="footer-link"></div>
+                    <span class="descriptor-inline">Renovation</span>
                     <div class="footer-link"></div>
+                    <span class="descriptor-inline">Construction</span>
                 </div>
                 <div>
                     <div class="footer-title"></div>
+                    <span class="descriptor-inline">Support</span>
                     <div class="footer-link"></div>
+                    <span class="descriptor-inline">Help Center</span>
                     <div class="footer-link"></div>
+                    <span class="descriptor-inline">FAQs</span>
                     <div class="footer-link"></div>
+                    <span class="descriptor-inline">Terms of Service</span>
                     <div class="footer-link"></div>
+                    <span class="descriptor-inline">Privacy Policy</span>
                 </div>
             </div>
             <div class="footer-bottom">
                 <div class="copyright"></div>
+                <span class="descriptor-inline">© 2024 Mimar. All rights reserved.</span>
                 <div class="footer-legal">
                     <div class="legal-link"></div>
+                    <span class="descriptor-inline">Terms</span>
                     <div class="legal-link"></div>
+                    <span class="descriptor-inline">Privacy</span>
                 </div>
             </div>
         </div>

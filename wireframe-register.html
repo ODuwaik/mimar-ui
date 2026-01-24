@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe - Register</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8f8f8;
+            color: #666;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Wireframe Helpers */
+        .placeholder-text {
+            background: #e0e0e0;
+            height: 12px;
+            border-radius: 2px;
+        }
+        .placeholder-text.sm { height: 10px; }
+        .placeholder-text.lg { height: 16px; }
+        .placeholder-text.xl { height: 24px; }
+
+        .placeholder-btn {
+            background: #d0d0d0;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            color: #666;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .placeholder-btn.primary {
+            background: #888;
+            color: #fff;
+        }
+        .placeholder-btn.outline {
+            background: transparent;
+            border: 2px solid #ccc;
+        }
+        .placeholder-btn.lg {
+            padding: 16px 32px;
+        }
+        .placeholder-btn.full {
+            width: 100%;
+        }
+
+        .placeholder-input {
+            width: 100%;
+            height: 48px;
+            background: #fff;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+        }
+
+        .placeholder-select {
+            width: 100%;
+            height: 48px;
+            background: #fff;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+        }
+
+        .placeholder-icon {
+            width: 24px;
+            height: 24px;
+            background: #d0d0d0;
+            border-radius: 4px;
+        }
+
+        /* Section Label */
+        .section-label {
+            display: inline-block;
+            background: #333;
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Descriptor */
+        .descriptor {
+            font-size: 10px;
+            color: #888;
+            font-style: italic;
+            margin-top: 4px;
+            text-align: center;
+        }
+        .descriptor-inline {
+            font-size: 9px;
+            color: #999;
+            font-style: italic;
+            display: block;
+            margin-top: 2px;
+        }
+
+        /* ===== NAFATH AUTH ===== */
+        .nafath-section {
+            text-align: center;
+            padding: 24px;
+            background: #f5f5f5;
+            border-radius: 12px;
+            margin-bottom: 24px;
+        }
+
+        .nafath-badge {
+            width: 64px;
+            height: 64px;
+            background: #888;
+            border-radius: 12px;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .nafath-title {
+            height: 16px;
+            background: #d0d0d0;
+            border-radius: 2px;
+            width: 160px;
+            margin: 0 auto 8px;
+        }
+
+        .nafath-desc {
+            height: 10px;
+            background: #e5e5e5;
+            border-radius: 2px;
+            width: 240px;
+            margin: 0 auto 16px;
+        }
+
+        .nafath-btn {
+            background: #888;
+            color: #fff;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .divider-line {
+            flex: 1;
+            height: 1px;
+            background: #e0e0e0;
+        }
+
+        .divider-text {
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* ===== PAGE LAYOUT ===== */
+        .register-page {
+            min-height: 100vh;
+            background: #f5f5f5;
+            padding: 40px 24px;
+        }
+
+        .register-container {
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        /* ===== STEP INDICATOR ===== */
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .step-dot {
+            width: 36px;
+            height: 36px;
+            background: #d0d0d0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .step.active .step-dot {
+            background: #888;
+        }
+
+        .step.completed .step-dot {
+            background: #6a6;
+        }
+
+        .step-label {
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 2px;
+            width: 80px;
+        }
+
+        .step.active .step-label {
+            background: #888;
+        }
+
+        .step-line {
+            width: 40px;
+            height: 3px;
+            background: #e0e0e0;
+            border-radius: 2px;
+        }
+
+        .step.completed + .step-line {
+            background: #6a6;
+        }
+
+        /* ===== CARD ===== */
+        .card {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .card-body {
+            padding: 32px;
+        }
+
+        .card-title {
+            height: 20px;
+            background: #d0d0d0;
+            border-radius: 4px;
+            width: 160px;
+            margin: 0 auto 24px;
+        }
+
+        /* ===== USER TYPE CARDS ===== */
+        .user-type-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .user-type-card {
+            border: 2px solid #e0e0e0;
+            border-radius: 16px;
+            padding: 32px 24px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .user-type-card:hover {
+            border-color: #ccc;
+        }
+
+        .user-type-card.selected {
+            border-color: #888;
+            background: #fafafa;
+        }
+
+        .user-type-icon {
+            width: 64px;
+            height: 64px;
+            background: #e5e5e5;
+            border-radius: 16px;
+            margin: 0 auto 16px;
+        }
+
+        .user-type-card.selected .user-type-icon {
+            background: #888;
+        }
+
+        .user-type-title {
+            height: 16px;
+            background: #d0d0d0;
+            border-radius: 2px;
+            width: 80px;
+            margin: 0 auto 8px;
+        }
+
+        .user-type-desc {
+            height: 10px;
+            background: #e5e5e5;
+            border-radius: 2px;
+            width: 120px;
+            margin: 0 auto;
+        }
+
+        /* ===== FORM ===== */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            height: 10px;
+            background: #d0d0d0;
+            border-radius: 2px;
+            width: 100px;
+            margin-bottom: 8px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .checkbox-wrapper {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .checkbox-placeholder {
+            width: 20px;
+            height: 20px;
+            background: #e5e5e5;
+            border-radius: 4px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .checkbox-text {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .checkbox-label {
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 2px;
+            width: 200px;
+        }
+
+        /* ===== FORM ACTIONS ===== */
+        .form-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .form-actions .placeholder-btn {
+            flex: 1;
+        }
+
+        /* ===== SUCCESS CARD ===== */
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: #d5e8d5;
+            border-radius: 50%;
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .success-icon-inner {
+            width: 40px;
+            height: 40px;
+            background: #6a6;
+            border-radius: 8px;
+        }
+
+        .success-title {
+            height: 24px;
+            background: #d0d0d0;
+            border-radius: 4px;
+            width: 180px;
+            margin: 0 auto 12px;
+        }
+
+        .success-text {
+            height: 12px;
+            background: #e5e5e5;
+            border-radius: 2px;
+            width: 280px;
+            margin: 0 auto 8px;
+        }
+
+        /* ===== LOGIN LINK ===== */
+        .login-link {
+            text-align: center;
+            margin-top: 24px;
+        }
+
+        .login-text {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .login-label {
+            height: 10px;
+            background: #e5e5e5;
+            border-radius: 2px;
+            width: 120px;
+        }
+
+        .login-action {
+            height: 12px;
+            background: #888;
+            border-radius: 2px;
+            width: 80px;
+        }
+
+        /* Responsive */
+        @media (max-width: 767px) {
+            .user-type-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .step-label {
+                display: none;
+            }
+            .form-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="register-page">
+        <div class="register-container">
+            <!-- Step Indicator -->
+            <span class="section-label">STEP INDICATOR</span>
+            <p class="descriptor" style="margin-bottom: 16px;">3-step progress indicator</p>
+            <div class="step-indicator">
+                <div class="step active">
+                    <div class="step-dot">1</div>
+                    <div class="step-label"></div>
+                    <span class="descriptor-inline">Account Type</span>
+                </div>
+                <div class="step-line"></div>
+                <div class="step">
+                    <div class="step-dot">2</div>
+                    <div class="step-label"></div>
+                    <span class="descriptor-inline">Basic Info</span>
+                </div>
+                <div class="step-line"></div>
+                <div class="step">
+                    <div class="step-dot">3</div>
+                    <div class="step-label"></div>
+                    <span class="descriptor-inline">Confirmation</span>
+                </div>
+            </div>
+
+            <!-- Nafath Authentication -->
+            <span class="section-label">NAFATH AUTHENTICATION</span>
+            <p class="descriptor" style="margin-bottom: 16px;">Saudi National Digital ID authentication</p>
+            <div class="card">
+                <div class="card-body">
+                    <div class="nafath-section">
+                        <div class="nafath-badge">NAFATH</div>
+                        <p class="descriptor">Nafath logo - green national identity badge</p>
+                        <div class="nafath-title"></div>
+                        <span class="descriptor-inline">Register with Nafath</span>
+                        <div class="nafath-desc"></div>
+                        <span class="descriptor-inline">Verify your identity instantly using Saudi National ID</span>
+                        <button class="nafath-btn">Continue with Nafath</button>
+                        <p class="descriptor" style="margin-top: 8px;">Opens Nafath app for verification</p>
+                    </div>
+
+                    <div class="divider">
+                        <div class="divider-line"></div>
+                        <span class="divider-text">OR</span>
+                        <div class="divider-line"></div>
+                    </div>
+                    <p class="descriptor">Alternative: manual registration below</p>
+                </div>
+            </div>
+
+            <!-- Step 1: Account Type Selection -->
+            <span class="section-label">STEP 1: ACCOUNT TYPE</span>
+            <p class="descriptor" style="margin-bottom: 16px;">Choose between Customer or Provider</p>
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title"></div>
+                    <span class="descriptor-inline" style="text-align: center; display: block; margin-top: -16px; margin-bottom: 16px;">Choose your account type</span>
+
+                    <div class="user-type-grid">
+                        <div class="user-type-card selected">
+                            <div class="user-type-icon"></div>
+                            <p class="descriptor">User icon</p>
+                            <div class="user-type-title"></div>
+                            <span class="descriptor-inline">Customer</span>
+                            <div class="user-type-desc"></div>
+                            <span class="descriptor-inline">Looking for contractors</span>
+                        </div>
+                        <div class="user-type-card">
+                            <div class="user-type-icon"></div>
+                            <p class="descriptor">Building icon</p>
+                            <div class="user-type-title"></div>
+                            <span class="descriptor-inline">Provider</span>
+                            <div class="user-type-desc"></div>
+                            <span class="descriptor-inline">Offer contracting services</span>
+                        </div>
+                    </div>
+
+                    <button class="placeholder-btn primary full lg">Next</button>
+                    <p class="descriptor">Continue to next step</p>
+                </div>
+            </div>
+
+            <!-- Step 2: Basic Information (Customer) -->
+            <span class="section-label">STEP 2: BASIC INFO (CUSTOMER)</span>
+            <p class="descriptor" style="margin-bottom: 16px;">Customer registration form fields</p>
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title"></div>
+                    <span class="descriptor-inline" style="text-align: center; display: block; margin-top: -16px; margin-bottom: 16px;">Basic Information</span>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <div class="form-label"></div>
+                            <span class="descriptor-inline">First Name</span>
+                            <div class="placeholder-input"></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-label"></div>
+                            <span class="descriptor-inline">Last Name</span>
+                            <div class="placeholder-input"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-label"></div>
+                        <span class="descriptor-inline">Email Address</span>
+                        <div class="placeholder-input"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-label"></div>
+                        <span class="descriptor-inline">Phone Number</span>
+                        <div class="placeholder-input"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-label"></div>
+                        <span class="descriptor-inline">City</span>
+                        <div class="placeholder-select"></div>
+                        <span class="descriptor-inline">Dropdown: Riyadh, Jeddah, etc.</span>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <div class="form-label"></div>
+                            <span class="descriptor-inline">Password</span>
+                            <div class="placeholder-input"></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-label"></div>
+                            <span class="descriptor-inline">Confirm Password</span>
+                            <div class="placeholder-input"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-label"></div>
+                        <span class="descriptor-inline">Customer Type</span>
+                        <div class="placeholder-select"></div>
+                        <span class="descriptor-inline">Individual, Design Office, SME, Developer</span>
+                    </div>
+
+                    <div class="checkbox-wrapper">
+                        <div class="checkbox-placeholder"></div>
+                        <div class="checkbox-text">
+                            <div class="checkbox-label"></div>
+                            <span class="descriptor-inline">I agree to Terms and Privacy Policy</span>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button class="placeholder-btn outline">Previous</button>
+                        <span class="descriptor-inline">Back to step 1</span>
+                        <button class="placeholder-btn primary">Next</button>
+                        <span class="descriptor-inline">Continue to confirmation</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Basic Information (Provider) -->
+            <span class="section-label">STEP 2: BASIC INFO (PROVIDER)</span>
+            <p class="descriptor" style="margin-bottom: 16px;">Provider/Contractor registration form</p>
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title"></div>
+                    <span class="descriptor-inline" style="text-align: center; display: block; margin-top: -16px; margin-bottom: 16px;">Business Information</span>
+
+                    <div class="form-group">
+                        <div class="form-label"></div>
+                        <span class="descriptor-inline">Company / Business Name</span>
+                        <div class="placeholder-input"></div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <div class="form-label"></div>
+                            <span class="descriptor-inline">Commercial Registration #</span>
+                            <div class="placeholder-input"></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-label"></div>
+                            <span class="descriptor-inline">Classification Grade</span>
+                            <div class="placeholder-select"></div>
+                            <span class="descriptor-inline">1st, 2nd, 3rd, 4th, 5th</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-label"></div>
+                        <span class="descriptor-inline">Business Email</span>
+                        <div class="placeholder-input"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-label"></div>
+                        <span class="descriptor-inline">Phone Number</span>
+                        <div class="placeholder-input"></div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <div class="form-label"></div>
+                            <span class="descriptor-inline">Primary City</span>
+                            <div class="placeholder-select"></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-label"></div>
+                            <span class="descriptor-inline">Main Specialization</span>
+                            <div class="placeholder-select"></div>
+                            <span class="descriptor-inline">General, Finishing, Electrical, etc.</span>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <div class="form-label"></div>
+                            <span class="descriptor-inline">Password</span>
+                            <div class="placeholder-input"></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-label"></div>
+                            <span class="descriptor-inline">Confirm Password</span>
+                            <div class="placeholder-input"></div>
+                        </div>
+                    </div>
+
+                    <div class="checkbox-wrapper">
+                        <div class="checkbox-placeholder"></div>
+                        <div class="checkbox-text">
+                            <div class="checkbox-label"></div>
+                            <span class="descriptor-inline">I agree to Terms and Privacy Policy</span>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button class="placeholder-btn outline">Previous</button>
+                        <button class="placeholder-btn primary">Next</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Success Confirmation -->
+            <span class="section-label">STEP 3: CONFIRMATION</span>
+            <p class="descriptor" style="margin-bottom: 16px;">Success message and redirect</p>
+            <div class="card">
+                <div class="card-body" style="text-align: center;">
+                    <div class="success-icon">
+                        <div class="success-icon-inner"></div>
+                    </div>
+                    <p class="descriptor">Success checkmark icon</p>
+
+                    <div class="success-title"></div>
+                    <span class="descriptor-inline">Thank you for registering!</span>
+
+                    <div class="success-text"></div>
+                    <div class="success-text" style="width: 240px;"></div>
+                    <span class="descriptor-inline">Your account has been created successfully</span>
+
+                    <div style="margin-top: 24px;">
+                        <button class="placeholder-btn primary lg full">Go to Dashboard</button>
+                        <p class="descriptor">Redirect to user dashboard</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Login Link -->
+            <span class="section-label">LOGIN CTA</span>
+            <div class="login-link">
+                <div class="login-text">
+                    <div class="login-label"></div>
+                    <span class="descriptor-inline">Already have an account?</span>
+                    <div class="login-action"></div>
+                    <span class="descriptor-inline">Sign In link</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -86,6 +86,22 @@
             letter-spacing: 0.5px;
         }
 
+        /* Descriptor */
+        .descriptor {
+            font-size: 10px;
+            color: #888;
+            font-style: italic;
+            margin-top: 4px;
+            text-align: center;
+        }
+        .descriptor-inline {
+            font-size: 9px;
+            color: #999;
+            font-style: italic;
+            display: block;
+            margin-top: 2px;
+        }
+
         /* ===== DASHBOARD LAYOUT ===== */
         .dashboard-layout {
             display: flex;
@@ -595,61 +611,77 @@
             <!-- User Card -->
             <div class="user-card">
                 <div class="user-avatar"></div>
+                <p class="descriptor">Profile photo</p>
                 <div class="user-info">
                     <div class="user-name"></div>
+                    <span class="descriptor-inline">Contractor name</span>
                     <div class="user-role"></div>
+                    <span class="descriptor-inline">Account type: Provider</span>
                 </div>
             </div>
 
             <!-- Navigation -->
             <nav class="nav-list">
+                <p class="descriptor" style="text-align: right; margin-bottom: 8px;">Navigation Menu</p>
                 <div class="nav-item active">
                     <div class="placeholder-icon"></div>
                     <div class="nav-text"></div>
+                    <span class="descriptor-inline">Dashboard</span>
                 </div>
                 <div class="nav-item">
                     <div class="placeholder-icon"></div>
                     <div class="nav-text"></div>
+                    <span class="descriptor-inline">Quote Requests</span>
                 </div>
                 <div class="nav-item">
                     <div class="placeholder-icon"></div>
                     <div class="nav-text"></div>
+                    <span class="descriptor-inline">My Projects</span>
                 </div>
                 <div class="nav-item">
                     <div class="placeholder-icon"></div>
                     <div class="nav-text"></div>
+                    <span class="descriptor-inline">Messages</span>
                 </div>
                 <div class="nav-item">
                     <div class="placeholder-icon"></div>
                     <div class="nav-text"></div>
+                    <span class="descriptor-inline">Calendar</span>
                 </div>
                 <div class="nav-item">
                     <div class="placeholder-icon"></div>
                     <div class="nav-text"></div>
+                    <span class="descriptor-inline">Reviews</span>
                 </div>
                 <div class="nav-item">
                     <div class="placeholder-icon"></div>
                     <div class="nav-text"></div>
+                    <span class="descriptor-inline">Portfolio</span>
                 </div>
                 <div class="nav-item">
                     <div class="placeholder-icon"></div>
                     <div class="nav-text"></div>
+                    <span class="descriptor-inline">Earnings</span>
                 </div>
                 <div class="nav-item">
                     <div class="placeholder-icon"></div>
                     <div class="nav-text"></div>
+                    <span class="descriptor-inline">Team</span>
                 </div>
                 <div class="nav-item">
                     <div class="placeholder-icon"></div>
                     <div class="nav-text"></div>
+                    <span class="descriptor-inline">Analytics</span>
                 </div>
                 <div class="nav-item">
                     <div class="placeholder-icon"></div>
                     <div class="nav-text"></div>
+                    <span class="descriptor-inline">Settings</span>
                 </div>
                 <div class="nav-item">
                     <div class="placeholder-icon"></div>
                     <div class="nav-text"></div>
+                    <span class="descriptor-inline">Logout</span>
                 </div>
             </nav>
 
@@ -663,46 +695,59 @@
         <main class="main-content">
             <!-- Welcome Section -->
             <span class="section-label">WELCOME + BADGES</span>
+            <p class="descriptor" style="text-align: right; margin-bottom: 8px;">Welcome header with achievement badges</p>
             <div class="welcome-section">
                 <div class="welcome-text">
                     <div class="welcome-title"></div>
+                    <span class="descriptor-inline">Welcome back, [Contractor Name]</span>
                     <div class="welcome-subtitle"></div>
+                    <span class="descriptor-inline">Summary of pending tasks</span>
                 </div>
                 <div class="welcome-badges">
                     <div class="badge">
                         <div class="badge-icon"></div>
                         <div class="badge-text"></div>
+                        <span class="descriptor-inline">Top Rated</span>
                     </div>
                     <div class="badge">
                         <div class="badge-icon"></div>
                         <div class="badge-text"></div>
+                        <span class="descriptor-inline">Verified</span>
                     </div>
                 </div>
             </div>
 
             <!-- Alert Banner -->
             <span class="section-label">ALERT BANNER</span>
+            <p class="descriptor" style="text-align: right; margin-bottom: 8px;">Important notification or action required</p>
             <div class="alert-banner">
                 <div class="alert-content">
                     <div class="alert-icon"></div>
+                    <p class="descriptor">Alert icon</p>
                     <div class="alert-text">
                         <div class="placeholder-text lg" style="width: 180px;"></div>
+                        <span class="descriptor-inline">3 New Quote Requests</span>
                         <div class="placeholder-text sm" style="width: 250px;"></div>
+                        <span class="descriptor-inline">You have pending requests to review</span>
                     </div>
                 </div>
                 <button class="placeholder-btn primary">View</button>
+                <p class="descriptor">Action button</p>
             </div>
 
             <!-- Stats Grid -->
             <span class="section-label">STATS OVERVIEW</span>
+            <p class="descriptor" style="text-align: right; margin-bottom: 8px;">Key business metrics with trend indicators</p>
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-header">
                         <div class="stat-icon"></div>
                         <div class="stat-trend"></div>
+                        <span class="descriptor-inline">+12% trend</span>
                     </div>
                     <div class="stat-value"></div>
                     <div class="stat-label"></div>
+                    <p class="descriptor">Total Revenue (SAR)</p>
                 </div>
                 <div class="stat-card">
                     <div class="stat-header">
@@ -711,6 +756,7 @@
                     </div>
                     <div class="stat-value"></div>
                     <div class="stat-label"></div>
+                    <p class="descriptor">Active Projects</p>
                 </div>
                 <div class="stat-card">
                     <div class="stat-header">
@@ -719,6 +765,7 @@
                     </div>
                     <div class="stat-value"></div>
                     <div class="stat-label"></div>
+                    <p class="descriptor">New Requests</p>
                 </div>
                 <div class="stat-card">
                     <div class="stat-header">
@@ -727,6 +774,7 @@
                     </div>
                     <div class="stat-value"></div>
                     <div class="stat-label"></div>
+                    <p class="descriptor">Completion Rate</p>
                 </div>
             </div>
 
@@ -738,19 +786,26 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title"></div>
+                        <span class="descriptor-inline">New Quote Requests</span>
                         <div class="card-action"></div>
+                        <span class="descriptor-inline">View All</span>
                     </div>
                     <div class="card-body">
+                        <p class="descriptor" style="margin-bottom: 8px;">Incoming quote requests from customers</p>
                         <div class="request-list">
                             <div class="request-item">
                                 <div class="request-avatar"></div>
                                 <div class="request-info">
                                     <div class="request-name"></div>
+                                    <span class="descriptor-inline">Customer name</span>
                                     <div class="request-detail"></div>
+                                    <span class="descriptor-inline">Project description</span>
                                 </div>
                                 <div class="request-meta">
                                     <div class="request-time"></div>
+                                    <span class="descriptor-inline">2 hours ago</span>
                                     <div class="request-badge"></div>
+                                    <span class="descriptor-inline">New badge</span>
                                 </div>
                             </div>
                             <div class="request-item">
@@ -833,47 +888,58 @@
 
             <!-- Performance Section -->
             <span class="section-label">PERFORMANCE METRICS</span>
+            <p class="descriptor" style="text-align: right; margin-bottom: 8px;">Performance analytics and ratings</p>
             <div class="performance-section">
                 <div class="performance-header">
                     <div class="performance-title"></div>
+                    <span class="descriptor-inline">Your Performance</span>
                 </div>
                 <div class="performance-grid">
                     <div class="performance-card">
                         <div class="perf-icon"></div>
                         <div class="perf-value"></div>
                         <div class="perf-label"></div>
+                        <p class="descriptor">Response Rate</p>
                     </div>
                     <div class="performance-card">
                         <div class="perf-icon"></div>
                         <div class="perf-value"></div>
                         <div class="perf-label"></div>
+                        <p class="descriptor">On-time Delivery</p>
                     </div>
                     <div class="performance-card">
                         <div class="perf-icon"></div>
                         <div class="perf-value"></div>
                         <div class="perf-label"></div>
+                        <p class="descriptor">Customer Satisfaction</p>
                     </div>
                     <div class="performance-card">
                         <div class="perf-icon"></div>
                         <div class="perf-value"></div>
                         <div class="perf-label"></div>
+                        <p class="descriptor">Repeat Customers</p>
                     </div>
                 </div>
             </div>
 
             <!-- Recent Reviews -->
             <span class="section-label">RECENT REVIEWS</span>
+            <p class="descriptor" style="text-align: right; margin-bottom: 8px;">Latest customer reviews and feedback</p>
             <div class="reviews-card">
                 <div class="card-header">
                     <div class="card-title"></div>
+                    <span class="descriptor-inline">Recent Reviews</span>
                     <div class="card-action"></div>
+                    <span class="descriptor-inline">View All</span>
                 </div>
                 <div class="review-list">
                     <div class="review-item">
                         <div class="review-avatar"></div>
+                        <p class="descriptor">Customer photo</p>
                         <div class="review-content">
                             <div class="review-header">
                                 <div class="review-name"></div>
+                                <span class="descriptor-inline">Customer name</span>
                                 <div class="review-stars">
                                     <div class="star"></div>
                                     <div class="star"></div>
@@ -881,12 +947,15 @@
                                     <div class="star"></div>
                                     <div class="star"></div>
                                 </div>
+                                <span class="descriptor-inline">5-star rating</span>
                             </div>
                             <div class="review-text">
                                 <div class="placeholder-text" style="width: 100%;"></div>
                                 <div class="placeholder-text" style="width: 85%;"></div>
                             </div>
+                            <span class="descriptor-inline">Review text content</span>
                             <div class="review-date"></div>
+                            <span class="descriptor-inline">2 days ago</span>
                         </div>
                     </div>
                     <div class="review-item">

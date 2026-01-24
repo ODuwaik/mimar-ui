@@ -86,6 +86,29 @@
             letter-spacing: 0.5px;
         }
 
+        /* Descriptor */
+        .descriptor {
+            font-size: 10px;
+            color: #888;
+            font-style: italic;
+            margin-top: 4px;
+            text-align: center;
+        }
+        .descriptor-inline {
+            font-size: 9px;
+            color: #999;
+            font-style: italic;
+            display: block;
+            margin-top: 2px;
+        }
+        .descriptor-box {
+            font-size: 10px;
+            color: #888;
+            font-style: italic;
+            padding: 8px;
+            text-align: center;
+        }
+
         /* ===== DASHBOARD LAYOUT ===== */
         .dashboard-layout {
             display: flex;
@@ -551,39 +574,49 @@
                 <div class="user-avatar"></div>
                 <div class="user-info">
                     <div class="user-name"></div>
+                    <span class="descriptor-inline">User full name</span>
                     <div class="user-role"></div>
+                    <span class="descriptor-inline">Account type</span>
                 </div>
             </div>
 
             <!-- Navigation -->
             <nav class="nav-list">
+                <p class="descriptor" style="text-align: right; margin-bottom: 8px;">Navigation Menu</p>
                 <div class="nav-item active">
                     <div class="placeholder-icon"></div>
                     <div class="nav-text"></div>
+                    <span class="descriptor-inline">Dashboard</span>
                 </div>
                 <div class="nav-item">
                     <div class="placeholder-icon"></div>
                     <div class="nav-text"></div>
+                    <span class="descriptor-inline">My Projects</span>
                 </div>
                 <div class="nav-item">
                     <div class="placeholder-icon"></div>
                     <div class="nav-text"></div>
+                    <span class="descriptor-inline">Quotes</span>
                 </div>
                 <div class="nav-item">
                     <div class="placeholder-icon"></div>
                     <div class="nav-text"></div>
+                    <span class="descriptor-inline">Messages</span>
                 </div>
                 <div class="nav-item">
                     <div class="placeholder-icon"></div>
                     <div class="nav-text"></div>
+                    <span class="descriptor-inline">Favorites</span>
                 </div>
                 <div class="nav-item">
                     <div class="placeholder-icon"></div>
                     <div class="nav-text"></div>
+                    <span class="descriptor-inline">Settings</span>
                 </div>
                 <div class="nav-item">
                     <div class="placeholder-icon"></div>
                     <div class="nav-text"></div>
+                    <span class="descriptor-inline">Logout</span>
                 </div>
             </nav>
 
@@ -599,11 +632,14 @@
             <span class="section-label">WELCOME</span>
             <div class="welcome-section">
                 <div class="welcome-title"></div>
+                <p class="descriptor" style="text-align: right;">Welcome message with user name</p>
                 <div class="welcome-subtitle"></div>
+                <p class="descriptor" style="text-align: right;">Brief status summary or greeting</p>
             </div>
 
             <!-- Stats Grid -->
             <span class="section-label">STATS OVERVIEW</span>
+            <p class="descriptor" style="text-align: right; margin-bottom: 12px;">Key metrics at a glance - 4 stat cards</p>
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-header">
@@ -611,6 +647,7 @@
                     </div>
                     <div class="stat-value"></div>
                     <div class="stat-label"></div>
+                    <p class="descriptor">Active Projects Count</p>
                 </div>
                 <div class="stat-card">
                     <div class="stat-header">
@@ -618,6 +655,7 @@
                     </div>
                     <div class="stat-value"></div>
                     <div class="stat-label"></div>
+                    <p class="descriptor">Pending Quotes</p>
                 </div>
                 <div class="stat-card">
                     <div class="stat-header">
@@ -625,6 +663,7 @@
                     </div>
                     <div class="stat-value"></div>
                     <div class="stat-label"></div>
+                    <p class="descriptor">Completed Projects</p>
                 </div>
                 <div class="stat-card">
                     <div class="stat-header">
@@ -632,6 +671,7 @@
                     </div>
                     <div class="stat-value"></div>
                     <div class="stat-label"></div>
+                    <p class="descriptor">Total Spent (SAR)</p>
                 </div>
             </div>
 
@@ -639,18 +679,22 @@
             <span class="section-label">QUICK ACTIONS</span>
             <div class="quick-actions-card">
                 <div class="quick-actions-title"></div>
+                <p class="descriptor" style="text-align: right; margin-bottom: 12px;">Section Title: Quick Actions</p>
                 <div class="quick-actions-grid">
                     <div class="quick-action-btn">
                         <div class="action-icon"></div>
                         <div class="action-text"></div>
+                        <p class="descriptor">Request New Quote</p>
                     </div>
                     <div class="quick-action-btn">
                         <div class="action-icon"></div>
                         <div class="action-text"></div>
+                        <p class="descriptor">Browse Contractors</p>
                     </div>
                     <div class="quick-action-btn">
                         <div class="action-icon"></div>
                         <div class="action-text"></div>
+                        <p class="descriptor">View Messages</p>
                     </div>
                 </div>
             </div>
@@ -663,19 +707,26 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title"></div>
+                        <p class="descriptor-inline">Recent Quotes</p>
                         <div class="card-action"></div>
+                        <p class="descriptor-inline">View All Link</p>
                     </div>
                     <div class="card-body">
+                        <p class="descriptor" style="margin-bottom: 12px;">List of recent quotes from contractors</p>
                         <div class="quote-list">
                             <div class="quote-item">
                                 <div class="quote-avatar"></div>
                                 <div class="quote-info">
                                     <div class="quote-contractor"></div>
+                                    <p class="descriptor-inline">Contractor name</p>
                                     <div class="quote-project"></div>
+                                    <p class="descriptor-inline">Project description</p>
                                 </div>
                                 <div class="quote-meta">
                                     <div class="quote-price"></div>
+                                    <p class="descriptor-inline">Price (SAR)</p>
                                     <div class="quote-status"></div>
+                                    <p class="descriptor-inline">Status badge</p>
                                 </div>
                             </div>
                             <div class="quote-item">
@@ -708,20 +759,27 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title"></div>
+                        <p class="descriptor-inline">Active Projects</p>
                         <div class="card-action"></div>
+                        <p class="descriptor-inline">View All Link</p>
                     </div>
                     <div class="card-body">
+                        <p class="descriptor" style="margin-bottom: 12px;">Projects in progress with completion status</p>
                         <div class="project-list">
                             <div class="project-item">
                                 <div class="project-header">
                                     <div class="project-name"></div>
+                                    <p class="descriptor-inline">Project name</p>
                                     <div class="project-status"></div>
+                                    <p class="descriptor-inline">In Progress</p>
                                 </div>
                                 <div class="progress-bar">
                                     <div class="progress-fill" style="width: 65%;"></div>
                                 </div>
+                                <p class="descriptor" style="margin: 4px 0;">Progress bar - 65%</p>
                                 <div class="project-meta">
                                     <div class="project-contractor"></div>
+                                    <p class="descriptor-inline">Contractor</p>
                                     <div class="project-percent"></div>
                                 </div>
                             </div>
@@ -733,6 +791,7 @@
                                 <div class="progress-bar">
                                     <div class="progress-fill" style="width: 30%;"></div>
                                 </div>
+                                <p class="descriptor" style="margin: 4px 0;">Progress bar - 30%</p>
                                 <div class="project-meta">
                                     <div class="project-contractor"></div>
                                     <div class="project-percent"></div>
@@ -746,6 +805,7 @@
                                 <div class="progress-bar">
                                     <div class="progress-fill" style="width: 90%;"></div>
                                 </div>
+                                <p class="descriptor" style="margin: 4px 0;">Progress bar - 90%</p>
                                 <div class="project-meta">
                                     <div class="project-contractor"></div>
                                     <div class="project-percent"></div>
@@ -761,15 +821,22 @@
             <div class="recommended-section">
                 <div class="card-header">
                     <div class="card-title"></div>
+                    <p class="descriptor-inline">Recommended For You</p>
                     <div class="card-action"></div>
+                    <p class="descriptor-inline">See All</p>
                 </div>
+                <p class="descriptor" style="padding: 12px 20px 0;">AI-powered contractor recommendations based on user preferences</p>
                 <div class="contractors-grid">
                     <div class="contractor-card">
                         <div class="contractor-cover"></div>
+                        <p class="descriptor" style="margin-top: 4px;">Cover image / Portfolio preview</p>
                         <div class="contractor-body">
                             <div class="contractor-avatar"></div>
+                            <p class="descriptor">Profile photo</p>
                             <div class="contractor-name"></div>
+                            <p class="descriptor">Company name</p>
                             <div class="contractor-category"></div>
+                            <p class="descriptor">Service category</p>
                             <div class="contractor-rating">
                                 <div class="star"></div>
                                 <div class="star"></div>
@@ -777,14 +844,17 @@
                                 <div class="star"></div>
                                 <div class="star"></div>
                             </div>
+                            <p class="descriptor">Star rating (5 stars)</p>
                             <div class="contractor-stats">
                                 <div class="contractor-stat">
                                     <div class="stat-num"></div>
                                     <div class="stat-text"></div>
+                                    <p class="descriptor">Projects</p>
                                 </div>
                                 <div class="contractor-stat">
                                     <div class="stat-num"></div>
                                     <div class="stat-text"></div>
+                                    <p class="descriptor">Reviews</p>
                                 </div>
                             </div>
                         </div>
