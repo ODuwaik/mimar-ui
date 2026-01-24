@@ -41,10 +41,8 @@
         }
 
         .logo {
-            width: 32px;
             height: 32px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 8px;
+            width: auto;
         }
 
         .toolbar-title {
@@ -383,7 +381,7 @@
     <!-- Toolbar -->
     <div class="toolbar">
         <div class="toolbar-left">
-            <div class="logo"></div>
+            <img src="assets/images/logo.png" alt="Mimar" class="logo">
             <div class="toolbar-title">Mimar User Flow<span>Wireframe Canvas</span></div>
         </div>
         <div class="toolbar-center">
@@ -424,7 +422,7 @@
 
                 <!-- Home to Register -->
                 <path class="flow-line purple" marker-end="url(#arrow-purple)"
-                      d="M 380,320 C 480,320 520,480 620,480"/>
+                      d="M 380,320 C 480,320 520,560 620,560"/>
 
                 <!-- Login to Consumer Dashboard -->
                 <path class="flow-line green" marker-end="url(#arrow-green)"
@@ -436,11 +434,11 @@
 
                 <!-- Register to Consumer Dashboard -->
                 <path class="flow-line green" marker-end="url(#arrow-green)"
-                      d="M 900,480 C 1050,480 1100,380 1250,380"/>
+                      d="M 900,560 C 1050,560 1100,380 1250,380"/>
 
                 <!-- Register to Provider Dashboard -->
                 <path class="flow-line orange" marker-end="url(#arrow-orange)"
-                      d="M 900,580 C 1050,650 1100,850 1250,850"/>
+                      d="M 900,660 C 1050,720 1100,850 1250,850"/>
 
                 <!-- Consumer Dashboard to Search -->
                 <path class="flow-line green" marker-end="url(#arrow-green)"
@@ -512,7 +510,7 @@
             </div>
 
             <!-- REGISTER -->
-            <div class="screen-node" style="left: 620px; top: 440px;" onclick="openWireframe('wireframe-register.html')">
+            <div class="screen-node" style="left: 620px; top: 520px;" onclick="openWireframe('wireframe-register.html')">
                 <div class="node-header">
                     <span class="node-title">Register</span>
                     <span class="node-badge auth">Auth</span>
@@ -528,7 +526,7 @@
 
             <!-- Flow Labels for Auth -->
             <div class="flow-label" style="left: 460px; top: 160px;">Sign In</div>
-            <div class="flow-label" style="left: 460px; top: 420px;">Create Account</div>
+            <div class="flow-label" style="left: 460px; top: 500px;">Create Account</div>
 
             <!-- ===== SECTION 3: CUSTOMER FLOW ===== -->
             <div class="section-header" style="left: 1250px; top: 100px;">
