@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Mimar - User Flow Canvas</title>
     <style>
         * {
@@ -423,20 +423,29 @@
         /* ===== RESPONSIVE - MOBILE ===== */
         @media (max-width: 767px) {
             .toolbar {
-                height: 50px;
-                padding: 0 10px;
+                height: auto;
+                min-height: 50px;
+                padding: 8px 12px;
+                flex-wrap: wrap;
+                gap: 8px;
             }
 
             .toolbar-left {
-                gap: 10px;
+                gap: 8px;
+                flex: 1;
+                min-width: 0;
             }
 
             .logo {
-                height: 26px;
+                height: 24px;
+                flex-shrink: 0;
             }
 
             .toolbar-title {
-                font-size: 13px;
+                font-size: 12px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
 
             .toolbar-title span {
@@ -445,28 +454,36 @@
 
             .toolbar-center {
                 padding: 2px;
-                gap: 4px;
+                gap: 2px;
+                order: 3;
+                flex-shrink: 0;
             }
 
             .zoom-btn {
-                width: 28px;
-                height: 28px;
-                font-size: 14px;
+                width: 32px;
+                height: 32px;
+                font-size: 16px;
             }
 
             .zoom-level {
                 font-size: 11px;
-                min-width: 40px;
+                min-width: 36px;
+            }
+
+            .toolbar-right {
+                flex-shrink: 0;
             }
 
             .toolbar-right .btn {
-                padding: 5px 10px;
+                padding: 6px 10px;
                 font-size: 11px;
+                white-space: nowrap;
             }
 
             .canvas-wrapper {
-                top: 50px;
+                top: 66px;
                 -webkit-overflow-scrolling: touch;
+                touch-action: pan-x pan-y;
             }
 
             .screen-node {
@@ -550,8 +567,44 @@
 
         /* ===== RESPONSIVE - SMALL MOBILE ===== */
         @media (max-width: 480px) {
+            .toolbar {
+                padding: 6px 8px;
+                gap: 6px;
+            }
+
+            .toolbar-left {
+                gap: 6px;
+            }
+
+            .logo {
+                height: 22px;
+            }
+
+            .toolbar-title {
+                font-size: 11px;
+            }
+
+            .toolbar-center {
+                gap: 1px;
+            }
+
+            .zoom-btn {
+                width: 28px;
+                height: 28px;
+                font-size: 14px;
+            }
+
+            .zoom-level {
+                min-width: 32px;
+                font-size: 10px;
+            }
+
             .toolbar-right {
                 display: none;
+            }
+
+            .canvas-wrapper {
+                top: 58px;
             }
 
             .screen-node {
@@ -572,7 +625,7 @@
 
             .legend {
                 bottom: auto;
-                top: 60px;
+                top: 68px;
                 left: 10px;
                 padding: 8px 10px;
             }
@@ -1024,19 +1077,24 @@
         // Touch pinch zoom
         let initialDistance = 0;
         let initialZoom = currentZoom;
+        let isPinching = false;
 
         canvasWrapper.addEventListener('touchstart', (e) => {
             if (e.touches.length === 2) {
+                isPinching = true;
                 initialDistance = Math.hypot(
                     e.touches[0].pageX - e.touches[1].pageX,
                     e.touches[0].pageY - e.touches[1].pageY
                 );
                 initialZoom = currentZoom;
+                e.preventDefault();
             }
-        }, { passive: true });
+        }, { passive: false });
 
         canvasWrapper.addEventListener('touchmove', (e) => {
-            if (e.touches.length === 2) {
+            if (e.touches.length === 2 && isPinching) {
+                e.preventDefault();
+
                 const currentDistance = Math.hypot(
                     e.touches[0].pageX - e.touches[1].pageX,
                     e.touches[0].pageY - e.touches[1].pageY
@@ -1047,18 +1105,39 @@
                 currentZoom = Math.min(Math.max(initialZoom * scale, minZoom), 1.5);
                 updateZoom();
             }
-        }, { passive: true });
+        }, { passive: false });
+
+        canvasWrapper.addEventListener('touchend', (e) => {
+            if (isPinching) {
+                isPinching = false;
+            }
+        });
 
         // Double tap to fit
         let lastTap = 0;
         canvasWrapper.addEventListener('touchend', (e) => {
-            const currentTime = new Date().getTime();
-            const tapLength = currentTime - lastTap;
-            if (tapLength < 300 && tapLength > 0) {
-                fitToScreen();
-                e.preventDefault();
+            if (e.touches.length === 0 && !isPinching) {
+                const currentTime = new Date().getTime();
+                const tapLength = currentTime - lastTap;
+                if (tapLength < 300 && tapLength > 0) {
+                    fitToScreen();
+                    e.preventDefault();
+                }
+                lastTap = currentTime;
             }
-            lastTap = currentTime;
+        });
+
+        // Prevent default zoom on the whole document
+        document.addEventListener('gesturestart', (e) => {
+            e.preventDefault();
+        });
+
+        document.addEventListener('gesturechange', (e) => {
+            e.preventDefault();
+        });
+
+        document.addEventListener('gestureend', (e) => {
+            e.preventDefault();
         });
     </script>
 </body>
